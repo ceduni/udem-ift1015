@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFT1015 - Programmation I</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <meta name="desciption" content="Page du cours IFT1015 (Programmation I), enseigné par Louis-Edouard LAFONTANT à l'Université de Montréal">
+    <meta property="og:title" content="IFT1015 - Programmation I">
+    <meta property="og:description" content="Page du cours IFT1015 (Programmation I), enseigné par Louis-Edouard LAFONTANT à l'Université de Montréal">
+    <meta property="og:url" content="https://ceduni.github.io/udem-ift1015/">
+    <meta property="og:site_name" content="IFT1015">
+    <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
+    
+    <link rel="stylesheet" href="dist/style.min.css?v=001">
+    <style>
+        .week-section-body {
+            padding-top: 6px;
+        }
+        
+        .week-section-header {
+            display: flex;
+            margin-bottom: 6px;
+        }
+
+        .week-section-title {
+            margin: 0; 
+            font-size: 2em;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .week-section-doc {
+            margin-left: 6px;
+        }
+
+        .week-section-doc-icon {
+            height: 36px;
+            width: auto;
+        }
+
+        .week-section-parts {
+            display: flex;
+        }
+
+        .week-section-part {
+            display: flex; flex-direction: column;
+            margin-right: 12px;
+            flex: 1 1;
+            max-width: 480px;
+        }
+
+        .week-section-images {
+            display: flex;
+        }
+
+        .week-section-image {
+            width: 100%; height: auto;
+            border-radius: 3px;
+            box-shadow: 1px 2px 1px -1px #999;
+        }
+
+        .helper {
+            min-width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <section class="teaching">
+            <div class="teaching-header">
+                <div class="teaching-logo">
+                    <div class="teaching-logo-name">
+                        <span class="teaching-logo-code">IFT</span>
+                        <span class="teaching-logo-number">1015</span>
+                    </div>
+                </div>
+                <div class="teaching-info">
+                    <div style="display: flex;">
+                        <h1 class="teaching-title" title="IFT1015 &ndash; Programmation I">Programmation I</h1>
+                        <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
+                    </div>
+                    <ul class="bare-list teaching-topics">
+                        <li class="teaching-topic">Variables, types, expressions</li>                        
+                        <li class="teaching-topic optional">Énoncés conditionnels et boucles</li>
+                        <li class="teaching-topic">Fonctions et procédures</li>
+                        <li class="teaching-topic">Tableaux, structures et objets simples</li>
+                        <li class="teaching-topic optional">Méthodes</li>
+                        <li class="teaching-topic optional">Récursivité</li>
+                        <li class="teaching-topic optional">Programmation web</li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="bare-list teaching-links">
+                <li class="teaching-link">
+                    <a class="bare-link teaching-link__link teaching-link__link--discord"
+                        href="https://discord.gg/TENNhX4Nv3" target="_blank">
+                        Discord
+                    </a>
+                </li>
+                <li class="teaching-link">
+                    <a class="bare-link teaching-link__link teaching-link__link--plan"
+                        href="https://studium.umontreal.ca/course/view.php?id=231494" target="_blank">
+                        StudiUM
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="teacher-section">
+            <h2 class="teacher-section-title">Enseignants</h2>
+            <ul class="bare-list teachers" data-name="teachers"></ul>
+        </section>
+
+        <section class="plan">
+            <h2 class="plan-section-title">Plan de cours</h2>
+            <p class="teaching-content">
+                Ce cours a pour objectif de vous enseigner les éléments de base de la programmation dans un langage de programmation impératif procédural: 
+                types, expressions, énoncés conditionnels et itératifs, procédures/fonctions/méthodes, paramètres, récursivité, tableaux, enregistrements, objets simples, et méthodologie de programmation agile. <br> 
+                Ce cours vise également à vous apporter une expérience pratique dans un premier langage : le langage <strong>Python</strong>. 
+            </p>          
+
+            <div class="plan-parts">
+                <div class="plan-part plan-part--goal">
+                    <h3 class="plan-part-title">Objectifs</h3>
+
+                    <ul class="bare-list goals">
+                        <li class="check goal">Maitriser les notions de base de programmation impératif procédural</li>
+                        <li class="check goal">Analyser un problème et proposer une solution programmatique</li>
+                        <li class="check goal">Concevoir et réaliser des programmes de complexité moyenne en Python</li>
+                        <li class="check goal">Apprendre à travailler en équipe</li>
+                        <li class="check goal">Capable d'acquérir rapidement les bases d'autres langages de programmation impératifs procéduraux</li>
+                    </ul>
+                </div>
+
+                <div class="plan-part plan-part--evaluation">
+                    <h3 class="plan-part-title">Évaluations</h3>
+                    <ul class="bare-list plan-evaluations">
+                        <li class="plan-evaluation">
+                            <h4 class="plan-evaluation-title">Examens</h4>
+                            <ul class="bare-list plan-eval-assignments">
+                                <li class="plan-eval-assignment">
+                                    Intra (<strong>25%</strong>)
+                                </li>
+                                <li class="plan-eval-assignment">
+                                    Final (<strong>30%</strong>)
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="plan-evaluation">
+                            <h4 class="plan-evaluation-title">Travaux</h4>
+                            Tous les travaux doivent être soumis via StudiUM.
+                            <br>
+                            <strong>Langage de programmation: Python</strong> <br>
+                            <strong>Environnement de programmation: <a style="color: #fff;" href="https://codeboot.org/py/" target="_blank">Codeboot</a></strong>
+                            <ul class="bare-list plan-eval-assignments" style="margin-top: 6px; margin-bottom: 6px;">
+                                <li class="plan-eval-assignment">
+                                    Travaux pratiques: 2 (<strong>30%</strong>) <br>
+                                    Équipe de 2
+                                </li>
+                                <li class="plan-eval-assignment">
+                                    Exercices notés: 5-8 (<strong>15%</strong>) <br>
+                                    Individuel
+                                </li>
+                            </ul>
+
+                            <strong>
+                                Seuil de 50%: il faut obtenir un minimum de 50% sur la moyenne pondérée de l'intra et du final pour réussir le cours.
+                            </strong>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="plan-part plan-part--resource">
+                    <h3 class="plan-part-title">Matériels</h3>
+
+                    <ul class="bare-list plan-resources">
+                        <li class="plan-resource plan-resource--book">
+                            <h4 class="plan-resource-title">Livre</h4>
+                            <span class="book" style="margin-bottom: 4px;">
+                                John V. GUTTAG (2021). <em>Introduction to Computation and Programming Using Python</em>, 3<sup>rd</sup> edition. (<strong>recommandé</strong>)
+                            </span>
+                                
+                            <span style="margin-bottom: 4px;">
+                                John M ZELLE (2016). <em>Python Programming: An Introduction to Computer Science</em>, 3<sup>rd</sup> edition.
+                            </span>
+                            
+                            <span>
+                                David THOMAS, Andrew HUNT, (2019). <em>The Pragmatic Programmer: From Journeyman to Master</em>.
+                            </span>
+                        </li>
+                        <li class="plan-resource plan-resource--web">
+                            <h4 class="plan-resource-title">Ressource</h4>
+                            <a class="plan-evaluation__link" href="https://youtu.be/kqtD5dpn9C8" target="_blank">
+                                Tutoriel rapide de Python (démonstratif)
+                            </a>
+                            <a class="plan-evaluation__link" href="https://docs.python.org/3/tutorial/" target="_blank">
+                                Tutoriel Python 3
+                            </a>
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Tout le matériel, supports et communications sont aussi accessibles via
+                            <a class="bare-link inline-link" href="https://studium.umontreal.ca/course/view.php?id=223103"
+                                target="_blank">StudiUM</a></strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="page-body">
+        <aside class="body-navigation">
+            <ul class="bare-list weeks">
+                <li class="week">
+                    <h4 class="week-title">Semaine 01 (9 Janvier)</h4>
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Présentation</span>
+                            <!-- <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Enseignant</li>
+                                <li class="week-content-detail">Plan de cours</li>
+                            </ul> -->
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Introduction</span>
+                            <!-- <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Génie Logiciel</li>
+                                <li class="week-content-detail">Vie du logiciel</li>
+                            </ul> -->
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Variables & Expressions</span>
+                            <!-- <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Linéaire (Cascade, V)</li>
+                                <li class="week-content-detail">Itératif (Prototypage)</li>
+                                <li class="week-content-detail">Incrémental (Phase)</li>
+                                <li class="week-content-detail">Itératif & Incrémental (Unifié)</li>
+                            </ul> -->
+                        </li>
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Présentation</span>
+                            <!-- <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Auxiliaire</li>
+                                <li class="week-content-detail">Disponibilités</li>
+                            </ul> -->
+                        </li>
+                    </ul>
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 02 (16 Janvier)</h4>
+                    <!-- <ul class="bare-list week-content th">
+                      
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                    
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 03 (23 Janvier)</h4>
+                    <!-- <ul class="bare-list week-content th">
+                     
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                    
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 04 (30 Janvier)</h4>
+                    <!-- <ul class="bare-list week-content th">
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 05 (6 Février)</h4>
+                    <!-- <ul class="bare-list week-content th">
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 06 (13 Février)</h4>
+                    <!-- <ul class="bare-list week-content th">
+                    
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                       
+                    </ul> -->
+                    <span class="week-content-title">Examen intra (16 Février) 📅</span>
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 07 (20 Février)</h4>
+                
+                    <!-- <ul class="bare-list week-content ex">
+                       
+                    </ul> 
+                    <ul class="bare-list week-content th">
+                       
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                      
+                    </ul> -->
+                </li>
+                <li class="week break">
+                    <h4 class="week-title">Semaine 08 (27 Février)</h4>
+                    <strong>RELACHE</strong>
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 09 (6 Mars)</h4>
+                    <!-- <ul class="bare-list week-content th">
+                      
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                       
+                    </ul> -->
+                </li>
+
+                <li class="week">
+                    <h4 class="week-title">Semaine 10 (13 Mars)</h4>
+
+                    <!-- <ul class="bare-list week-content th">
+                     
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                     
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 11 (20 Mars)</h4>
+<!-- 
+                    <ul class="bare-list week-content th">
+                      
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                      
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 12 (27 Mars)</h4>
+
+                    <!-- <ul class="bare-list week-content th">
+                      
+                    </ul>
+
+                    <ul class="bare-list week-content tp">
+                    
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 13 (3 Avril)</h4>
+                    
+                    <!-- <ul class="bare-list week-content th">
+                     
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                    
+                    </ul> -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 14 (10 Avril)</h4>
+<!--                     
+                    <ul class="bare-list week-content th">
+                     
+                    </ul>
+
+                    <ul class="bare-list week-content tp">
+                       
+                    </ul>
+                    <ul class="bare-list week-content ex">
+                     
+                    </ul>  -->
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 15 (17 Avril)</h4>
+<!--                     
+                    <ul class="bare-list week-content th">
+                     
+                    </ul>
+
+                    <ul class="bare-list week-content tp">
+                       
+                    </ul>
+                    <ul class="bare-list week-content ex">
+                     
+                    </ul>  -->
+                    <span class="week-content-title">Examen intra (20 Avril) 📅</span>
+                </li>
+            </ul>
+        </aside>
+
+        <div class="body-content">
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 1: Introduction</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Introduction</h3>
+                        <!-- <a class="week-section-doc" href="./assets/docs/01-introduction.pdf" target="_blank">
+                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
+                        </a> -->
+                    </div>
+
+                    <div class="week-section-parts">
+                        <div class="week-section-part">
+                          
+                        </div>
+
+                        <div class="week-section-part">
+                           
+                        </div>
+                    </div>
+
+                    <div class="week-section-header">
+                        <h3 class="week-section-title" style="margin-top: 6px;">Variables & Expressions</h3>
+                        <!-- <a class="week-section-doc" href="./assets/docs/02-modele_developpement.pdf" target="_blank">
+                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
+                        </a> -->
+                    </div>
+                    
+                    <div class="week-section-parts">
+                        <div class="week-section-part">
+                            
+                        </div>
+
+                        <div class="week-section-part">
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Ouverture du cours: Présentation, Plan de cours
+                        </li>                      
+                        <li class="section-summary-list-item">
+                            Introduction à la programmation
+                        </li>
+                        <li class="section-summary-list-item">
+                            Variables & Expressions
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="content-wrapper">
+            <p class="footer-maintenance">
+                Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="http://www-ens.iro.umontreal.ca/~lafontle/" target="_blank">LELAFONTANT</a>) <br>
+                Dernière mise à jour: 2023-01-08
+            </p>
+            <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
+        </div>
+    </footer>
+  
+
+
+    <template id="tpl-teacher">
+        <li class="teacher teacher--#role card" data-role="#role">
+            <img class="card-img" src="#photo" alt="Photo de #name">
+            <div class="teacher-info">
+                <p class="card-name">
+                    <a class="bare-link card-link" href="#web" target="_blank">#name</a>
+                </p>
+                <p class="card-role">
+                    #title <br>
+                    <span class="card-address">#local</span>
+                </p>
+                <p class="card-description">
+                    #intro
+                </p>
+            </div>
+        </li>
+    </template>
+    
+    <template id="tpl-schedule">
+        <li class="teaching-schedule">
+            #day #start &ndash; #end @#location (<i class="schedule-type">#type</i>)
+        </li>
+    </template>
+
+    <template id="tpl-week">
+        <li class="week">
+            <h4 class="week-title">#week</h4>
+            <ul class="bare-list week-content th" data-item="tpl-week-content" data-bind="th"></ul>
+            <ul class="bare-list week-content tp" data-item="tpl-week-content" data-bind="tp"></ul>
+        </li>
+    </template>
+
+    <template id="tpl-week-content">
+        <li class="week-content-item">
+            <span class="week-content-title">#title</span>
+            <ul class="bare-list week-content-details" data-item="tpl-week-detail" data-bind="details"></ul>
+        </li>
+    </template>
+
+    <template id="tpl-week-detail">
+        <li class="week-content-detail">
+            $value
+        </li>
+    </template>
+
+
+    <!-- <script src="main.js"></script> -->
+    <script src="dist/app.js"></script>
+</body>
+
+</html>

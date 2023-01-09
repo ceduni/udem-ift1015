@@ -1,0 +1,46 @@
+{
+    "name": "udem-ift1015",
+    "version": "1.0.0",
+    "description": "Cours de Programmation 1 (IFT1015)",
+    "main": "index.js",
+    "scripts": {
+        "prebuild": "rimraf dist/*",
+        "build": "npm-run-all build:*",
+        "build:css": "node scripts/build-css.js",
+        "build:js": "webpack --config webpack.prod.js",
+        "start": "webpack serve --config webpack.dev.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ceduni/udem-ift1015.git"
+    },
+    "keywords": [
+        "udem",
+        "ift1015",
+        "programming",
+        "python",
+        "course"
+    ],
+    "author": "Louis-Edouard LAFONTANT",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ceduni/udem-ift1015/issues"
+    },
+    "homepage": "https://github.com/ceduni/udem-ift1015#readme",
+    "dependencies": {
+        "zenkai": "^0.10.0"
+    },
+    "devDependencies": {
+        "clean-css": "^5.3.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.7.1",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.71.0",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.7.4",
+        "webpack-merge": "^5.8.0",
+        "yaml-loader": "^0.8.0"
+    }
+}

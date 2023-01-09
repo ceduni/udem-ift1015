@@ -1,0 +1,30 @@
+- name: Louis-Edouard LAFONTANT
+  role: instructor
+  title: Chargé de cours
+  local: Bureau 2352 Pav. André-Aisenstadt
+  web: http://www-ens.iro.umontreal.ca/~lafontle/
+  photo: ./assets/images/photo_louis_edouard_lafontant.jpeg
+  email: louis.edouard.lafontant@umontreal.ca
+  intro: 
+    Envoyez-moi vos messages par <a href="mailto:louis.edouard.lafontant@umontreal.ca">courriel</a> ou via Discord (L-E#2545). 
+    Pour planifier une rencontre, utilisez le <a href="https://calendly.com/lelafontant/ift1015-periode-de-consultation">calendrier</a>.
+
+- name: Hajer Mejri
+  role: assistant
+  title: Auxiliaire d'enseignement
+  local: À venir
+  web: https://www.linkedin.com/in/hajer-mejri-45431b140
+  photo: https://media.licdn.com/dms/image/C4E03AQFKeufvFVSogg/profile-displayphoto-shrink_400_400/0/1643236712169?e=1678924800&v=beta&t=ST4kQEN-GMejEe4S1_LVA492tljLe9HUsx7XXfSodkQ
+  email: hajer.mejri.1@umontreal.ca
+  intro: 
+    Envoyez-moi vos messages par <a href="mailto:hajer.mejri.1@umontreal.ca">courriel</a> ou via Discord (à venir).
+
+- name: Hassan Abass
+  role: assistant
+  title: Auxiliaire d'enseignement
+  local: À venir
+  web: https://www.linkedin.com/in/hassan-abass-7552261b7
+  photo: https://media.licdn.com/dms/image/D4E03AQHlDyKSVv3fpw/profile-displayphoto-shrink_400_400/0/1664379672955?e=1678924800&v=beta&t=HUasi2Ju09OQBgsg8-JruyB3PvxEryZqoGuxNSOMnaE
+  email: hassan.abass@umontreal.ca
+  intro: 
+    Envoyez-moi vos messages par <a href="mailto:hassan.abass@umontreal.ca">courriel</a> ou via Discord (à venir).
