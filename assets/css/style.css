@@ -17,6 +17,29 @@
     color: #fff;
 }
 
+    .plan-schedule {
+        margin: 0; margin-bottom: 12px;
+        display: flex; flex-wrap: wrap;
+    }
+
+    .plan-schedule-group {
+        margin-right: 8px;
+        padding: 12px 18px;
+        border-radius: 2px;
+        background-color: #2c5eb4;
+    }
+
+    .plan-schedule-title {
+        font-weight: 300; font-size: 2em;
+        margin: 0;
+        margin-bottom: 6px;
+    }
+
+    .plan-schedule-day {
+        line-height: 1.5;
+        margin: 0;
+    }
+
     .plan-section-title {
         margin-top: 0;
         font-weight: 300;
