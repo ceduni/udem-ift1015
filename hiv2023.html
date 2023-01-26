@@ -29,7 +29,24 @@
             margin: 0; 
             font-size: 2em;
             font-weight: 300;
+            color: #222;
             text-transform: uppercase;
+        }
+
+        .block-title {
+            margin: 0; margin-bottom: 2px;
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #BB2649;
+            color: #2F305E;
+        }
+
+        .week-section-block {
+            margin-bottom: 12px;
+        }
+
+        .week-section-block p {
+            margin-top: 0;
         }
 
         .week-section-doc {
@@ -41,21 +58,6 @@
             width: auto;
         }
 
-        .week-section-parts {
-            display: flex;
-        }
-
-        .week-section-part {
-            display: flex; flex-direction: column;
-            margin-right: 12px;
-            flex: 1 1;
-            max-width: 480px;
-        }
-
-        .week-section-images {
-            display: flex;
-        }
-
         .week-section-image {
             width: 100%; height: auto;
             border-radius: 3px;
@@ -64,6 +66,74 @@
 
         .helper {
             min-width: 200px;
+        }
+        
+        .op-list {
+            display: flex;
+            font-family: Consolas, 'Courier New', Courier, monospace;
+        }
+
+            .op {
+                margin-right: 4px;
+                font-weight: bold;
+                padding: 3px 6px 2px; border-radius: 2px;
+                background-color: #e5e4e2;
+            }
+
+        .tbl-wrap {
+            display: inline-block;
+            border-radius: 3px; 
+            overflow: hidden;
+            background-color: #f5f5f5;
+            padding: 6px;
+        }
+
+        .tbl {
+            border-collapse: collapse;
+            border: 0 none;
+        }
+
+        .tbl-section--head {
+            border-bottom: 2px solid #a9a9a9;
+        }
+
+        .tbl-head {
+            font-weight: 500; font-size: 1.6em;
+            color: #555;
+        }
+
+        .tbl-cell,
+        .tbl-head {
+            border: 0 none;
+        }
+
+        .tbl-cell {
+            padding: 2px 1%;
+        }
+
+        .tbl-datatype-general {
+            font-weight: 500;
+            min-width: 180px;
+        }
+
+        .tbl-datatype-python,
+        .tbl-datatype-java,
+        .tbl-datatype-js {
+            font-family: Consolas, 'Courier New', Courier, monospace;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .tbl-datatype-python {
+            color: royalblue;
+        }
+
+        .tbl-datatype-java {
+            color: #F0954F;
+        }
+
+        .tbl-datatype-js {
+            color: rgb(238, 172, 5);
         }
     </style>
 </head>
@@ -84,7 +154,7 @@
                         <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
                     </div>
                     <ul class="bare-list teaching-topics">
-                        <li class="teaching-topic">Variables, types, expressions</li>                        
+                        <li class="teaching-topic">Variables et expressions</li>                        
                         <li class="teaching-topic optional">Énoncés conditionnels et boucles</li>
                         <li class="teaching-topic">Fonctions et procédures</li>
                         <li class="teaching-topic">Tableaux, structures et objets simples</li>
@@ -313,6 +383,10 @@
                                 <li class="week-content-detail">Présentation</li>
                                 <li class="week-content-detail">Disponibilités</li>
                                 <li class="week-content-detail">Exercices</li>
+                                <li class="week-content-detail">Cadre de solution</li>
+                                <li class="week-content-detail">Objectif</li>
+                                <li class="week-content-detail">Entités cibles</li>
+                                <li class="week-content-detail">Prérequis</li>
                             </ul>
                         </li>
                         <li class="week-content-item">
@@ -326,20 +400,20 @@
                         </li>
                     </ul>
                 </li>
-                <li class="week">
+                <li class="week current">
                     <h4 class="week-title">Semaine 03 (23 Janvier)</h4>
                     <ul class="bare-list week-content th">
                         <li class="week-content-item">
                             <span class="week-content-title">Flux de controle</span>
-                            
-                            <!-- <ul class="bare-list week-content-details">
-                                <li class="week-content-detail">Déclaration</li>
-                                <li class="week-content-detail">Type de données</li>
-                                <li class="week-content-detail">Python</li>
-                            </ul> -->
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Boucles</li>
+                                <li class="week-content-detail">while</li>
+                                <li class="week-content-detail">do-while</li>
+                                <li class="week-content-detail">for</li>
+                            </ul>
                         </li>
                         <li class="week-content-item">
-                            <span class="week-content-title">Abstraction procédurale (fonctions)</span>
+                            <span class="week-content-title">Abstraction procédurale</span>
                             
                             <!-- <ul class="bare-list week-content-details">
                                 <li class="week-content-detail">Déclaration</li>
@@ -353,6 +427,9 @@
                             <span class="week-content-title">Labo</span>
                             <ul class="bare-list week-content-details">
                                 <li class="week-content-detail">Exercices</li>
+                                <li class="week-content-detail">Cadre de solution</li>
+                                <li class="week-content-detail">Pseudo-Code</li>
+                                <li class="week-content-detail">Pseudo-Code -> Python</li>
                             </ul>
                         </li>
                         <li class="week-content-item">
@@ -520,7 +597,7 @@
         <div class="body-content">
             <section class="body-content-section collapsible" data-collapsible="expanded">
                 <div class="body-content-section-header" data-collapsible-header="">
-                    <h2 class="body-content-title">Semaine 1: Introduction</h2>
+                    <h2 class="body-content-title">Semaine 1: Introduction + Variables</h2>
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
@@ -531,16 +608,35 @@
                         </a> -->
                     </div>
 
-                    <div class="week-section-parts">
+                    <div class="week-section-block">
+                        <h4 class="block-title">Notion de base</h4>
+
                         <ul class="bare-list">
-                            <li class="dash">Environnement physique (statique ou organique) vs Environnement dynamique (virtuel)</li>
+                            <li class="dash">Environnement physique (statique ou organique) vs <strong>Environnement dynamique (virtuel)</strong></li>
                             <li class="dash">Ordinateur: Outil donnant accès à un environnement dynamique</li>
-                            <li class="dash">Un programme décrit un chemin ou une séquence d'instructions à effectuer (exécuter) visant une tâche spécifique.</li>
-                            <li class="dash">Besoin d'abstraction: Un programme est décrit à l'aide d'un langage de programmation. Un langage offre une abstraction facilitant la manipulation de l’ordinateur. </li>
-                            <li class="dash">Un langage de programmation est défini par sa syntaxe (représentation) et sa sémantique (sens, interprétation)</li>
-                            <li class="dash">Paradigme de programmation: Approche et style utilisé pour concevoir et formuler une solution (programme) à un problème donné.</li>
-                            <li class="dash">Exécution du code: Compilateur (2 phases: Traduction &rarr; Exécution) vs Interpréteur (1 phase: Exécution)</li>
+                            <li class="dash">Un programme décrit un <strong>chemin</strong> ou une <strong>séquence d'instructions</strong> à effectuer (exécuter) visant une tâche spécifique.</li>
+                            <li class="dash">Un programme est décrit à l'aide d'un <strong>langage de programmation</strong>. Un langage offre une <strong>abstraction</strong> facilitant la manipulation de l'ordinateur. </li>
+                            <li class="dash">Un langage de programmation est défini par sa <strong>syntaxe</strong> (représentation) et sa <strong>sémantique</strong> (sens, interprétation)</li>
+                            <li class="dash">Paradigme de programmation: Approche et style utilisé pour concevoir et formuler un programme (<em>Ex: impératif, procédural, orienté-objet, déclaratif, fonctionnel</em> )</li>
+                            <li class="dash">Exécution du code: <strong>Compilateur</strong> (2 phases: Traduction &rarr; Exécution) vs <strong>Interpréteur</strong> (1 phase: Exécution)</li>
                         </ul>
+                    </div>
+
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">Concevoir un programme</h4>
+
+                        <p>
+                            <cite>Un problème bien posé est à moitié résolu. </cite> <br>
+                            Avant de se lancer dans un quelconque chemin de résolution (coder), il faut prendre soin de bien cerner les caractéristiques du problème et établir un plan de résolution clair (indépendant du langage de programmation). <br>
+                            Pour cela nous définissons: l'objectif du programme, les entités à manipuler dans le programme et les prérequis du programme.
+                        </p>
+                           
+                        <ol>
+                            <li><strong>Objectif</strong>: Définir la tache principale à accomplir, sans s'intéresser au comment</li>
+                            <li><strong>Entités cibles</strong>: Identifier avec précision les entités ou structures à manipuler</li> 
+                            <li><strong>Prérequis</strong>: Déterminer ce qui est minimalement nécessaire pour la manipulation</li> 
+                        </ol>
                     </div>
 
                     <div class="week-section-header">
@@ -549,46 +645,66 @@
                             <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
                         </a> -->
                     </div>
+
                     
-                    <div class="week-section-parts">
+                    <div class="week-section-block">
                         <ul class="bare-list">
-                            <li class="dash">
-                                Concevoir un programme 
-                                <ol>
-                                    <li>Objectif: Définir la tache principale à accomplir (pas encore comment)</li>
-                                    <li>Entité cible: Identifier avec précision les entités ou structures à manipuler</li> 
-                                    <li>Prérequis: Déterminer ce qui est minimalement nécessaire pour la manipulation</li> 
-                                        
-                                </ol>
-                            </li>
+                           
                             <li class="dash">Variable: Emplacement mémoire où une valeur est stockée
                             </li>
                             <li class="dash">Nom de variable: Un bon identificateur clarifie ce à quoi il réfère (évite les ambiguïtés)</li>
-                            <li class="dash">Type de données: Décide de l'espace réservé pour préserver la valeur. Definit la quantité de mémoire que prend une variable
-                                <table>
-                                    <tr>
-                                        <th>Général</th>
-                                        <th>Python</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre</td> 
-                                        <td><code>int</code>, <code>float</code>, <code>complex</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chaine de caractères (string)</td>
-                                        <td><code>str</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Booléen</td>
-                                        <td>bool</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ensemble</td>  
-                                        <td><code>list</code>, <code>tuple</code>, <code>range</code>, <code>dict</code>, <code>set</code>, <code>frozenset</code></td>  
-                                    </tr>
-                                </table>
-                            </li>
                         </ul>
+                    </div>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Type de données</h4>
+                        <p>Décide de l'espace réservé pour préserver la valeur. Definit la quantité de mémoire que prend une variable</p>
+                    
+                        <div class="tbl-wrap">
+                            <table class="tbl tbl-datatype">
+                                <thead class="tbl-section tbl-section--head">
+                                    <tr class="tbl-row tbl-row--head">
+                                        <th class="tbl-head">Général</th>
+                                        <th class="tbl-head"><img src="assets/images/logo-python.svg" alt="" height="20"> Python</th>
+                                        <th class="tbl-head"><img src="assets/images/logo-java.svg" alt="" height="20"> Java</th>
+                                        <th class="tbl-head"><img src="assets/images/logo-JavaScript.png" alt="" height="20"> Javascript</th>
+                                    </tr>
+                                </thead>
+                             
+                                <tbody class="tbl-section tbl-section--body">
+                                    <tr class="tbl-row tbl-row--body">
+                                        <td class="tbl-cell tbl-datatype-general">Nombre</td> 
+                                        <td class="tbl-cell tbl-datatype-python">int, float, complex</td>
+                                        <td class="tbl-cell tbl-datatype-java">byte, short, int, long, float, double</td>
+                                        <td class="tbl-cell tbl-datatype-js">number, bigint</td>
+                                    </tr>
+                                    <tr class="tbl-row tbl-row--body">
+                                        <td class="tbl-cell tbl-datatype-general">Chaine de caractères</td>
+                                        <td class="tbl-cell tbl-datatype-python">str</td>
+                                        <td class="tbl-cell tbl-datatype-java">char, String (type composé)</td>
+                                        <td class="tbl-cell tbl-datatype-js">string</td>
+                                    </tr>
+                                    <tr class="tbl-row tbl-row--body">
+                                        <td class="tbl-cell tbl-datatype-general">Booléen</td>
+                                        <td class="tbl-cell tbl-datatype-python">bool</td>
+                                        <td class="tbl-cell tbl-datatype-java">boolean</td>
+                                        <td class="tbl-cell tbl-datatype-js">boolean</td>
+                                    </tr>
+                                    <tr class="tbl-row tbl-row--body">
+                                        <td class="tbl-cell tbl-datatype-general">Ensemble</td>  
+                                        <td class="tbl-cell tbl-datatype-python">list, tuple, <code>range</code>, <code>dict</code>, <code>set</code>, <code>frozenset</code></td>  
+                                        <td class="tbl-cell tbl-datatype-java">&mdash;</td>  
+                                        <td class="tbl-cell tbl-datatype-js">&mdash;</td>  
+                                    </tr>
+                                    <tr class="tbl-row tbl-row--body">
+                                        <td class="tbl-cell tbl-datatype-general">Null</td>  
+                                        <td class="tbl-cell tbl-datatype-python">NoneType</td>  
+                                        <td class="tbl-cell tbl-datatype-java">&mdash;</td>  
+                                        <td class="tbl-cell tbl-datatype-js">null, undefined</td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -621,31 +737,183 @@
                         </a> -->
                     </div>
 
-                    <div class="week-section-parts">
-                        <div class="week-section-part">
-                          
-                        </div>
+                    
+                    <div class="week-section-block">
+                        <p>Une expression est une construction qui décrit comment <strong>calculer une valeur</strong> particulière. Son <strong>évaluation</strong> produit toujours une valeur.</p>
+                        <ul class="bare-list">
+                            <li class="dash">Une expression est souvent composé d'opérateurs.</li>
+                            <li class="dash">Type d'opérateur: unaire (une opérande), binaire (deux opérandes), ternaire (trois opérandes)</li>
+                            <!-- <li class="dash">Opérations sur nombres</li>
+                            <li class="dash">Opérations sur chaines de caractères</li>
+                            <li class="dash">Opérations sur booléen</li> -->
+                        </ul>
 
-                        <div class="week-section-part">
-                           
+                        <div class="">
+                            <h4 class="block-title">Opérateur de base en Python</h4>
+                            <div class="tbl-wrap">
+                                <table class="tbl tbl-operator">
+                                    <thead class="tbl-section tbl-section--head">
+                                        <tr class="tbl-row">
+                                            <th class="tbl-head">Opérateur</th>
+                                            <th class="tbl-head">Opération</th>
+                                            <th class="tbl-head">Exemple</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="tbl-section tbl-section--body">
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">**</td> 
+                                            <td class="tbl-cell">Exposant</td>
+                                            <td class="tbl-cell tbl-datatype-python"><code>2 ** 3 = 8</code></td>
+                                        </tr>
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">%</td>
+                                            <td class="tbl-cell">Modulo</td>
+                                            <td class="tbl-cell tbl-datatype-python"><code>20 % 3 =2</code></td>
+                                        </tr>
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">//</td>
+                                            <td class="tbl-cell">Division entière (euclidienne)</td>
+                                            <td class="tbl-cell tbl-datatype-python"><code>15 // 2 = 7</code></td>
+                                        </tr>
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">/</td>  
+                                            <td class="tbl-cell">Division (décimale)</td>  
+                                            <td class="tbl-cell tbl-datatype-python"><code>15 / 2 = 7.5</code></td>  
+                                        </tr>
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">*</td>  
+                                            <td class="tbl-cell">Multiplication</td>  
+                                            <td class="tbl-cell tbl-datatype-python"><code>4 * 5 - 20</code></td>  
+                                        </tr>
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">-</td>  
+                                            <td class="tbl-cell">Soustraction</td>  
+                                            <td class="tbl-cell tbl-datatype-python"><code>12 - 4 = 8</code></td>
+                                        </tr>
+                                        <tr class="tbl-row">
+                                            <td class="tbl-cell">+</td>  
+                                            <td class="tbl-cell">Addition</td>  
+                                            <td class="tbl-cell tbl-datatype-python"><code>2 + 2 = 4</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="week-section-block">
+                        <h4 class="block-title">Affectation</h4>
+                        <p>Une affectation consiste à <strong>attribuer une valeur à une variable</strong>. De nombreux langages offrent diverses mécanismes d'affectation pour alléger l'écriture.</p>
+                        <ul class="bare-list">
+                            <li class="dash">
+                                <strong>Affection composée</strong>: Opérateurs combinant une opération et une affectation
+                                <ul class="bare-list op-list">
+                                    <li class="op">+=</li>
+                                    <li class="op">-=</li>
+                                    <li class="op">/=</li>
+                                    <li class="op">//=</li>
+                                    <li class="op">&lt;&lt;=</li>
+                                    <li class="op">&gt;&gt;=</li>
+                                    <li class="op">&amp;=</li>
+                                    <li class="op">^=</li>
+                                    <li class="op">|=</li>
+                                    <li class="op">%=</li>
+                                </ul>
+                            </li>
+                            <li class="dash">
+                                <strong>Affection parallèle</strong>: Affecter des valeurs à plusieurs variables en une seule instruction.
+                                <ul class="bare-list op-list">
+                                    <li class="op">x, y, z = 10, 3, 5</li>
+                                    <li class="op">r, g, b = 100, 203, 85</li>
+                                </ul>
+                            </li>
+                            <li class="dash">
+                                <strong>Affection multiple</strong>: Affecter un même valeur à plusieurs variables en une seule instruction.
+                                <ul class="bare-list op-list">
+                                    <li class="op">x = y = z = 1</li>
+                                    <li class="op">s1, s2, s3 = False</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- <div class="week-section-block">
+                        <h4 class="block-title">Entrée et Sortie</h4>
+                        <p>
+                            Un programme est inutile si son état ne peut être perçu par ses utilisateurs => Portes de sorties. <br>
+                            Un programme qui produit toujours le même résultat a une très faible portée et démontre peu les capacités dynamiques de l'ordinateur. => Portes d'entrée.
+                        </p>
+                    </div> -->
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Commentaires</h4>
+                        <p>
+                            Les commentaires peuvent servir à expliquer une partie compliquée d'un programme ou à mettre des indications dans le code (ex: auteur, date...). <br>
+                        </p>
+                        <ul class="bare-list">
+                            <li class="dash">N'utilisez de commentaires que lorsque cela s'avère nécessaire</li>
+                            <li class="dash">S'assurer d'avoir travaillé la clarté du code au maximum</li>
+                            <li class="dash">Décrire le sens, pas l'instruction</li>
+                            <li class="dash">Éviter de commenter l'évidence</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Expressions: Opérateurs de base, Type d'opérateurs, Opération arithmétique 
+                        </li>
+                        <li class="section-summary-list-item">
+                            Affectation: composé, parallèle, multiple
+                        </li>
+                        <li class="section-summary-list-item">
+                            Entrée et Sortie
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 3: Flux de controle</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
                     <div class="week-section-header">
-                        <h3 class="week-section-title" style="margin-top: 6px;">Flux de controle</h3>
+                        <h3 class="week-section-title">Conditions</h3>
+                        <!-- <a class="week-section-doc" href="./assets/docs/01-introduction.pdf" target="_blank">
+                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
+                        </a> -->
+                    </div>
+
+                    <div class="week-section-block">
+                        <ul>
+                            <li>Permettre au programme de choisir entre plusieurs chemins en formulant des propositions logiques (basé sur les opérations booléennes)</li>
+                            <li>2 types d'instruction: <strong>if</strong> et <strong>switch</strong></li>
+                        </ul>
+                    </div>
+                    
+
+
+                    <div class="week-section-header">
+                        <h3 class="week-section-title" style="margin-top: 6px;">Boucles</h3>
                         <!-- <a class="week-section-doc" href="./assets/docs/02-modele_developpement.pdf" target="_blank">
                             <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
                         </a> -->
                     </div>
                     
-                    <div class="week-section-parts">
-                        <div class="week-section-part">
-                            
-                        </div>
-
-                        <div class="week-section-part">
-                           
-                        </div>
+                    <div class="week-section-block">
+                        <p>
+                            Une boucle offre un moyen d'itérer un nombre de fois sur un bloc d'instruction.
+                            La quantité d'itération dépend d'une <strong>condition émise sur la boucle</strong>.
+                        </p>
+                        <ul>
+                            <li>Permettre au programme de choisir entre plusieurs chemins en formulant des propositions logiques (basé sur les opérations booléennes)</li>
+                            <li>3 types d'instruction: <strong>while</strong> (tant que), <strong>do-while</strong> (repeter...tant que) et <strong>for</strong> (pour une séquence ou intervalle)</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -654,9 +922,6 @@
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
                             Expressions
-                        </li>
-                        <li class="section-summary-list-item">
-                            Flux de controle
                         </li>
                     </ul>
                 </div>
@@ -668,7 +933,7 @@
         <div class="content-wrapper">
             <p class="footer-maintenance">
                 Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="http://www-ens.iro.umontreal.ca/~lafontle/" target="_blank">LELAFONTANT</a>) <br>
-                Dernière mise à jour: 2023-01-18
+                Dernière mise à jour: 2023-01-23
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
         </div>
