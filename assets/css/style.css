@@ -604,6 +604,11 @@
     background-color: #E0462A;
 }
 
+
+.teaching-link__link--code {
+    background-color: #5F4B8B;
+}
+
 .teaching-link__link--plan {
     background-color: #2C5EB4;
 }
