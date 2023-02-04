@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IFT1015 | Travail noté 3</title>
-    <link rel="shortcut icon" href="./../favicon.ico" type="image/x-icon">
-    <meta name="desciption" content="Énoncé du travail noté 3 (programme réutilisable en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <link rel="shortcut icon" href="./../../favicon.ico" type="image/x-icon">
+    <meta name="desciption"
+        content="Énoncé du travail noté 3 (programme réutilisable en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
     <meta property="og:title" content="IFT1015 (Programmation I) - Hiver 2023">
-    <meta property="og:description" content="Énoncé du travail noté 3 (programme réutilisable en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:description"
+        content="Énoncé du travail noté 3 (programme réutilisable en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
     <meta property="og:url" content="https://ceduni.github.io/udem-ift1015/">
     <meta property="og:site_name" content="IFT1015">
     <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
-    
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+         "HTML-CSS": { linebreaks: { automatic: true } },
+                 SVG: { linebreaks: { automatic: true } }
+        });
+        </script>
+
     <link rel="stylesheet" href="../../dist/style.min.css?v=001">
     <style>
         .week-section-title {
-            margin: 0; 
+            margin: 0;
             font-size: 2em;
             font-weight: 300;
             color: #222;
@@ -24,7 +36,8 @@
         }
 
         .block-title {
-            margin: 0; margin-bottom: 2px;
+            margin: 0;
+            margin-bottom: 2px;
             font-size: 1.8em;
             font-weight: 500;
             color: #BB2649;
@@ -34,18 +47,19 @@
         .helper {
             min-width: 200px;
         }
-        
+
         .op-list {
             display: flex;
             font-family: Consolas, 'Courier New', Courier, monospace;
         }
 
-            .op {
-                margin-right: 4px;
-                font-weight: bold;
-                padding: 3px 6px 2px; border-radius: 2px;
-                background-color: #e5e4e2;
-            }
+        .op {
+            margin-right: 4px;
+            font-weight: bold;
+            padding: 3px 6px 2px;
+            border-radius: 2px;
+            background-color: #e5e4e2;
+        }
 
         .page-body p {
             font-size: 1.8em;
@@ -53,16 +67,41 @@
         }
 
         .content-wrapper {
-            padding: 10px 4%;            
+            padding: 10px 4%;
         }
-               
+
+        .paragraph-title {
+            margin-bottom: 6px;
+        }
+
+        .paragraph-title + p {
+            margin-top: 0;
+        }
+
+        .test-group {
+            display: flex;
+        }
+
+        .test-group h4 {
+            margin: 0; margin-bottom: 6px;
+        }
+
+        .test-case {
+            flex: 1 1; 
+            margin-top: 0; margin-right: calc(1% + 6px); 
+            padding: 8px 12px;
+            background-color: #e5e4e2; 
+            border-radius: 4px; 
+        }
+
         @media only screen and (max-width: 58em) {
             .content-wrapper {
-                padding: 10px 2%;   
+                padding: 10px 2%;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <section class="teaching">
@@ -79,7 +118,7 @@
                         <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
                     </div>
                     <ul class="bare-list teaching-topics">
-                        <li class="teaching-topic">Variables et expressions</li>                        
+                        <li class="teaching-topic">Variables et expressions</li>
                         <li class="teaching-topic">Énoncés conditionnels</li>
                         <li class="teaching-topic">Boucles</li>
                         <li class="teaching-topic">Fonctions</li>
@@ -99,18 +138,140 @@
     </header>
     <main class="page-body">
         <article class="content-wrapper">
-            <h1 class="page-title">Travail noté 3: Programme réutilisable</h1>
-            <p class="font-size: 2em; line-height: 1.5">
-                Dans cet exercice, tu seras amené à écrire un programme réutilisable en Python.
-            </p>        
+            <header>
+                <h1 class="page-title">Travail noté 3: Programme réutilisable</h1>
+                <p class="font-size: 2em; line-height: 1.5">
+                    Dans cet exercice, tu seras amené à écrire un programme réutilisable interactif en Python, permettant d'estimer le montant des versements mensuels pour payer une hypothèque.
+                </p>
+            </header>
+
+            <section>
+                <h2 class="section-title">Taux hypothécaire</h2>
+                <p>
+                    Le calcul des versements mensuel pour régler une hypothèque se fait grâce à l'utilisation des éléments suivants
+                </p>
+                <ul class="bare-list">
+                    <li class="dash">
+                        <strong>Montant du prêt:</strong> Montant d'achat de l'immeuble
+                    </li>
+                    <li class="dash">
+                        <strong>Taux d'intérêt:</strong> Le taux hypothécaire est offert par l'institution financière
+                    </li>
+                    <li class="dash">
+                        <strong>Nombre de versement:</strong> 12 versements par année
+                    </li>
+                    <li class="dash">
+                        <strong>Intérêt payé:</strong> Partie du versement mensuel servant à payer l'intérêt 
+                    </li>
+                    <li class="dash">
+                        <strong>Montant payé:</strong> Partie du versement mensuel servant à payer le montant du prêt
+                    </li>
+                </ul>
+                <h3>Formule du prêt hypothécaire</h3>
+                <p style="font-size: 1.5em; color: #0F4C81;">
+                    \[Versement\ mensuel = {Montant\ du\ prêt\ *\ Taux\ hypothécaire / Nombre\ de\ versements\ dans\ l'année \over 1 - (1 + Taux\ hypothécaire / Nombre\ de\ versements\ dans\ l'année)^{-Nombre\ de\ versements\ *\ Nombre\ d'années\ du\ termes}}\]
+                </p>
+                <p style="font-size: 1.5em; color: #BB2649;">
+                    \[Intérêt \ mensuel = {Taux\ hypothécaire \over  Nombre\ de\ versements\ dans\ l'année}\]
+                </p>
+                <h3>Exemple</h3>
+                <p>
+                    Supposons un prêt hypothécaire de 250,000 $ à un taux de 5 % s'étalant sur 25 ans.
+                    <br>
+                    <span style="font-size: 0.9em; color: #555;">
+                        \[Versement\ mensuel = {250,000 *\ 0.05 / 12 \over 1 - (1 + 0.05 / 12)^{-12\ *\ 25}} = 1461.475\ $/mois\]
+                    </span>
+                    
+                    <span style="font-size: 0.9em; color: #555;">
+                        \[Intérêt\ mensuel = {0.05 \over 12} = 0.0042\]
+                    </span>
+                </p>
+            </section>
+
+            <section>
+                <h2 class="section-title">Instructions</h2>
+                    
+                <p style="margin: 0; ">
+                    Écris un programme qui permet de calculer le montant des versements mensuel pour rembourser un prêt hypothécaire, en utilisant la formule présentée. <br>
+                    Le programme affiche aussi les versements mensuels prévus en précisant pour chaque mois la balance (montant restant), l'intérêt payé et le montant payé.
+                </p>
+                <ul style="font-size: 1.1em;">
+                    <li>Les données suivantes doivent être fournies en entrée par l'utilisateur: montant du prêt, taux d'intérêt et durée du prêt</li>
+                    <li>Le calcul doit être encapsulé dans une fonction</li>
+                    <li>L'affichage de l'échelonnement des versements  doit être encapsulé dans une fonction</li>
+                    <li>Les valeurs (retournées ou affichées) doivent être arrondies au centième près (2 chiffres après la virgule)</li>
+                    <li>Les données entrées par l'utilisateur doivent être validées</li>
+                </ul>
+
+                <h3 class="paragraph-title">Test</h3>
+                <p>
+                    Écris une fonction <code>test()</code> qui calcule le montant du versement mensuel pour les cas suivants:
+                </p>
+                <div class="test-group"> 
+                    <div class="test-case">
+                        <h4>Cas 1</h4>
+                        <ul class="bare-list">
+                            <li class="dash">Montant du prêt: 90,000</li>
+                            <li class="dash">Taux d'intérêt: 7.5%</li>
+                            <li class="dash">Durée du prêt: 20 ans</li>
+                        </ul>
+                    </div>
+                    <div class="test-case">
+                        <h4>Cas 2</h4>
+                        <ul class="bare-list">
+                            <li class="dash">Montant du prêt: 100,000</li>
+                            <li class="dash">Taux d'intérêt: 5%</li>
+                            <li class="dash">Durée du prêt: 15 ans</li>
+                        </ul>
+                    </div>
+                    <div class="test-case">
+                        <h4>Cas 3</h4>
+                        <ul class="bare-list">
+                            <li class="dash">Montant du prêt: 100,000</li>
+                            <li class="dash">Taux d'intérêt: 10%</li>
+                            <li class="dash">Durée du prêt: 20 ans</li>
+                        </ul>
+                    </div>
+                    <div class="test-case">
+                        <h4>Cas 4</h4>
+                        <ul class="bare-list">
+                            <li class="dash">Montant du prêt: 60,000</li>
+                            <li class="dash">Taux d'intérêt: 6.5%</li>
+                            <li class="dash">Durée du prêt: 5 ans</li>
+                        </ul>
+                    </div>
+                    <div class="test-case">
+                        <h4>Cas 5</h4>
+                        <ul class="bare-list">
+                            <li class="dash">Montant du prêt: 65,000</li>
+                            <li class="dash">Taux d'intérêt: 8%</li>
+                            <li class="dash">Durée du prêt: 10 ans</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>
+                    Le code doit être complet, avec des commentaires qui indiquent le nom du fichier, l'auteur (ton nom), la date de création, une brève description de l'utilité du programme. <br>
+                    Il doit aussi y avoir des commentaires qui expliquent à quoi correspondent chaque variable, constante et fonction.
+                </p>
+                <p>
+                    Remets le script Python <strong>hypotheque_[<em>ton matricule</em>].py</strong> contenant tout le programme sur StudiUM.
+                </p>
+            </section>
+
+            
+            <section>
+             
+            </section>
         </article>
     </main>
-    
-    
+
+
     <footer class="page-footer">
         <div class="content-wrapper">
             <p class="footer-maintenance">
-                Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
+                Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link"
+                    href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
                 Dernière mise à jour: 2023-02-03
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
@@ -119,4 +280,5 @@
 
     <script src="../dist/app.js?v=001"></script>
 </body>
+
 </html>
