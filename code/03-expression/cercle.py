@@ -10,7 +10,7 @@
 ## Email: louis.edouard.lafontant@umontreal.ca
 ###############################################################################
 
-# Imports et dépendances
+# Imports
 
 import math
 

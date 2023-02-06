@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="IFT1015">
     <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
     
-    <link rel="stylesheet" href="dist/style.min.css?v=002">
+    <link rel="stylesheet" href="dist/style.min.css?v=003">
     <style>
         .week-section-body {
             padding-top: 6px;
@@ -422,9 +422,10 @@
                         <li class="week-content-item">
                             <span class="week-content-title">Abstraction procédurale</span>       
                             <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Fonctions</li>
                                 <li class="week-content-detail">Déclaration def</li>
-                                <li class="week-content-detail">Paramètres</li>
-                                <li class="week-content-detail">Retour</li>
+                                <li class="week-content-detail">Paramètres formels</li>
+                                <li class="week-content-detail">Retourner une valeur</li>
                             </ul>
                         </li>
                     </ul>
@@ -441,77 +442,161 @@
                         <li class="week-content-item">
                             <span class="week-content-title">Démo</span>
                             <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Rappel</li>
+                                <li class="week-content-detail">Fonctions intégrées</li>
+                                <li class="week-content-detail">Exercices</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 04 (30 Janvier)</h4>
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Abstraction procédurale</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Appel de fonction</li>
+                                <li class="week-content-detail">Portée des variables</li>
+                                <li class="week-content-detail">Décomposition fonctionnelle</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Modularité</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Cohésion</li>
+                                <li class="week-content-detail">Couplage</li>
+                                <li class="week-content-detail">Encapsulation</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Paramètrisation</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Paramètre obligatoire</li>
+                                <li class="week-content-detail">Paramètre optionnel</li>
+                                <li class="week-content-detail">Arguments par défaut</li>
+                                <li class="week-content-detail">Arguments positionnels</li>
+                                <li class="week-content-detail">Arguments par mots-clés</li>
+                                <li class="week-content-detail">Arguments variables</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Exercices</li>
+                                <li class="week-content-detail">Programme simple</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Démo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Rappel</li>
                                 <li class="week-content-detail">Exercices</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li class="week current">
-                    <h4 class="week-title">Semaine 04 (30 Janvier)</h4>
-                    <ul class="bare-list week-content th">
-                        <li class="week-content-item">
-                            <span class="week-content-title">Abstraction procédurale</span>
-                            <ul class="bare-list week-content-details">
-                                <li class="week-content-detail">Déclaration</li>
-                                <li class="week-content-detail">Type de données</li>
-                                <li class="week-content-detail">Python</li>
-                            </ul>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Fonctions pratiques</span>
-                            <ul class="bare-list week-content-details">
-                                <li class="week-content-detail">Déclaration</li>
-                                <li class="week-content-detail">Type de données</li>
-                                <li class="week-content-detail">Python</li>
-                            </ul>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Programme complet</span>
-                            <!-- <ul class="bare-list week-content-details">
-                                <li class="week-content-detail">Déclaration</li>
-                                <li class="week-content-detail">Type de données</li>
-                                <li class="week-content-detail">Python</li>
-                            </ul> -->
-                        </li>
-                    </ul>
-                    <ul class="bare-list week-content tp">
-                    </ul>
-                </li>
-                <li class="week">
                     <h4 class="week-title">Semaine 05 (6 Février)</h4>
                     <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Encodage binaire</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Encore binaire non signé</li>
+                                <li class="week-content-detail">Complément à 2</li>
+                                <li class="week-content-detail">Point flottant</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Opération bit-à-bit</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Inversion</li>
+                                <li class="week-content-detail">Décalage à gauche</li>
+                                <li class="week-content-detail">Conjonction</li>
+                                <li class="week-content-detail">Disjonction</li>
+                                <li class="week-content-detail">Disjonction exclusive</li>
+                            </ul>
+                        </li>
                         <li class="week-content-item">
                             <span class="week-content-title">Vue de la mémoire</span>
                         </li>
                         <li class="week-content-item">
-                            <span class="week-content-title">Manipulation de bits</span>
+                            <span class="week-content-title">Test unitaire</span>
                         </li>
                     </ul>
                     <ul class="bare-list week-content tp">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Exercices</li>
+                                <li class="week-content-detail">Programme réutilisable</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Démo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Rappel</li>
+                                <li class="week-content-detail">Exercices</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 06 (13 Février)</h4>
-                    <!-- <ul class="bare-list week-content th">
-                    
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Révision</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Trivia</li>
+                                <li class="week-content-detail">Problème</li>
+                            </ul>
+                        </li>
                     </ul>
-                    <ul class="bare-list week-content tp">
-                       
-                    </ul> -->
-                    <span class="week-content-title">Examen intra (16 Février) 📅</span>
+                    <ul class="bare-list week-content ex">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Examen intra (16 Février) 📅</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Introduction</li>
+                                <li class="week-content-detail">Variables et Types de données</li>
+                                <li class="week-content-detail">Expressions</li>
+                                <li class="week-content-detail">Affectation, Boucles</li>
+                                <li class="week-content-detail">Abstraction procédurale</li>
+                                <li class="week-content-detail">Encodage binaire</li>
+                            </ul>
+                        </li>
+                    </ul> 
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 07 (20 Février)</h4>
                 
-                    <!-- <ul class="bare-list week-content ex">
-                       
-                    </ul> 
+                 
                     <ul class="bare-list week-content th">
-                       
+                        <li class="week-content-item">
+                            <span class="week-content-title">Structures</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Tableaux</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Dessins "Tortue"</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
-                      
-                    </ul> -->
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Correction intra</li>
+                                <li class="week-content-detail">Introduction TP1</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Démo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Tortues</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
                 <li class="week break">
                     <h4 class="week-title">Semaine 08 (27 Février)</h4>
@@ -519,89 +604,104 @@
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 09 (6 Mars)</h4>
-                    <!-- <ul class="bare-list week-content th">
-                      
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Tableaux</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Dictionnaire</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
                        
-                    </ul> -->
+                    </ul>
                 </li>
 
                 <li class="week">
                     <h4 class="week-title">Semaine 10 (13 Mars)</h4>
 
-                    <!-- <ul class="bare-list week-content th">
-                     
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Traitement de texte</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Expression régulière</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
                      
-                    </ul> -->
+                    </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 11 (20 Mars)</h4>
-<!-- 
+
                     <ul class="bare-list week-content th">
-                      
+                        <li class="week-content-item">
+                            <span class="week-content-title">Fichiers</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
                       
-                    </ul> -->
+                    </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 12 (27 Mars)</h4>
 
-                    <!-- <ul class="bare-list week-content th">
-                      
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Fichiers</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Traitement d'erreur</span>
+                        </li> 
                     </ul>
 
                     <ul class="bare-list week-content tp">
                     
-                    </ul> -->
+                    </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 13 (3 Avril)</h4>
                     
-                    <!-- <ul class="bare-list week-content th">
-                     
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Récursivité</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
                     
-                    </ul> -->
+                    </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 14 (10 Avril)</h4>
-<!--                     
+                    
                     <ul class="bare-list week-content th">
-                     
+                        <li class="week-content-item">
+                            <span class="week-content-title">Conclusion</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Révision</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Autres usages de Python</span>
+                        </li>
                     </ul>
 
                     <ul class="bare-list week-content tp">
                        
                     </ul>
                     <ul class="bare-list week-content ex">
-                     
-                    </ul>  -->
-                </li>
-                <li class="week">
-                    <h4 class="week-title">Semaine 15 (17 Avril)</h4>
-<!--                     
-                    <ul class="bare-list week-content th">
-                     
-                    </ul>
-
-                    <ul class="bare-list week-content tp">
-                       
-                    </ul>
-                    <ul class="bare-list week-content ex">
-                     
-                    </ul>  -->
-                    <span class="week-content-title">Examen intra (20 Avril) 📅</span>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Examen intra (20 Avril) 📅</span>
+                        </li>
+                        
+                    </ul> 
                 </li>
             </ul>
         </aside>
 
         <div class="body-content">
-            <section class="body-content-section collapsible" data-collapsible="expanded">
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
                 <div class="body-content-section-header" data-collapsible-header="">
                     <h2 class="body-content-title">Semaine 1: Introduction + Variables</h2>
                 </div>
@@ -948,6 +1048,69 @@
                             <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
                         </a> -->
                     </div>
+
+                    <p>
+                        L'encapsulation d'un comportement dans un programme à l'aide de fonction offre de nombreux avantages
+                    </p>
+
+                    <ul class="bare-list">
+                        <li class="check">Évite la <strong>répétition</strong> et promeus la <strong>réutilisabilité</strong></li>
+                        <li class="check">Offre un premier niveau <strong> d'abstraction</strong></li>
+                        <li class="check">Facilite la <strong>détection/correction</strong> d'erreur</li>
+                        <li class="check">Facilite la collaboration (<strong>travail d'équipe</strong>) </li>
+                    </ul>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Modularité</h4>
+                        <p>La modularité d'un programme se mesure par deux facteurs: <strong>cohésion</strong> et <strong>couplage</strong></p>
+                        <ul class="bare-list">
+                            <li class="dash"><strong>Cohésion:</strong> Degré d'interaction au sein du module. Chaque méthode accomplie une tache reliée à une seule notion</li>
+                            <li class="dash"><strong>Couplage:</strong> Degré d'interaction entre des modules. Chaque méthode effectue sa tache de façon indépendante du reste du programme</li>
+                        </ul>
+                    </div>
+
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">Paramètres</h4>
+                        <p>
+                            Les paramètres présentes les options de configuration d'une fonction. 
+                            Ils permettent de faire varier le comportement et le résultat d'une fonction.
+                            Une fonction peut admettre 0 ou plusieurs paramètres.
+                        </p>
+                        <ul class="bare-list">
+                            <li class="dash">
+                                <strong>Paramètres formels</strong>: Variables se trouvant dans la déclaration de la fonction. Utilisés pour passé des arguments à la fonction.
+                            </li>
+                            <li class="dash">
+                                <strong>Paramètre avec valeur par défaut</strong>: 
+                                Une fonction peut avoir un comportement par défaut basé sur une configuration initiale (de ses paramètres).
+                                Une fonction peut être composé uniquement de paramètres optionnels.
+                            </li>
+                            <li class="dash">
+                                <strong>Paramètre à arguments variables</strong>: Il arrive parfois qu'on ne sache pas le nombre exact d'arguments que peut recevoir une fonction.
+                                <ul>
+                                    <li>
+                                        <strong>Args</strong>: Utilisé pour recevoir une liste d'arguments positionnels
+                                    </li>
+                                    <li>
+                                        <strong>Kwargs</strong>: Utilisé pour recevoir une liste d'arguments par mots-clés
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4 class="block-title">Arguments</h4>
+                        <p>
+                            Les <strong>arguments</strong> sont les valeurs passés à ces paramètres lors de l'appel de la fonction. 
+                            Les arguments peuvent être assignés de deux façons: positionnels ou par mots-clés.
+                        </p>
+                        <ul class="bare-list">
+                            <li class="dash"><strong>Arguments positionnels:</strong> Ordre des arguments détermine les valeurs des paramètres</li>
+                            <li class="dash"><strong>Arguments par mots-clés:</strong> Nom des paramètres est utilisé dans l'appel pour assigner les valeurs. L'ordre n'a pas d'importance.</li> 
+                            <li class="dash">Les deux types peuvent être utilisés conjointement (dans le même appel).</li> 
+                        </ul>
+                    </div>
+
                 </div>
 
                 <div class="section-summary collapsible-preview">
@@ -959,6 +1122,42 @@
                     </ul>
                 </div>
             </section>
+            
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 5: Encodage binaire</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Encodage binaire</h3>
+                        <!-- <a class="week-section-doc" href="./assets/docs/01-introduction.pdf" target="_blank">
+                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
+                        </a> -->
+                    </div>
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Opération bit-à-bit</h3>
+                        <!-- <a class="week-section-doc" href="./assets/docs/01-introduction.pdf" target="_blank">
+                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
+                        </a> -->
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Encodage binaire
+                        </li>
+                        <li class="section-summary-list-item">
+                            Opération bit-à-bit
+                        </li>
+                        <li class="section-summary-list-item">
+                            Vue de la mémoire
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -966,7 +1165,7 @@
         <div class="content-wrapper">
             <p class="footer-maintenance">
                 Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
-                Dernière mise à jour: 2023-01-29
+                Dernière mise à jour: 2023-02-06
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
         </div>

@@ -18,12 +18,6 @@
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-         "HTML-CSS": { linebreaks: { automatic: true } },
-                 SVG: { linebreaks: { automatic: true } }
-        });
-        </script>
 
     <link rel="stylesheet" href="../../dist/style.min.css?v=001">
     <style>
@@ -144,7 +138,7 @@
                     Dans cet exercice, tu seras amené à écrire un programme réutilisable interactif en Python, permettant d'estimer le montant des versements mensuels pour payer une hypothèque.
                 </p>
             </header>
-
+            
             <section>
                 <h2 class="section-title">Taux hypothécaire</h2>
                 <p>
@@ -198,9 +192,23 @@
                 <ul style="font-size: 1.1em;">
                     <li>Les données suivantes doivent être fournies en entrée par l'utilisateur: montant du prêt, taux d'intérêt et durée du prêt</li>
                     <li>Le calcul doit être encapsulé dans une fonction</li>
-                    <li>L'affichage de l'échelonnement des versements  doit être encapsulé dans une fonction</li>
+                    <li>
+                        L'affichage de l'échelonnement des versements (voir exemple ci-dessous) doit être encapsulé dans une fonction <br>                        
+                        <code>
+                            <pre>
+Mois | Balance     | Intérêt payé | Montant payé
+1    | 90,000.00 $ |     562.50 $ |      66.79 $
+2    | 89,933.21 $ |     562.08 $ |      67.21 $
+...    </pre>
+                    </code>
+                    </li>
                     <li>Les valeurs (retournées ou affichées) doivent être arrondies au centième près (2 chiffres après la virgule)</li>
-                    <li>Les données entrées par l'utilisateur doivent être validées</li>
+                    <li>Les données entrées par l'utilisateur doivent être validées. 
+                        <ul>
+                            <li>Le montant du prêt et la durée du prêt doivent être des nombres entiers</li>
+                            <li>Le taux d'intérêt doit être un pourcentage (<em>Ex 5, 7.5, 10</em>)</li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <h3 class="paragraph-title">Test</h3>

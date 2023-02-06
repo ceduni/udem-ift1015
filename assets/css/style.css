@@ -832,6 +832,15 @@
         padding: 3px 4px;
     }
 
+    .week.current .week-content-title {
+        color: #000;
+    }
+
+    .week.current .week-content-detail {
+        color: #FF9147;
+        font-weight: 500;
+    }
+
     .week-content-video {
         color: #5F4B8B;
         padding: 3px; padding-left: 0; padding-right: 4px;
