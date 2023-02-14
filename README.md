@@ -4,8 +4,6 @@
 
 Le cours a pour objectif de vous enseigner les éléments de base de la programmation dans un langage de programmation impératif procédural : types, expressions, énoncés conditionnels et itératifs, procédures/fonctions/méthodes, paramètres, récursivité, tableaux, enregistrements, objets simples, et méthodologie de programmation agile. Ce cours vise également à vous apporter une expérience pratique dans un premier langage : le langage Python. À l'issue du cours, vous serez en mesure de concevoir et réaliser des programmes de complexité moyenne en Python, et serez capable d'acquérir rapidement les bases d'autres langages de programmation impératifs procéduraux.
 
-## Matériel
-
 ## Contenu
 
 ### Notions
