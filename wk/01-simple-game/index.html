@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFT1015 | Travail noté 1</title>
+    <link rel="shortcut icon" href="./../../favicon.ico" type="image/x-icon">
+    <meta name="desciption" content="Énoncé du travail pratique 1 (jeu en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:title" content="IFT1015 (Programmation I) - Hiver 2023">
+    <meta property="og:description" content="Énoncé du travail pratique 1 (jeu en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:url" content="https://ceduni.github.io/udem-ift1015/">
+    <meta property="og:site_name" content="IFT1015">
+    <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
+    
+    <link rel="stylesheet" href="../../dist/style.min.css?v=002">
+    <style>
+        .section-title {
+            margin: 0; 
+            font-size: 2em;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .block-title {
+            margin: 0; margin-bottom: 2px;
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #BB2649;
+            color: #2F305E;
+        }
+
+        .helper {
+            min-width: 200px;
+        }
+        
+        .game-intro {
+            display: flex;
+        }
+        
+        .game-intro-img {
+            display: block;
+            /* height: 100%; */
+            width: 50%;
+            height: auto;
+            /* flex: 1 1; */
+        }
+
+        .game-intro-content {
+            display: flex; flex-direction: column;
+            /* flex-grow: 2; */
+            padding: 12px;
+            color: #fff;
+            background-color: #2f84d8;
+        }
+
+            .game-intro-content h3 {
+                margin: 0; margin-top: 12px;
+                color: #f5f5f5;    
+                font-size: 2em;
+                font-weight: 300;
+                text-transform: uppercase;
+            }
+
+            .game-intro-content h4 {
+                margin-top: 6px; margin-bottom: 2px;
+                color: #f5f5f5;    
+                font-size: 1.8em;
+                font-weight: 500;
+            }
+
+            .game-intro-content p {
+                margin-top: 0;
+                font-size: 1.6em;
+            }
+
+            .game-dices {
+                display: flex; flex-wrap: wrap;
+            }
+
+            .game-die {
+                margin-right: 6px; margin-bottom: 6px;
+                background-color: #f5f5f5;
+                color: #110042;
+                font-weight: bold;
+                padding: 8px;
+            }
+
+        .page-body p {
+            line-height: 1.5;
+        }
+
+        .page-body caption {
+            font-size: 1.8em;
+            font-weight: 500;
+        }
+
+        .page-body th {
+            padding: 3px 6px;
+        }
+
+        .page-body td {
+            padding: 3px 6px;
+        }
+
+        .content-wrapper {
+            padding: 10px 4%;            
+        }
+               
+        @media only screen and (max-width: 58em) {
+            .content-wrapper {
+                padding: 10px 2%;   
+            }
+        }
+
+        @media only screen and (max-width: 70em) {
+            .game-intro-img {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <section class="teaching">
+            <div class="teaching-header">
+                <div class="teaching-logo">
+                    <div class="teaching-logo-name">
+                        <span class="teaching-logo-code">IFT</span>
+                        <span class="teaching-logo-number">1015</span>
+                    </div>
+                </div>
+                <div class="teaching-info">
+                    <div style="display: flex;">
+                        <p class="teaching-title" title="IFT1015 &ndash; Programmation I">Programmation I</p>
+                        <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
+                    </div>
+                    <ul class="bare-list teaching-topics">
+                        <li class="teaching-topic">Variables et expressions</li>                        
+                        <li class="teaching-topic">Énoncés conditionnels</li>
+                        <li class="teaching-topic">Boucles</li>
+                        <li class="teaching-topic">Abstractions procédurales</li>
+                        <li class="teaching-topic">Structures et tableaux</li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="bare-list teaching-links">
+                <li class="teaching-link">
+                    <a class="bare-link teaching-link__link teaching-link__link--plan"
+                        href="https://studium.umontreal.ca/course/view.php?id=231494" target="_blank">
+                        StudiUM
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </header>
+    <main class="page-body">
+        <article>
+            <header class="content-wrapper">
+                <h1 class="page-title">Travail pratique 1: Jeu Boggle</h1>
+                <p class="font-size: 2em; line-height: 1.5">
+                    Dans ce travail, tu seras amené à programmer une version simplifiée du <a href="https://fr.wikipedia.org/wiki/Boggle" target="_blank">jeu Boggle</a> en Python. <br>
+                    Ceci te permettra de mettre en pratique toutes les notions vues à date (flux de controle, abstraction procédurale, structures et tableaux) et les tests unitaires.                    
+                </p>
+            </header>
+            
+            <section class="game-intro">
+                <img class="game-intro-img" src="https://www.toysrus.ca/dw/image/v2/BDFX_PRD/on/demandware.static/-/Sites-toys-master-catalog/default/dw9fbfa4ad/images/A48BCAF6_2.jpg?sw=767&sh=767&sm=fit" alt="">
+                <div class="game-intro-content">
+                    <h2 class="game-title"><a href="https://fr.wikipedia.org/wiki/Boggle" target="_blank" class="bare-link">Boggle</a> </h2>
+                    
+                    <h3>Règles du jeu</h3>
+                    <p>
+                        Le jeu consiste à trouver des mots dans un plateau carré de dés à 6 faces mélangés.
+                        Chaque dé possède une lettre différente sur chacune de ses faces. 
+                        Une fois tous les dés placés (face active choisie), chaque joueur cherche des mots pouvant être formés à partir de lettres (visibles) adjacentes du plateau.
+                    </p>
+                    <ul class="bare-list game-rules">
+                        <li class="game-rule check check--color-inherit">
+                            Un mot valide est composé uniquement de lettres adjacentes (pas de saut). 
+                        </li>
+                        <li class="game-rule check check--color-inherit">
+                            Une lettre est adjacente à une autre si elle est immédiatement atteignable horizontalement, verticalement, ou en diagonale. 
+                        </li>
+                        <li class="game-rule check check--color-inherit">
+                            Les mots ne doivent pas utiliser plusieurs fois le même dé pour le même mot.
+                        </li>
+                        <li class="game-rule check check--color-inherit">
+                            Les mots doivent être de 3 lettres au minimum
+                        </li>
+                        <li class="game-rule check check--color-inherit">
+                            Les accents ne sont pas importants (ex: E peut être utilisé comme É, È, Ê).
+                        </li>
+                    </ul>
+
+
+                    <h4>Calcul des points</h4>
+                    <p>
+                        Les points sont attribués suivant la taille des mots trouvés. Le gagnant est le joueur ayant le plus grand nombre de points.
+                    </p>
+
+                    <div style="display: flex; justify-content: flex-start;">
+                        <table>
+                            <caption>Grille 4x4</caption>
+                            <tr>
+                                <th>Taille du mot</th>
+                                <th>Point</th>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>8+</td>
+                                <td>10</td>
+                            </tr>
+                        </table>
+                        <table style="margin-left: 12px;">
+                            <caption>Grille 5x5</caption>
+                            <tr>
+                                <th>Taille du mot</th>
+                                <th>Point</th>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>8+</td>
+                                <td>10</td>
+                            </tr>
+                        </table>
+                    </div>
+                                    
+                    <h4>Dés du jeu</h4>
+                    <ul class="bare-list">
+                        <li style="padding: 3px 6px;" class="dash"><strong>Grille 4 x 4:</strong> <a style="color: #fff" href="16-dice.txt">16 dés</a></li>
+                        <li style="padding: 3px 6px;" class="dash"><strong>Grille 5 x 5:</strong> <a style="color: #fff" href="25-dice.txt">25 dés</a></li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <section class="content-wrapper">
+                <h2>Spécification</h2>
+                <p class="bare">
+                    Écris un programme qui permet de jouer au jeu Boogle décrit plus haut. Le jeu se joue à 2.<br>
+                    <strong>Commencer une partie:</strong>
+                    Pour commencer une partie, le programme demande la taille de la grille (4x4 ou 5x5) et le nom des 2 joueurs.
+                    Une fois ces informations entrées et confirmées, le jeu affiche la grille générée avec la taille choisie.
+                    Chaque dé est positionné aléatoirement sur la grille et chaque face est choisie aléatoirement pour chaque dé.
+                    <br>
+                    <strong>Déroulement partie:</strong> 
+                    Les joueurs entrent ensuite à tour de rôle jusqu'à 10 mots. Chaque mot entré peut être rejeté par l'autre joueur.
+                    Si les deux joueurs choisissent de ne plus entrer de mots (avant d'atteindre 10), la partie se termine. <br>
+                    <strong>Fin de partie:</strong>
+                    Lorsque la partie est terminée, la liste des mots entrée par chaque joueur et le total des points est affiché. Pour chaque mot, le programme spécifie s'il est accepté ou rejeté, 
+                    en distinguant les propositions illégales (non-respect des règles) de celles rejetées par les joueurs. Si le mot est accepté, le nombre de points associé au mot est affiché.
+                    À la suite des deux listes, le programme indique le gagnant de la partie et demande de jouer une nouvelle partie ou mettre fin au jeu (programme).
+                </p>
+                <p>Le programme doit présenter (au minimum) les fonctions suivantes</p>
+                <ul style="font-size: 1.1em;">
+                    <li><strong><code>jouer()</code></strong>: Cette fonction est la fonction principale du programme. Elle initialise le jeu et fait le suivi de la partie.</li>
+                    <li><strong><code>generer_grille(taille)</code></strong>: Cette fonction est chargée de générer une grille d'une taille donnée</li>
+                    <li><strong><code>est_adjacente(grille, lettre_1, lettre_2)</code></strong>: Cette fonction retourne un booléen indiquant si deux lettres sont adjacentes dans une grille donnée.</li>
+                    <li><strong><code>calcul_point(grille, mots)</code></strong>: Calculer le total des points d'une liste de mots dans une grille donnée.</li>
+                    <li><strong><code>test()</code></strong>: Cette fonction exécute les tests unitaires vérifiant les fonctions du programme.</li>
+                </ul>
+                <h3 class="section-title">Test</h3>
+                <p>
+                    La fonction <code>test()</code> exécute 5 cas de tests pour les fonctions suivantes: <code>generer_grille()</code>, <code>est_adjacente()</code>, <code>calcul_point()</code>
+                </p>
+            </section>
+
+            <section class="content-wrapper">
+                <h2>Exemple</h2>
+                <h3 style="margin-top: 6px;" class="section-title">Grille de jeu</h3>
+                <p style="margin: 0;">Ci-dessous, un exemple d'une grille 4x4 et d'une grille 5x5.</p>
+                <code style="display: flex; width: 600px; padding: 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                    <pre style="font-size: 1.5em">
+-----------------
+| T | I | M | E |
+-----------------
+| W | O | R | D |
+-----------------
+| F | A | C | T |
+-----------------
+| G | A | M | E |
+-----------------
+</pre>
+                    <pre style="margin-left: 60px; font-size: 1.5em">
+---------------------
+| P | U | Z | Z | L |
+---------------------
+| W | O | R | D | E |
+---------------------
+| B | O | G | G | L |
+---------------------
+| S | E | A | R | C |
+---------------------
+| F | I | N | D | H |
+---------------------
+</pre>
+            </code>
+        
+            <h3 style="margin-top: 6px;" class="section-title">Jeu en cours</h3>
+            <p>Ci-dessous, un exemple d'une partie terminée.</p>
+                <code style="display: flex; width: 600px; padding: 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                    <pre style="font-size: 1.5em">
+                        
+-----------------
+| T | I | M | E |
+-----------------
+| W | O | R | D |
+-----------------
+| F | A | C | T |
+-----------------
+| G | A | M | E |
+-----------------
+
+
+JOUEUR 1
+-----------------------------
+- MARE   (1)
+- CORDE  (2)
+- FAME   (x) -- REJETE
+- AROME  (2)
+- MORT   (1)
+- IDEM   (x) -- ILLEGAL
+- DROIT  (2)
+- FOIRE  (2)
+=============================
+TOTAL: 10
+
+
+JOUEUR 2
+-----------------------------
+- CRI    (1)
+- FARD   (1)
+- CRIME  (2)
+- ECORCE (x) -- ILLEGAL
+- FORTE  (2)
+- ARC    (1)
+=============================
+TOTAL: 7
+
+JOUEUR 1 a remporté la partie!
+
+Voulez-vous jouer une nouvelle partie? [O/N]
+</pre>
+      
+            </code>
+        
+            </section>
+
+            <section class="content-wrapper">
+                <div>
+                    <h2>Évaluation</h2>
+                        
+                    <p class="bare">
+                        Ce travail compte pour <strong>15% de la note final</strong> du cours. Vous devez faire le travail en équipes de 2 personnes. 
+                        Indiquez vos noms clairement dans les commentaires au début de votre code. <br>
+                        Vous devez remettre votre fichier <em>boggle.py</em> <strong>au plus tard le dimanche 26 mars</strong>. Vous pouvez soumettre votre code autant de fois que vous voulez jusqu'à la date limite. 
+                        Des <strong> pénalités de 10% par jour de retard </strong> seront accordées <strong>jusqu'au 28 mars</strong>. <br>
+                        Le but de ce travail est de développer vos propres capacités à programmer. Donc je vous recommande fortement de le faire entre membres de l'équipe, mais sans aide externe (hormis les enseignants). 
+                        Si vous avez des questions d'ordre technique, n'hésitez pas à les poser sur Discord.
+                    </p>
+                    <ul style="font-size: 1.1em;">
+                        <li>Exactitude (respect de la spécification) et bon fonctionnement</li>
+                        <li>Élégance et lisibilité du code</li>
+                        <li>Présence de commentaires explicatifs pour chaque fonction et dans le code</li>
+                        <li>Décomposition fonctionnelle</li>
+                        <li>Validation des données</li>
+                        <li>Test unitaires</li>
+                    </ul>
+                    <p class="bare">
+                        Le code doit être complet, avec des commentaires qui indiquent le nom du fichier, l'auteur (ton nom), la date de création, une brève description de l'utilité du programme. <br>
+                        Il doit aussi y avoir des commentaires qui expliquent à quoi correspondent chaque variable et constante, et le fonctionnement du programme (seulement si c'est utile!)
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="section-title">Bonus</h3>
+                        
+                    <p class="bare">
+                        Les fonctionnalités (indépendantes) suivantes peuvent être programmés en bonus.  
+                    </p>
+                    <ol style="margin: 0; padding-left: 18px;">
+                        <li>Ajouter le <strong>support de grille 6x6</strong> (<strong>10%</strong>):
+                            <table>
+                                <tr>
+                                    <th>Taille du mot</th>
+                                    <th>Point</th>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>9+</td>
+                                    <td>2 points par lettre</td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>Ajouter la possibilité de faire une <strong>partie en plusieurs manches</strong> (points cummulatifs) (<strong>5%</strong>).</li>
+                        <li>Ajouter la possibilité de <strong>choisir le nombre de joueurs</strong> (2 et plus) (<strong>5%</strong>).</li>
+                    </ol>
+                </div>
+            </section>
+        </article>
+    </main>
+    
+    
+    <footer class="page-footer">
+        <div class="content-wrapper">
+            <p class="footer-maintenance">
+                Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
+                Dernière mise à jour: 2023-02-27
+            </p>
+            <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
+        </div>
+    </footer>
+
+    <script src="../../dist/app.js?v=002"></script>
+</body>
+</html>

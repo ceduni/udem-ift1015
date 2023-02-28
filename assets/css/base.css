@@ -89,6 +89,8 @@ th { text-align: center; }
 
 /* Reset */
 
+.bare { margin: 0; padding: 0; }
+
 .bare-list { margin: 0; padding: 0; list-style: none; }
 
 .bare-link { text-decoration: none; color: inherit; }
