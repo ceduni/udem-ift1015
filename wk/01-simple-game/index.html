@@ -168,7 +168,7 @@
             <section class="game-intro">
                 <img class="game-intro-img" src="https://www.toysrus.ca/dw/image/v2/BDFX_PRD/on/demandware.static/-/Sites-toys-master-catalog/default/dw9fbfa4ad/images/A48BCAF6_2.jpg?sw=767&sh=767&sm=fit" alt="">
                 <div class="game-intro-content">
-                    <h2 class="game-title"><a href="https://fr.wikipedia.org/wiki/Boggle" target="_blank" class="bare-link">Boggle</a> </h2>
+                    <h2 class="game-title">Boggle <sup>simplifié</sup></h2>
                     
                     <h3>Règles du jeu</h3>
                     <p>
@@ -178,14 +178,14 @@
                     </p>
                     <ul class="bare-list game-rules">
                         <li class="game-rule check check--color-inherit">
-                            Un mot valide est composé uniquement de lettres adjacentes (pas de saut). 
+                            Un mot valide est composé uniquement de lettres adjacentes (pas de saut) <strong>sur une même ligne ou une même colonne.</strong> 
                         </li>
                         <li class="game-rule check check--color-inherit">
-                            Une lettre est adjacente à une autre si elle est immédiatement atteignable horizontalement, verticalement, ou en diagonale. 
+                            Une lettre est adjacente à une autre si elle est immédiatement atteignable <strong>horizontalement ou verticalement.</strong> 
                         </li>
-                        <li class="game-rule check check--color-inherit">
+                        <!-- <li class="game-rule check check--color-inherit">
                             Les mots ne doivent pas utiliser plusieurs fois le même dé pour le même mot.
-                        </li>
+                        </li> -->
                         <li class="game-rule check check--color-inherit">
                             Les mots doivent être de 3 lettres au minimum
                         </li>
@@ -215,7 +215,7 @@
                                 <td>4</td>
                                 <td>2</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>5</td>
                                 <td>3</td>
                             </tr>
@@ -230,7 +230,7 @@
                             <tr>
                                 <td>8+</td>
                                 <td>10</td>
-                            </tr>
+                            </tr> -->
                         </table>
                         <table style="margin-left: 12px;">
                             <caption>Grille 5x5</caption>
@@ -244,13 +244,13 @@
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
                                 <td>2</td>
                             </tr>
                             <tr>
+                                <td>5</td>
+                                <td>3</td>
+                            </tr>
+                            <!-- <tr>
                                 <td>6</td>
                                 <td>3</td>
                             </tr>
@@ -261,7 +261,7 @@
                             <tr>
                                 <td>8+</td>
                                 <td>10</td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                                     
@@ -295,13 +295,13 @@
                 <ul style="font-size: 1.1em;">
                     <li><strong><code>jouer()</code></strong>: Cette fonction est la fonction principale du programme. Elle initialise le jeu et fait le suivi de la partie.</li>
                     <li><strong><code>generer_grille(taille)</code></strong>: Cette fonction est chargée de générer une grille d'une taille donnée</li>
-                    <li><strong><code>est_adjacente(grille, lettre_1, lettre_2)</code></strong>: Cette fonction retourne un booléen indiquant si deux lettres sont adjacentes dans une grille donnée.</li>
+                    <li><strong><code>est_valide(grille, mot)</code></strong>: Cette fonction retourne un booléen indiquant si le mot est présent dans une grille donnée.</li>
                     <li><strong><code>calcul_point(grille, mots)</code></strong>: Calculer le total des points d'une liste de mots dans une grille donnée.</li>
                     <li><strong><code>test()</code></strong>: Cette fonction exécute les tests unitaires vérifiant les fonctions du programme.</li>
                 </ul>
                 <h3 class="section-title">Test</h3>
                 <p>
-                    La fonction <code>test()</code> exécute 5 cas de tests pour les fonctions suivantes: <code>generer_grille()</code>, <code>est_adjacente()</code>, <code>calcul_point()</code>
+                    La fonction <code>test()</code> exécute 5 cas de tests pour les fonctions suivantes: <code>generer_grille()</code>, <code>est_valide()</code>, <code>calcul_point()</code>
                 </p>
             </section>
 
@@ -342,11 +342,11 @@
                     <pre style="font-size: 1.5em">
                         
 -----------------
-| T | I | M | E |
+| R | A | M | E |
 -----------------
-| W | O | R | D |
+| I | O | R | D |
 -----------------
-| F | A | C | T |
+| C | R | A | T |
 -----------------
 | G | A | M | E |
 -----------------
@@ -354,28 +354,24 @@
 
 JOUEUR 1
 -----------------------------
-- MARE   (1)
-- CORDE  (2)
+- ROI    (1)
 - FAME   (x) -- REJETE
-- AROME  (2)
-- MORT   (1)
+- AME    (1)
+- RAME   (2)
 - IDEM   (x) -- ILLEGAL
-- DROIT  (2)
-- FOIRE  (2)
+- RAT    (1)
 =============================
-TOTAL: 10
+TOTAL: 5
 
 
 JOUEUR 2
 -----------------------------
-- CRI    (1)
-- FARD   (1)
-- CRIME  (2)
-- ECORCE (x) -- ILLEGAL
-- FORTE  (2)
+- TIC    (1)
+- TRAC   (2)
+- ORDI   (x) -- ILLEGAL
 - ARC    (1)
 =============================
-TOTAL: 7
+TOTAL: 4
 
 JOUEUR 1 a remporté la partie!
 
@@ -426,28 +422,20 @@ Voulez-vous jouer une nouvelle partie? [O/N]
                                     <th>Point</th>
                                 </tr>
                                 <tr>
-                                    <td>4</td>
+                                    <td>3</td>
                                     <td>1</td>
                                 </tr>
                                 <tr>
-                                    <td>5</td>
+                                    <td>4</td>
                                     <td>2</td>
                                 </tr>
                                 <tr>
-                                    <td>6</td>
+                                    <td>5</td>
                                     <td>3</td>
                                 </tr>
                                 <tr>
-                                    <td>7</td>
+                                    <td>6</td>
                                     <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>11</td>
-                                </tr>
-                                <tr>
-                                    <td>9+</td>
-                                    <td>2 points par lettre</td>
                                 </tr>
                             </table>
                         </li>
