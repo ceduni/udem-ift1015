@@ -54,18 +54,36 @@ LIST_OF_WORDS = [
     "avals", "celât", "toril", "pâlît", "ondes", "haies", "avide", "tilla", "réiez", "vélar", "neige", "lofts", "vîtes",
 ]
 
-# Cette fonction retourne un mot alétoirement choisi de la liste de mots
 def generate_word():
+    """Cette fonction retourne un mot alétoirement choisi de la liste de mots
+
+    Returns:
+        string: Mot aléatoire (formaté) de la liste 
+    """
     rand_index = int(random() * len(LIST_OF_WORDS))
     word = LIST_OF_WORDS[rand_index]
     return format_word(word)
 
-# Cette fonction retourne un booléen indiquant si une proposition est valide (mot composé de 5 lettres).
 def is_valid_word(word):
+    """Cette fonction retourne un booléen indiquant si un mot est valide (composé de 5 lettres).
+
+    Args:
+        word (string): Mot à valider
+
+    Returns:
+        bool: Booléen indiquant si le mot est valide
+    """
     return len(word) == 5 and word.isalpha()
 
-# Cette fonction retourne la lettre équivalente sans accent
 def equiv(letter):
+    """Cette fonction retourne la lettre équivalente sans accent
+
+    Args:
+        letter (string): Lettre à formater
+
+    Returns:
+        string: Lettre équivalente
+    """
     match letter:
         case "é" | "è" | "ê" | "ë": return "e"
         case "à" | "â": return "a"
@@ -75,16 +93,32 @@ def equiv(letter):
         case "ç": return "c"
         case _: return letter
 
-# Cette fonction retourne un mot en majuscule et sans accent
 def format_word(word):
+    """Cette fonction retourne un mot en majuscule et sans accent
+
+    Args:
+        word (string): Mot à formater
+
+    Returns:
+        string: Mot formaté
+    """
     result = ""
     for c in word:
         result += equiv(c)
 
     return result.upper()
 
-# Cette fonction évalue le mot proposé (pword) en fonction du mot à deviner (hword).
-def eval_word(hword, pword):  
+def eval_word(hword, pword):
+    """Cette fonction évalue le mot proposé (pword) en fonction du mot à deviner (hword).
+
+    Args:
+        hword (string): Mot à deviner
+        pword (string): Mot proposé
+
+    Returns:
+        bool: Booléen indiquant si le mot proposé est égal au mot à deviner (mot trouvé)
+    """
+
     if hword == pword:
         return True
 
@@ -110,7 +144,8 @@ def eval_word(hword, pword):
 
 NB_TENTATIVES_MAX = 6
 
-# Cette fonction (principale) débute une partie et fait le suivi des propositions
+# Fonction principale du programme
+# Cette fonction débute une partie et fait le suivi des propositions
 def play():
     hidden_word = generate_word()
     
@@ -138,9 +173,14 @@ def play():
     else:
         print("Perdu! Le mot est: " + hidden_word)
 
-# play()
+play()
 
-# Cette fonction regroupe les tests unitaires définis pour le programme
+
+
+#################################################################################
+# Tests unitaires
+#################################################################################
+
 def test():
     LIST_OF_WORDS_FORMATTED = []
 
@@ -178,4 +218,4 @@ def test():
     is_valid_word_test()
     format_word_test()
 
-test()
+# test() # Enlever en commentaire pour exécuter les tests
