@@ -13,20 +13,23 @@
     <meta property="og:url" content="https://ceduni.github.io/udem-ift1015/">
     <meta property="og:site_name" content="IFT1015">
     <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
-    
+
     <link rel="stylesheet" href="dist/style.min.css?v=003">
     <style>
+        h5, h6 {
+            margin: 0;
+        }
         .week-section-body {
             padding-top: 6px;
         }
-        
+
         .week-section-header {
             display: flex;
             margin-bottom: 6px;
         }
 
         .week-section-title {
-            margin: 0; 
+            margin: 0;
             font-size: 2em;
             font-weight: 300;
             color: #222;
@@ -67,7 +70,7 @@
         .helper {
             min-width: 200px;
         }
-        
+
         .op-list {
             display: flex;
             font-family: Consolas, 'Courier New', Courier, monospace;
@@ -82,7 +85,7 @@
 
         .tbl-wrap {
             display: inline-block;
-            border-radius: 3px; 
+            border-radius: 3px;
             overflow: hidden;
             background-color: #f5f5f5;
             padding: 6px;
@@ -135,6 +138,29 @@
         .tbl-datatype-js {
             color: rgb(238, 172, 5);
         }
+        
+        code i {
+            font-style: normal;
+        }
+        .key {
+            color: blue;
+        }
+        
+        .var {
+            color: red;
+        }
+        
+        .val.str {
+            color: green;
+        }
+        
+        .val.num {
+            color: dodgerblue
+        }
+        
+        .py {
+            color: slateblue;
+        }
     </style>
 </head>
 
@@ -154,7 +180,7 @@
                         <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
                     </div>
                     <ul class="bare-list teaching-topics">
-                        <li class="teaching-topic">Variables et expressions</li>                        
+                        <li class="teaching-topic">Variables et expressions</li>
                         <li class="teaching-topic optional">Énoncés conditionnels</li>
                         <li class="teaching-topic optional">Boucles</li>
                         <li class="teaching-topic">Fonctions et procédures</li>
@@ -196,11 +222,11 @@
         <section class="plan">
             <h2 class="plan-section-title">Plan de cours</h2>
             <p class="teaching-content">
-                Ce cours a pour objectif de vous enseigner les éléments de base de la programmation dans un langage de programmation impératif procédural: 
-                types, expressions, énoncés conditionnels et itératifs, procédures/fonctions/méthodes, paramètres, récursivité, tableaux, enregistrements, objets simples, et méthodologie de programmation agile. <br> 
-                Ce cours vise également à vous apporter une expérience pratique dans un premier langage : le langage <strong>Python</strong>. 
-            </p>    
-            <h3 class="plan-part-title">Horaire</h3>      
+                Ce cours a pour objectif de vous enseigner les éléments de base de la programmation dans un langage de programmation impératif procédural:
+                types, expressions, énoncés conditionnels et itératifs, procédures/fonctions/méthodes, paramètres, récursivité, tableaux, enregistrements, objets simples, et méthodologie de programmation agile. <br>
+                Ce cours vise également à vous apporter une expérience pratique dans un premier langage : le langage <strong>Python</strong>.
+            </p>
+            <h3 class="plan-part-title">Horaire</h3>
             <div class="plan-schedule">
                 <div class="plan-schedule-group">
                     <h4 class="plan-schedule-title">Cours</h4>
@@ -290,11 +316,11 @@
                             <span class="book" style="margin-bottom: 4px;">
                                 John V. GUTTAG (2021). <em>Introduction to Computation and Programming Using Python</em>, 3<sup>rd</sup> edition. (<strong>recommandé</strong>)
                             </span>
-                                
+
                             <span style="margin-bottom: 4px;">
                                 John M ZELLE (2016). <em>Python Programming: An Introduction to Computer Science</em>, 3<sup>rd</sup> edition.
                             </span>
-                            
+
                             <span>
                                 David THOMAS, Andrew HUNT, (2019). <em>The Pragmatic Programmer: From Journeyman to Master</em>.
                             </span>
@@ -420,7 +446,7 @@
                             </ul>
                         </li>
                         <li class="week-content-item">
-                            <span class="week-content-title">Abstraction procédurale</span>       
+                            <span class="week-content-title">Abstraction procédurale</span>
                             <ul class="bare-list week-content-details">
                                 <li class="week-content-detail">Fonctions</li>
                                 <li class="week-content-detail">Déclaration def</li>
@@ -505,7 +531,6 @@
                             <ul class="bare-list week-content-details">
                                 <li class="week-content-detail">Encore binaire non signé</li>
                                 <li class="week-content-detail">Complément à 2</li>
-                                <li class="week-content-detail">Point flottant</li>
                             </ul>
                         </li>
                         <li class="week-content-item">
@@ -562,20 +587,38 @@
                                 <li class="week-content-detail">Encodage binaire</li>
                             </ul>
                         </li>
-                    </ul> 
+                    </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 07 (20 Février)</h4>
-                
+
                     <ul class="bare-list week-content th">
                         <li class="week-content-item">
                             <span class="week-content-title">Test unitaire</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Vérification & Validation</li>
+                                <li class="week-content-detail">Énoncé <code>assert</code></li>
+                                <li class="week-content-detail">Couverture</li>
+                                <li class="week-content-detail">TDD</li>
+                            </ul>
                         </li>
                         <li class="week-content-item">
                             <span class="week-content-title">Structures</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Données structurées</li>
+                                <li class="week-content-detail">Enregistrements</li>
+                                <li class="week-content-detail">Accès et modification</li>
+                                <li class="week-content-detail">Énoncé <code>struct</code></li>
+                            </ul>
                         </li>
                         <li class="week-content-item">
                             <span class="week-content-title">Tableaux</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Création</li>
+                                <li class="week-content-detail">Opérateur +</li>
+                                <li class="week-content-detail">Opérateur *</li>
+                                <li class="week-content-detail">Énoncé struct</li>
+                            </ul>
                         </li>
                     </ul>
                     <ul class="bare-list week-content tp">
@@ -583,7 +626,75 @@
                             <span class="week-content-title">Labo</span>
                             <ul class="bare-list week-content-details">
                                 <li class="week-content-detail">Correction intra</li>
-                                <li class="week-content-detail">Introduction TP1</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="week break">
+                    <h4 class="week-title">Semaine 08 (27 Février)</h4>
+                    <strong>RELACHE</strong> <br>
+                    <span style="color:#fff" class="week-content-title">TP 1 disponible (28 Février) 📅</span>
+                </li>
+                <li class="week">
+                    <h4 class="week-title">Semaine 09 (6 Mars)</h4>
+                    <ul class="bare-list week-content th">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Travail pratique 1</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Exposition</li>
+                                <li class="week-content-detail">Questions-réponses</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Tableaux</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Vue en mémoire</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Autres collections</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Tuples</li>
+                                <li class="week-content-detail">Dict</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Jeu Wordle</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Démos</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Exercices</li>
+                                <li class="week-content-detail">Jeu Wordle</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="week current">
+                    <h4 class="week-title">Semaine 10 (13 Mars)</h4>
+
+                    <ul class="bare-list week-content th">
+
+                        <li class="week-content-item">
+                            <span class="week-content-title">Traitement de texte</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Dessins "Tortue"</span>
+                        </li>
+                    </ul>
+                    <ul class="bare-list week-content tp">
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labos</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Installation Python</li>
+                                <li class="week-content-detail">Import</li>
+                                <li class="week-content-detail">Carousel</li>
                             </ul>
                         </li>
                         <li class="week-content-item">
@@ -594,46 +705,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="week break">
-                    <h4 class="week-title">Semaine 08 (27 Février)</h4>
-                    <strong>RELACHE</strong>
-                </li>
-                <li class="week">
-                    <h4 class="week-title">Semaine 09 (6 Mars)</h4>
-                    <ul class="bare-list week-content th">
-                        <li class="week-content-item">
-                            <span class="week-content-title">Tableaux</span>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Manipulation de tableaux</span>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Autres collections</span>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Dessins "Tortue"</span>
-                        </li>
-                    </ul>
-                    <ul class="bare-list week-content tp">
-                       
-                    </ul>
-                </li>
-
-                <li class="week">
-                    <h4 class="week-title">Semaine 10 (13 Mars)</h4>
-
-                    <ul class="bare-list week-content th">
-                        <li class="week-content-item">
-                            <span class="week-content-title">Traitement de texte</span>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Expression régulière</span>
-                        </li>
-                    </ul>
-                    <ul class="bare-list week-content tp">
-                     
-                    </ul>
-                </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 11 (20 Mars)</h4>
 
@@ -641,9 +712,15 @@
                         <li class="week-content-item">
                             <span class="week-content-title">Fichiers</span>
                         </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Système de fichiers</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Traitements de fichiers</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
-                      
+
                     </ul>
                 </li>
                 <li class="week">
@@ -651,32 +728,32 @@
 
                     <ul class="bare-list week-content th">
                         <li class="week-content-item">
-                            <span class="week-content-title">Fichiers</span>
+                            <span class="week-content-title">Fichiers (suite)</span>
                         </li>
                         <li class="week-content-item">
                             <span class="week-content-title">Traitement d'erreur</span>
-                        </li> 
+                        </li>
                     </ul>
 
                     <ul class="bare-list week-content tp">
-                    
+
                     </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 13 (3 Avril)</h4>
-                    
+
                     <ul class="bare-list week-content th">
                         <li class="week-content-item">
                             <span class="week-content-title">Récursivité</span>
                         </li>
                     </ul>
                     <ul class="bare-list week-content tp">
-                    
+
                     </ul>
                 </li>
                 <li class="week">
                     <h4 class="week-title">Semaine 14 (10 Avril)</h4>
-                    
+
                     <ul class="bare-list week-content th">
                         <li class="week-content-item">
                             <span class="week-content-title">Conclusion</span>
@@ -690,14 +767,14 @@
                     </ul>
 
                     <ul class="bare-list week-content tp">
-                       
+
                     </ul>
                     <ul class="bare-list week-content ex">
                         <li class="week-content-item">
                             <span class="week-content-title">Examen intra (20 Avril) 📅</span>
                         </li>
-                        
-                    </ul> 
+
+                    </ul>
                 </li>
             </ul>
         </aside>
@@ -730,7 +807,7 @@
                         </ul>
                     </div>
 
-                    
+
                     <div class="week-section-block">
                         <h4 class="block-title">Concevoir un programme</h4>
 
@@ -739,11 +816,11 @@
                             Avant de se lancer dans un quelconque chemin de résolution (coder), il faut prendre soin de bien cerner les caractéristiques du problème et établir un plan de résolution clair (indépendant du langage de programmation). <br>
                             Pour cela nous définissons: l'objectif du programme, les entités à manipuler dans le programme et les prérequis du programme.
                         </p>
-                           
+
                         <ol>
                             <li><strong>Objectif</strong>: Définir la tache principale à accomplir, sans s'intéresser au comment</li>
-                            <li><strong>Entités cibles</strong>: Identifier avec précision les entités ou structures à manipuler</li> 
-                            <li><strong>Prérequis</strong>: Déterminer ce qui est minimalement nécessaire pour la manipulation</li> 
+                            <li><strong>Entités cibles</strong>: Identifier avec précision les entités ou structures à manipuler</li>
+                            <li><strong>Prérequis</strong>: Déterminer ce qui est minimalement nécessaire pour la manipulation</li>
                         </ol>
                     </div>
 
@@ -754,10 +831,10 @@
                         </a> -->
                     </div>
 
-                    
+
                     <div class="week-section-block">
                         <ul class="bare-list">
-                           
+
                             <li class="dash">Variable: Emplacement mémoire où une valeur est stockée
                             </li>
                             <li class="dash">Nom de variable: Un bon identificateur clarifie ce à quoi il réfère (évite les ambiguïtés)</li>
@@ -767,7 +844,7 @@
                     <div class="week-section-block">
                         <h4 class="block-title">Type de données</h4>
                         <p>Décide de l'espace réservé pour préserver la valeur. Definit la quantité de mémoire que prend une variable</p>
-                    
+
                         <div class="tbl-wrap">
                             <table class="tbl tbl-datatype">
                                 <thead class="tbl-section tbl-section--head">
@@ -778,10 +855,10 @@
                                         <th class="tbl-head"><img src="assets/images/logo-JavaScript.png" alt="" height="20"> Javascript</th>
                                     </tr>
                                 </thead>
-                             
+
                                 <tbody class="tbl-section tbl-section--body">
                                     <tr class="tbl-row tbl-row--body">
-                                        <td class="tbl-cell tbl-datatype-general">Nombre</td> 
+                                        <td class="tbl-cell tbl-datatype-general">Nombre</td>
                                         <td class="tbl-cell tbl-datatype-python">int, float, complex</td>
                                         <td class="tbl-cell tbl-datatype-java">byte, short, int, long, float, double</td>
                                         <td class="tbl-cell tbl-datatype-js">number, bigint</td>
@@ -799,16 +876,16 @@
                                         <td class="tbl-cell tbl-datatype-js">boolean</td>
                                     </tr>
                                     <tr class="tbl-row tbl-row--body">
-                                        <td class="tbl-cell tbl-datatype-general">Ensemble</td>  
-                                        <td class="tbl-cell tbl-datatype-python">list, tuple, <code>range</code>, <code>dict</code>, <code>set</code>, <code>frozenset</code></td>  
-                                        <td class="tbl-cell tbl-datatype-java">&mdash;</td>  
-                                        <td class="tbl-cell tbl-datatype-js">&mdash;</td>  
+                                        <td class="tbl-cell tbl-datatype-general">Ensemble</td>
+                                        <td class="tbl-cell tbl-datatype-python">list, tuple, <code>range</code>, <code>dict</code>, <code>set</code>, <code>frozenset</code></td>
+                                        <td class="tbl-cell tbl-datatype-java">&mdash;</td>
+                                        <td class="tbl-cell tbl-datatype-js">&mdash;</td>
                                     </tr>
                                     <tr class="tbl-row tbl-row--body">
-                                        <td class="tbl-cell tbl-datatype-general">Null</td>  
-                                        <td class="tbl-cell tbl-datatype-python">NoneType</td>  
-                                        <td class="tbl-cell tbl-datatype-java">&mdash;</td>  
-                                        <td class="tbl-cell tbl-datatype-js">null, undefined</td>  
+                                        <td class="tbl-cell tbl-datatype-general">Null</td>
+                                        <td class="tbl-cell tbl-datatype-python">NoneType</td>
+                                        <td class="tbl-cell tbl-datatype-java">&mdash;</td>
+                                        <td class="tbl-cell tbl-datatype-js">null, undefined</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -821,7 +898,7 @@
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
                             Ouverture du cours: Présentation, Plan de cours
-                        </li>                      
+                        </li>
                         <li class="section-summary-list-item">
                             Introduction à la programmation
                         </li>
@@ -845,7 +922,7 @@
                         </a> -->
                     </div>
 
-                    
+
                     <div class="week-section-block">
                         <p>Une expression est une construction qui décrit comment <strong>calculer une valeur</strong> particulière. Son <strong>évaluation</strong> produit toujours une valeur.</p>
                         <ul class="bare-list">
@@ -870,7 +947,7 @@
 
                                     <tbody class="tbl-section tbl-section--body">
                                         <tr class="tbl-row">
-                                            <td class="tbl-cell">**</td> 
+                                            <td class="tbl-cell">**</td>
                                             <td class="tbl-cell">Exposant</td>
                                             <td class="tbl-cell tbl-datatype-python"><code>2 ** 3 = 8</code></td>
                                         </tr>
@@ -885,23 +962,23 @@
                                             <td class="tbl-cell tbl-datatype-python"><code>15 // 2 = 7</code></td>
                                         </tr>
                                         <tr class="tbl-row">
-                                            <td class="tbl-cell">/</td>  
-                                            <td class="tbl-cell">Division (décimale)</td>  
-                                            <td class="tbl-cell tbl-datatype-python"><code>15 / 2 = 7.5</code></td>  
+                                            <td class="tbl-cell">/</td>
+                                            <td class="tbl-cell">Division (décimale)</td>
+                                            <td class="tbl-cell tbl-datatype-python"><code>15 / 2 = 7.5</code></td>
                                         </tr>
                                         <tr class="tbl-row">
-                                            <td class="tbl-cell">*</td>  
-                                            <td class="tbl-cell">Multiplication</td>  
-                                            <td class="tbl-cell tbl-datatype-python"><code>4 * 5 - 20</code></td>  
+                                            <td class="tbl-cell">*</td>
+                                            <td class="tbl-cell">Multiplication</td>
+                                            <td class="tbl-cell tbl-datatype-python"><code>4 * 5 - 20</code></td>
                                         </tr>
                                         <tr class="tbl-row">
-                                            <td class="tbl-cell">-</td>  
-                                            <td class="tbl-cell">Soustraction</td>  
+                                            <td class="tbl-cell">-</td>
+                                            <td class="tbl-cell">Soustraction</td>
                                             <td class="tbl-cell tbl-datatype-python"><code>12 - 4 = 8</code></td>
                                         </tr>
                                         <tr class="tbl-row">
-                                            <td class="tbl-cell">+</td>  
-                                            <td class="tbl-cell">Addition</td>  
+                                            <td class="tbl-cell">+</td>
+                                            <td class="tbl-cell">Addition</td>
                                             <td class="tbl-cell tbl-datatype-python"><code>2 + 2 = 4</code></td>
                                         </tr>
                                     </tbody>
@@ -972,7 +1049,7 @@
                     <h3 class="section-summary-title">Contenu</h3>
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
-                            Expressions: Opérateurs de base, Type d'opérateurs, Opération arithmétique 
+                            Expressions: Opérateurs de base, Type d'opérateurs, Opération arithmétique
                         </li>
                         <li class="section-summary-list-item">
                             Affectation: composé, parallèle, multiple
@@ -984,7 +1061,7 @@
                 </div>
             </section>
 
-            <section class="body-content-section collapsible" data-collapsible="expanded">
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
                 <div class="body-content-section-header" data-collapsible-header="">
                     <h2 class="body-content-title">Semaine 3: Flux de controle</h2>
                 </div>
@@ -1003,7 +1080,7 @@
                             <li>2 types d'instruction: <strong>if</strong> et <strong>switch</strong></li>
                         </ul>
                     </div>
-                    
+
 
 
                     <div class="week-section-header">
@@ -1012,7 +1089,7 @@
                             <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
                         </a> -->
                     </div>
-                    
+
                     <div class="week-section-block">
                         <p>
                             Une boucle offre un moyen d'itérer un nombre de fois sur un bloc d'instruction.
@@ -1037,8 +1114,8 @@
                     </ul>
                 </div>
             </section>
-            
-            <section class="body-content-section collapsible" data-collapsible="expanded">
+
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
                 <div class="body-content-section-header" data-collapsible-header="">
                     <h2 class="body-content-title">Semaine 4: Abstractions procédurales</h2>
                 </div>
@@ -1071,11 +1148,11 @@
                         </ul>
                     </div>
 
-                    
+
                     <div class="week-section-block">
                         <h4 class="block-title">Paramètres</h4>
                         <p>
-                            Les paramètres présentes les options de configuration d'une fonction. 
+                            Les paramètres présentes les options de configuration d'une fonction.
                             Ils permettent de faire varier le comportement et le résultat d'une fonction.
                             Une fonction peut admettre 0 ou plusieurs paramètres.
                         </p>
@@ -1084,7 +1161,7 @@
                                 <strong>Paramètres formels</strong>: Variables se trouvant dans la déclaration de la fonction. Utilisés pour passé des arguments à la fonction.
                             </li>
                             <li class="dash">
-                                <strong>Paramètre avec valeur par défaut</strong>: 
+                                <strong>Paramètre avec valeur par défaut</strong>:
                                 Une fonction peut avoir un comportement par défaut basé sur une configuration initiale (de ses paramètres).
                                 Une fonction peut être composé uniquement de paramètres optionnels.
                             </li>
@@ -1103,13 +1180,13 @@
 
                         <h4 class="block-title">Arguments</h4>
                         <p>
-                            Les <strong>arguments</strong> sont les valeurs passés à ces paramètres lors de l'appel de la fonction. 
+                            Les <strong>arguments</strong> sont les valeurs passés à ces paramètres lors de l'appel de la fonction.
                             Les arguments peuvent être assignés de deux façons: positionnels ou par mots-clés.
                         </p>
                         <ul class="bare-list">
                             <li class="dash"><strong>Arguments positionnels:</strong> Ordre des arguments détermine les valeurs des paramètres</li>
-                            <li class="dash"><strong>Arguments par mots-clés:</strong> Nom des paramètres est utilisé dans l'appel pour assigner les valeurs. L'ordre n'a pas d'importance.</li> 
-                            <li class="dash">Les deux types peuvent être utilisés conjointement (dans le même appel).</li> 
+                            <li class="dash"><strong>Arguments par mots-clés:</strong> Nom des paramètres est utilisé dans l'appel pour assigner les valeurs. L'ordre n'a pas d'importance.</li>
+                            <li class="dash">Les deux types peuvent être utilisés conjointement (dans le même appel).</li>
                         </ul>
                     </div>
 
@@ -1124,8 +1201,8 @@
                     </ul>
                 </div>
             </section>
-            
-            <section class="body-content-section collapsible" data-collapsible="expanded">
+
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
                 <div class="body-content-section-header" data-collapsible-header="">
                     <h2 class="body-content-title">Semaine 5: Encodage binaire</h2>
                 </div>
@@ -1154,33 +1231,86 @@
                         <li class="section-summary-list-item">
                             Opération bit-à-bit
                         </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 6: Révision</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
-                            Vue de la mémoire
+                            Révision: Trivia, Questions-réponses
                         </li>
                     </ul>
                 </div>
             </section>
-              
+
             <section class="body-content-section collapsible" data-collapsible="expanded">
                 <div class="body-content-section-header" data-collapsible-header="">
-                    <h2 class="body-content-title">Semaine 7: Tests et Structures</h2>
+                    <h2 class="body-content-title">Semaine 7: Tests</h2>
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
                     <div class="week-section-header">
                         <h3 class="week-section-title">Tests</h3>
-                        <!-- <a class="week-section-doc" href="./assets/docs/01-introduction.pdf" target="_blank">
-                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
-                        </a> -->
                     </div>
-                </div>
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">Vérification & Validation</h4>
+                        <p>
+                            L'activité de Vérification & Validation est essentielle au développement d'applications ou programmes de qualité. <br>
+                            La <strong>vérification</strong> consiste à comparer la solution produite aux spécifications établies. On se demande ici si le <strong>programme a été fait correctement</strong>, indépendamment de l'usage réel qui en sera fait. <br>
+                            La <strong>validation</strong> consiste à évaluer la solution produite en fonction des besoins actuels des clients et utilisateurs. On se demande si le <strong>programme fait la bonne chose</strong>, pour répondre aux besoins.
+                        </p>
+                    </div>
 
-                <div class="week-section-body collapsible-content" data-collapsible-content="">
-                    <div class="week-section-header">
-                        <h3 class="week-section-title">Structures et tableaux</h3>
-                        <!-- <a class="week-section-doc" href="./assets/docs/01-introduction.pdf" target="_blank">
-                            <img class="week-section-doc-icon" src="assets/images/icon-pdf.svg" alt="">
-                        </a> -->
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">Tests unitaires</h4>
+                        <p>
+                            <q>Tester ne peut que montrer la présence d'erreurs, pas leur absence</q>. 
+                            Les tests (Ex: test unitaire, test d'intégration, test d'acceptation...) consistent à détecter
+                             des fautes dans le programme par assertion (comportement <strong>attendu</strong> <b>vs</b> comportement <strong>observé</strong>).
+                        </p>
+                        <p>
+                            Les tests unitaires visent à démontrer la présence d'erreur, c.-à-d. que l'implémentation d'une unité individuelle donnée (ex: fonction) contredit sa spécification.
+                            En principe, chaque fonction définie devrait avoir ses propres tests unitaires.
+                        </p>
+                        <p>
+                            Pour assurer une bonne couverture des tests, il faut une bonne variabilité dans les valeurs utilisées pour les tests.
+                        </p>
+                        <ul class="bare-list">
+
+                            <li class="dash"><strong>Valeurs "normales"</strong>: Valeurs aléatoires raisonnables couvrant l'usage habituel (attendu)</li>
+                            <li class="dash"><strong>valeurs extrêmes</strong>: 0, très grande valeur, tableau vide, string vide</li>
+                            <li class="dash"><strong>Valeurs inattendues</strong>: null, caractères invalides dans une chaine, index négatif</li>
+                            <li class="dash"><strong>Différentes catégories d'entrées</strong>: Entier positif, négatif, zéro</li>
+                            <li class="dash"><strong>Différents comportements possibles</strong>: message d’erreur, différentes valeurs de retour</li>
+                        </ul>
+                    </div>                    
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">TDD</h4>
+                        <p>
+                            Le développement dirigié par les tests (TDD) est une méthodologie de développement <a href="https://www.agilealliance.org/">agile</a> 
+                            où les tests sont utilisés pour spécifier ce qui doit être programmer. <br>
+                            
+                        </p>
+                        <img class="right" src="https://chromaticblog.ghost.io/content/images/max/800/1-BKWjjdtGyKwhlagGvZ2-_A.gif" height="120" alt="">
+                        <ul class="bare-list">
+                            <li class="dash">Production de tests automatisés pour diriger la conception et la programmation</li>
+                            <li class="dash">Test utilisé comme spécification</li>
+                            <li class="dash">Tests écrits avant de commencer l’implémentation</li>
+                            <li class="dash">Processus en petites étapes (incrémentales)</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1188,10 +1318,198 @@
                     <h3 class="section-summary-title">Contenu</h3>
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
-                            Tests
+                            Vérification & Validation
                         </li>
                         <li class="section-summary-list-item">
+                            Tests unitaires: Énoncé assert, Couverture
+                        </li>
+                        <li class="section-summary-list-item">
+                            TDD: Méthodologie, Spécification
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 8: Relache</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Relache: Révision, Travail pratique 1
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 9: Structures et Tableaux</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Structures</h3>
+                    </div>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Enregistrement</h4>
+                        <p class="bare">
+                            Un enregistrement est une structure (objet) regroupant des données liées sémantiquement ou structurellement.
+                            Au sein de cette structure, chaque donnée est libellée (étiquette identifiant la donnée), formant ainsi un champ.
+                        </p>
+                        <ul class="bare-list">
+                            <li class="dash">Un champ peut être accédé ou modifié en utilisant le libellé.</li>
+                            <li class="dash">Les champs peuvent être de types différents (primitives, structures, tableaux...)</li>
+                        </ul>
+
+                        <h5>Construction avec <code>struct</code></h5>
+                        <p class="bare">Simplification d'une classe pour créer des objets en Python avec Codeboot.</p>
+                        <code style="font-size: 1.3rem">
+<pre>
+<i class="var">joueur</i> = <i class="py">struct</i>(
+    <i class="key">nom</i> = <i class="val str">"Alex"</i>,
+    <i class="key">mots</i> = [<i class="val str">"reine"</i>, <i class="val str">"ocean"</i>, <i class="val str">"meres"</i>]
+    <i class="key">score</i> = <i class="val num">6</i>,
+    <i class="key">stats</i> = <i class="py">struct</i>(<i class="key">essai</i>= <i class="val num">5</i>, <i class="key">rejets</i>= <i class="val num">2</i>)
+)
+</pre>
+                        </code>
+
+                        <ul style="margin-top: 6px;" class="bare-list">
+                            <li class="dash">Accès à un champ: <code class="op">joeur.nom</code> ou <code class="op">joeur.stats.essai</code></li>
+                            <li class="dash">Modifier un champ: <code class="op">joeur.nom = "Tintin"</code> ou <code class="op">joeur.score = struct(record = 13, val = 7)</code></li>
+                            <li class="dash">Un champ ne peut être supprimé de la structure et ne peut être ajouté à une structure existante (après sa déclaration)</li>
+                        </ul>
+
+                        
+                        <h5>Construction avec <code>dict</code></h5>
+                        <p class="bare">Python offre le type dict pour stocker des collections sous la forme de paire &lt;clé:valeur&gt;, où chaque clé est unique.</p>
+                        <code style="font-size: 1.3rem">
+<pre>
+<i class="var">joueur</i> = {
+    <i class="key">"nom"</i>: <i class="val str">"Alex"</i>,
+    <i class="key">"mots"</i>: [<i class="val str">"reine"</i>, <i class="val str">"ocean"</i>, <i class="val str">"meres"</i>]
+    <i class="key">"score"</i>: <i class="val num">6</i>,
+    <i class="key">"stats"</i>: {<i class="key">essai</i>: <i class="val num">5</i>, <i class="key">rejets</i>: <i class="val num">2</i>}
+}
+</pre>
+                        </code>
+
+                        <ul class="bare-list">
+                            <li class="dash">Accès à un champ: <code class="op">joeur["nom"]</code> ou <code class="op">joeur["stats"]["essai"]</code></li>
+                            <li class="dash">Modifier un champ: <code class="op">joeur["nom"] = "Tintin"</code> ou <code class="op">joeur["score"] = { "record": 13, "val": 7 }</code></li>
+                            <li class="dash">Ajouter un champ: <code class="op">joeur["inscrit"] = False</code> ou <code class="op">joeur["stats"]["temps"] = 133</code></li>
+                            <li class="dash">Supprimer un champ: <code class="op">del joeur["inscrit"]</code> ou <code class="op">joeur.pop("inscrit")</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Tableaux</h3>
+                    </div>
+
+                    <div class="week-section-block">
+                        <p>
+                            Un moyen de stocker une collection d'éléments (même type ou diverses) est avec un tableau. <br>
+                            Un tableau est une structure composée d'une séquence contiguë de données indexées, c-à-d, 
+                            chaque donnée est assignée un index (position) utilisé pour la récupérer dans le tableau.
+                        </p>
+
+                        <ul class="bare-list">
+                            <li class="dash">Un tableau possède une longueur (cardinalité de l'ensemble). En Python, la fonction <code>len()</code> nous permet de récupérer la longueur d’un tableau</li>
+                            <li class="dash">Dans la plupart des langages, le premier élément est à l'index 0</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Vue en mémoire</h3>
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
                             Structures
+                        </li>
+                        <li class="section-summary-list-item">
+                            Tableaux
+                        </li>
+                        <li class="section-summary-list-item">
+                            Vue en mémoire
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 10: Traitement de texte & Tortue</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Traitement de texte</h3>
+                    </div>
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">Méthodes prédéfinies</h4>
+                        <p>
+                            Les textes (chaine de caractères) ont des caractéristiques similaires aux tableaux car les deux représentent des séquences. <br>
+                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte <br>
+                            <code>upper()</code>, <code>lower()</code>, <code>isalpha()</code>, <code>isdecimal()</code> <br>
+                            <code>strip()</code>, <code>split()</code>, <code>replace()</code> <br>
+                            <code>startswith()</code>, <code>endswith()</code>, <code>find()</code>
+                        </p>
+                    </div>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Expressions régulières</h4>
+                        <p>
+                            Il arrive que nous devions rechercher non pas une simple chaîne mais un patron. 
+                            Par exemple: <em>Trouver un numéro de téléphone</em> <br>
+
+                            <code>>>> import re</code> <br>
+                            <code>>>> phone_num_regex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')</code> <br>
+                            <code>>>> mo = phone_num_regex.search('Mon numero est le 514-555-4242.')</code> <br>
+                            <code>>>> print('Tel: ' + mo.group())</code> <br>
+                            <code># Tel: 514-555-4242</code> <br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Tortue</h3>
+                    </div>
+
+                    <div class="week-section-block">
+                        <!-- <h4 class="block-title">Tortues</h4> -->
+                        <p>
+                            Python offre le module <em>turtle</em> qui permet de dessiner différentes formes et images.
+                            À l'aide de procédures prédéfinis (dans le module turtle), le programme peut faire bouger une "tortue" qui laisse un tracé sur son passage.
+                            Un dessin complet s'obtient par une séquence de mouvements appropriés de la tortue. <br>
+                            <code>>>> from turtle import *</code> <br>
+                            <code>>>> forward(200)</code> <br>
+                            <img src="https://turtle-tutorial.readthedocs.io/en/latest/_images/intro1.gif" alt="">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Traitement de texte: Indexage, Méthodes prédéfinies, Expressions régulières
+                        </li>
+                        <li class="section-summary-list-item">
+                            Dessins tortues
                         </li>
                     </ul>
                 </div>
@@ -1203,12 +1521,12 @@
         <div class="content-wrapper">
             <p class="footer-maintenance">
                 Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
-                Dernière mise à jour: 2023-02-19
+                Dernière mise à jour: 2023-03-10
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
         </div>
     </footer>
-  
+
 
 
     <template id="tpl-teacher">
@@ -1228,7 +1546,7 @@
             </div>
         </li>
     </template>
-    
+
     <template id="tpl-schedule">
         <li class="teaching-schedule">
             #day #start &ndash; #end @#location (<i class="schedule-type">#type</i>)
