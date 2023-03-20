@@ -14,7 +14,7 @@
   title: Auxiliaire d'enseignement
   local: À venir
   web: https://www.linkedin.com/in/hajer-mejri-45431b140
-  photo: https://media.licdn.com/dms/image/C4E03AQFKeufvFVSogg/profile-displayphoto-shrink_400_400/0/1643236712169?e=1678924800&v=beta&t=ST4kQEN-GMejEe4S1_LVA492tljLe9HUsx7XXfSodkQ
+  photo: ./assets/images/photo_hajer_mejri.webp
   email: hajer.mejri.1@umontreal.ca
   intro: 
     Envoyez-moi vos messages par <a href="mailto:hajer.mejri.1@umontreal.ca">courriel</a> ou via Discord (<b>Hajer#6578</b>).
@@ -24,7 +24,7 @@
   title: Auxiliaire d'enseignement
   local: À venir
   web: https://www.linkedin.com/in/hassan-abass-7552261b7
-  photo: https://media.licdn.com/dms/image/D4E03AQHlDyKSVv3fpw/profile-displayphoto-shrink_400_400/0/1664379672955?e=1678924800&v=beta&t=HUasi2Ju09OQBgsg8-JruyB3PvxEryZqoGuxNSOMnaE
+  photo: ./assets/images/photo_hassan_abass.jpg
   email: hassan.abass@umontreal.ca
   intro: 
     Envoyez-moi vos messages par <a href="mailto:hassan.abass@umontreal.ca">courriel</a> ou via Discord (<b>flatcaphat#1289</b>).

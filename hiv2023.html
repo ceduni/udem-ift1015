@@ -676,7 +676,7 @@
                     </ul>
                 </li>
 
-                <li class="week current">
+                <li class="week">
                     <h4 class="week-title">Semaine 10 (13 Mars)</h4>
 
                     <ul class="bare-list week-content th">
@@ -690,7 +690,7 @@
                     </ul>
                     <ul class="bare-list week-content tp">
                         <li class="week-content-item">
-                            <span class="week-content-title">Labos</span>
+                            <span class="week-content-title">Labo</span>
                             <ul class="bare-list week-content-details">
                                 <li class="week-content-detail">Installation Python</li>
                                 <li class="week-content-detail">Import</li>
@@ -705,7 +705,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="week">
+                <li class="week current">
                     <h4 class="week-title">Semaine 11 (20 Mars)</h4>
 
                     <ul class="bare-list week-content th">
@@ -720,7 +720,18 @@
                         </li>
                     </ul>
                     <ul class="bare-list week-content tp">
-
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Tortues</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Démo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Fichiers</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="week">
@@ -760,9 +771,6 @@
                         </li>
                         <li class="week-content-item">
                             <span class="week-content-title">Révision</span>
-                        </li>
-                        <li class="week-content-item">
-                            <span class="week-content-title">Autres usages de Python</span>
                         </li>
                     </ul>
 
@@ -1253,7 +1261,7 @@
                 </div>
             </section>
 
-            <section class="body-content-section collapsible" data-collapsible="expanded">
+            <section class="body-content-section collapsible" data-collapsible="collapsed">
                 <div class="body-content-section-header" data-collapsible-header="">
                     <h2 class="body-content-title">Semaine 7: Tests</h2>
                 </div>
@@ -1350,12 +1358,12 @@
 
             <section class="body-content-section collapsible" data-collapsible="expanded">
                 <div class="body-content-section-header" data-collapsible-header="">
-                    <h2 class="body-content-title">Semaine 9: Structures et Tableaux</h2>
+                    <h2 class="body-content-title">Semaine 9: Structure et Tableau</h2>
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
                     <div class="week-section-header">
-                        <h3 class="week-section-title">Structures</h3>
+                        <h3 class="week-section-title">Structure</h3>
                     </div>
 
                     <div class="week-section-block">
@@ -1411,7 +1419,7 @@
                     </div>
 
                     <div class="week-section-header">
-                        <h3 class="week-section-title">Tableaux</h3>
+                        <h3 class="week-section-title">Tableau</h3>
                     </div>
 
                     <div class="week-section-block">
@@ -1425,6 +1433,42 @@
                             <li class="dash">Un tableau possède une longueur (cardinalité de l'ensemble). En Python, la fonction <code>len()</code> nous permet de récupérer la longueur d’un tableau</li>
                             <li class="dash">Dans la plupart des langages, le premier élément est à l'index 0</li>
                         </ul>
+
+                        <h5>Construction de tableau</h5>
+                        <p class="bare">Un tableau peut être construit en énumérant tous ses éléments entre crochets [].</p>
+                        <code style="font-size: 1.3rem">
+<pre>
+<i class="key">jours</i> = [<i class="val str">"dim"</i>, <i class="val str">"lun"</i>, <i class="val str">"mar"</i>, <i class="val str">"mer"</i>, <i class="val str">"jeu"</i>, <i class="val str">"ven"</i>, <i class="val str">"sam"</i>]
+</pre>
+<table style="font-size:1rem">
+    <tr>
+        <th>Index</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <th>Valeur</th>
+        <td><code>dim</code></td>
+        <td><code>lun</code></td>
+        <td><code>mar</code></td>
+        <td><code>mer</code></td>
+        <td><code>jeu</code></td>
+        <td><code>ven</code></td>
+        <td><code>sam</code></td>
+    </tr>
+</table>
+                        </code>
+
+                        <ul style="margin-top: 6px;" class="bare-list">
+                            <li class="dash">Accès à une valeur: <code class="op">jours[2]</code></li>
+                            <li class="dash">Modifier une valeur: <code class="op">jours[1] = "Lundi"</code></li>
+                        </ul>
+
                     </div>
 
                     <div class="week-section-header">
@@ -1436,7 +1480,7 @@
                     <h3 class="section-summary-title">Contenu</h3>
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
-                            Structures
+                            Structures: Enregistrement
                         </li>
                         <li class="section-summary-list-item">
                             Tableaux
@@ -1482,15 +1526,9 @@
                             <code># Tel: 514-555-4242</code> <br>
                         </p>
                     </div>
-                </div>
-
-                <div class="week-section-body collapsible-content" data-collapsible-content="">
-                    <div class="week-section-header">
-                        <h3 class="week-section-title">Tortue</h3>
-                    </div>
-
+                    
                     <div class="week-section-block">
-                        <!-- <h4 class="block-title">Tortues</h4> -->
+                        <h4 class="block-title">Tortues</h4>
                         <p>
                             Python offre le module <em>turtle</em> qui permet de dessiner différentes formes et images.
                             À l'aide de procédures prédéfinis (dans le module turtle), le programme peut faire bouger une "tortue" qui laisse un tracé sur son passage.
@@ -1514,6 +1552,41 @@
                     </ul>
                 </div>
             </section>
+            
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 11: Fichiers</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <!-- <div class="week-section-header">
+                        <h3 class="week-section-title">Système de fichier</h3>
+                    </div> -->
+                    
+                    <div class="week-section-block">
+                        <!-- <h4 class="block-title">Méthodes prédéfinies</h4>
+                        <p>
+                            Les textes (chaine de caractères) ont des caractéristiques similaires aux tableaux car les deux représentent des séquences. <br>
+                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte <br>
+                            <code>upper()</code>, <code>lower()</code>, <code>isalpha()</code>, <code>isdecimal()</code> <br>
+                            <code>strip()</code>, <code>split()</code>, <code>replace()</code> <br>
+                            <code>startswith()</code>, <code>endswith()</code>, <code>find()</code>
+                        </p> -->
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Système de fichier
+                        </li>
+                        <li class="section-summary-list-item">
+                            Fichiers: Lecture et Écriture
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -1521,7 +1594,7 @@
         <div class="content-wrapper">
             <p class="footer-maintenance">
                 Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
-                Dernière mise à jour: 2023-03-10
+                Dernière mise à jour: 2023-03-19
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
         </div>
@@ -1576,7 +1649,7 @@
 
 
     <!-- <script src="main.js"></script> -->
-    <script src="dist/app.js?v=002"></script>
+    <script src="dist/app.js?v=003"></script>
 </body>
 
 </html>
