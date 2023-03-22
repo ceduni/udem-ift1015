@@ -39,20 +39,12 @@ def est_premier(nb):
 
     return True
 
-# Fonction calculant le nombre de points attribué à un nombre
-def point(nb):
-    somme = 0
-    for n in range(nb + 1):
-        somme += n
-
-    return somme
-
-# Fonction faisant le total des points.
+# Fonction faisant la somme des nombres valides.
 def total():
     result = 0
     for nombre in Nombres:
         if nombre["valide"]:
-            result += nombre["point"]
+            result += int(nombre["valeur"])
 
     return result
 
@@ -67,12 +59,11 @@ def ajout_nombre(val):
     valid = est_valide(val)
 
     nombre = {
-        "valeur": val,
         "index": index,
+        "valeur": val,
         "valide": valid,
         "pair": None if not valid else est_pair(int(val)),
         "premier": None if not valid else est_premier(int(val)),
-        "point": 0 if not valid else point(int(val))
     }
 
     Nombres.append(nombre)
@@ -87,10 +78,12 @@ def main(compteur=5):
 
     print("\nRAPPORT")
     for nombre in Nombres:
-        if nombre['valide']:
-            print(f"{nombre['index']}) '{nombre['valeur']}' | Pair: {nombre['pair']} ; Premier: {nombre['premier']}")
-        else:
+        if not nombre['valide']:
             print(f"{nombre['index']}) '{nombre['valeur']}' n'est pas un nombre")
+        elif nombre['pair']:
+            print(f"{nombre['index']}) '{nombre['valeur']}' est un nombre pair")
+        else:
+            print(f"{nombre['index']}) '{nombre['valeur']}' est un nombre impair")
 
     print(f"TOTAL: {total()}")
 
