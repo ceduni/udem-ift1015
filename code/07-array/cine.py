@@ -246,7 +246,7 @@ def test():
         eval_test(0, "0min")
         eval_test(15, "15min")
         eval_test(45, "45min",)
-        eval_test(60, "1h00min")
+        eval_test(60, "1h0min")
         eval_test(95, "1h35min")
         eval_test(140, "2h20min")
 
