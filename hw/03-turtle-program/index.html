@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFT1015 | Exercice noté 4</title>
+    <link rel="shortcut icon" href="./../../favicon.ico" type="image/x-icon">
+    <meta name="desciption"
+        content="Énoncé de l'exercice noté 4 (programme réutilisable en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:title" content="IFT1015 (Programmation I) - Hiver 2023">
+    <meta property="og:description"
+        content="Énoncé de l'exercice noté 4 (programme réutilisable en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:url" content="https://ceduni.github.io/udem-ift1015/">
+    <meta property="og:site_name" content="IFT1015">
+    <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="../../dist/style.min.css?v=001">
+    <style>
+        
+        .content-wrapper {
+            padding: 10px 4%;
+        }
+
+        .paragraph-title {
+            margin-bottom: 6px;
+        }
+
+        .paragraph-title + p {
+            margin-top: 0;
+        }
+
+        .body-header {
+           position: relative;
+           padding-top: 12px; padding-bottom: 24px;
+           color: #fff; 
+           text-shadow: 1px 1px 1px #555; 
+           z-index: 10;
+        }
+            .body-header:before {
+                position: absolute;
+                content: "";
+                top: 0; right: 0; bottom: 0; left: 0;
+                background: url(../../assets/images/bataille_navale.jpeg) 100% /cover no-repeat; 
+                z-index: -2;
+            }
+            .body-header:after {
+                position: absolute;
+                content: "";
+                top: 0; right: 0; bottom: 0; left: 0;
+                background: linear-gradient(#000, #555);
+                opacity: 0.6;
+                z-index: -1;
+            }
+
+        .body-header .section-title {
+            color: #fffff0;
+        }
+
+        .body-header a {
+            color: #f0c05a;
+        }
+
+        .screenshots {
+            display: flex; justify-content: space-between;
+        }
+
+        .screenshot {
+            width: 33%;
+            display: flex; flex-direction: column;
+        }
+
+        .screenshot h4 {
+            font-size: 1.2em;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #d5d5d5;
+            border-radius: 2px;
+        }
+
+        .screenshot code {
+            margin-top: 6px;
+            background-color: #223344;
+            color: #fff;
+            padding: 3px;
+            border-radius: 2px;
+        }
+
+        .grille {
+            font-family: Consolas, 'Courier New', Courier, monospace;
+            border: 0 none;
+            text-shadow: none;
+            margin-right: 6px;
+        }
+
+        .grille th { border: 0 none; text-align: center; }
+        .grille td { width: 24px; font-size: 0.9em; text-align: center; color: #555; background-color: #fff; }
+        .block-title {
+            margin: 0;
+            margin-bottom: 2px;
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #BB2649;
+            color: #2F305E;
+        }
+
+        .helper {
+            min-width: 200px;
+        }
+
+        .page-body p {
+            font-size: 1.8em;
+            line-height: 1.5;
+        }
+
+
+        .test-group {
+            display: flex;
+        }
+
+        .test-group h4 {
+            margin: 0; margin-bottom: 6px;
+        }
+
+        .test-case {
+            flex: 1 1; 
+            margin-top: 0; margin-right: calc(1% + 6px); 
+            padding: 8px 12px;
+            background-color: #e5e4e2; 
+            border-radius: 4px; 
+        }
+
+        @media only screen and (max-width: 58em) {
+            .content-wrapper {
+                padding: 10px 2%;
+            }
+
+            
+            .body-header {
+                padding-top: 12px; padding-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <section class="teaching">
+            <div class="teaching-header">
+                <div class="teaching-logo">
+                    <div class="teaching-logo-name">
+                        <span class="teaching-logo-code">IFT</span>
+                        <span class="teaching-logo-number">1015</span>
+                    </div>
+                </div>
+                <div class="teaching-info">
+                    <div style="display: flex;">
+                        <p class="teaching-title" title="IFT1015 &ndash; Programmation I">Programmation I</p>
+                        <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
+                    </div>
+                    <ul class="bare-list teaching-topics">
+                        <li class="teaching-topic">Variables et expressions</li>
+                        <li class="teaching-topic">Énoncés conditionnels</li>
+                        <li class="teaching-topic">Boucles</li>
+                        <li class="teaching-topic">Fonctions</li>
+                        <li class="teaching-topic">Tableaux</li>
+                        <li class="teaching-topic">Tortues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="bare-list teaching-links">
+                <li class="teaching-link">
+                    <a class="bare-link teaching-link__link teaching-link__link--plan"
+                        href="https://studium.umontreal.ca/course/view.php?id=231494" target="_blank">
+                        StudiUM
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </header>
+    <main class="page-body">
+        <article>
+            <header class="body-header content-wrapper">
+                <h1 class="page-title">Exercice noté 4: Jeu graphique</h1>
+                <p style="font-size: 2em; line-height: 1.5">
+                    Dans cet exercice, tu seras amené à écrire un programme graphique interactif en Python à l'aide du module <code style="font-weight: bold">Turtle</code> (Tortue). <br>
+                    Le programme consiste à programmer une version simplifiée du jeu <a href="https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)" target="_blank">Touché-coulé (bataille navale)</a>.
+                </p>
+                
+                <section>
+                    <h2 class="section-title">Règles du jeu</h2>
+                    <p class="bare">
+                        Le jeu se joue à 2 (joueurs). 
+                        Au début d'une partie, les bateaux de chaque joueur sont répartis aléatoirement dans leur espace (grille). <br>
+                        Une fois tous les bateaux placés, chacun essaiera à tour de rôle de deviner l'emplacement des bateaux de l'autre joueur, en annonçant une case.<br>
+                        Le joueur qui trouve tous les bateaux de l'autre (joueur) en premier a gagné.
+                    </p>
+                    <table style="float: left" class="grille">
+                        <tr>
+                            <th></th>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>D</th>
+                            <th>E</th>
+                            <th>F</th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td>A1</td>
+                            <td>B1</td>
+                            <td>C1</td>
+                            <td>D1</td>
+                            <td>E1</td>
+                            <td>F1</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td>A2</td>
+                            <td>B2</td>
+                            <td>C2</td>
+                            <td>D2</td>
+                            <td>E2</td>
+                            <td>F2</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td>A3</td>
+                            <td>B3</td>
+                            <td>C3</td>
+                            <td>D3</td>
+                            <td>E3</td>
+                            <td>F3</td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td>A4</td>
+                            <td>B4</td>
+                            <td>C4</td>
+                            <td>D4</td>
+                            <td>E4</td>
+                            <td>F4</td>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <td>A5</td>
+                            <td>B5</td>
+                            <td>C5</td>
+                            <td>D5</td>
+                            <td>E5</td>
+                            <td>F5</td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td>A6</td>
+                            <td>B6</td>
+                            <td>C6</td>
+                            <td>D6</td>
+                            <td>E6</td>
+                            <td>F6</td>
+                        </tr>
+                    </table>
+                    <ul style="margin-top: 6px; font-size: 1.1em;" class="bare-list">
+                        <li class="dash">
+                            Chaque joueur possède <strong>5 bateaux</strong>
+                        </li>
+                        <li class="dash">
+                            Une <strong>grille est composée de 36 cases</strong> disposées en carré (6x6). 
+                        </li>
+                        <li class="dash">
+                            Les <strong>colonnes sont numérotées de A à F</strong>  et les <strong>lignes sont numérotées de 1 à 6</strong>. 
+                        </li>
+                        <li class="dash">
+                            Chaque case a une <strong>coordonnée</strong> correspondant à <strong>sa colonne et sa ligne</strong>.
+                        </li>
+                        <li class="dash">
+                            Chaque bateau occupe <strong>une case</strong> de la grille
+                        </li>
+                        <li class="dash">
+                            Une case visitée où il n'y a pas de bateau est appelée <strong>case ratée</strong> 
+                        </li>
+                        <li class="dash">
+                            Une case visitée où se trouve un bateau est appelée <strong>case touchée</strong>
+                        </li>
+                    </ul>
+                 
+                </section>
+            </header>
+
+            <section class="content-wrapper">
+                <h2 class="section-title">Instructions</h2>
+                    
+                <p style="margin: 0; ">
+                    Modifie et complète le programme <a href="touche_coule.py">touche_coule.py</a> afin de jouer au jeu Touché-coulé décrit plus haut. 
+                    Le programme aura une composante graphique (Tortue) montrant l'état du jeu et une composante interactive en console pour faire l'entrée des coordonnées d'une case.<br>
+                    <strong>Début d'une partie:</strong> 
+                    Le programme répartit aléatoirement les bateaux de chaque joueur dans leur grille respective et dessine les grilles (vides).
+                    Une fois l'initialisation terminée, le programme demande au joueur 1 les coordonnées de la case visée (dans la console). <br>
+                    <strong>Déroulement d'une partie: </strong> 
+                    Les joueurs entrent en alternance une coordonnée jusqu'à ce l'un trouve tous les bateaux de l'autre. 
+                    Si un joueur entre une coordonnée non valide (ne correspond pas à une case), le programme lui demande d'entrer une nouvelle coordonnée.
+                    Si la coordonnée (valide) correspond à un bateau, le programme affiche (en console) <em>Touché!</em>, sinon il affiche <em>Raté!</em>.
+                    Après chaque coordonnée entrée, les grilles (graphique) sont mises à jour, en indiquant les cases ratées et les cases touchées. <br>
+                    <strong>Fin d'une partie: </strong> 
+                    Lorsqu'un des joueurs trouve tous les bateaux de l'autre joueur, la partie est terminée. Le programme indique alors le gagnant de la partie.
+                </p>
+
+                <h3>Illustration du jeu</h3>
+                <ul class="bare-list screenshots" style="display: flex">
+                    <li class="screenshot">
+                        <h4>Début d'une partie</h4>
+                        <img src="../../assets/images/touche_coule_1.png" alt="">
+                        <code>
+<pre>
+TOUCHÉ-COULÉ
+
+Joueur 1:
+</pre>
+                        </code>
+                        
+                    </li>
+                    <li class="screenshot">
+                        <h4>En cours de jeu</h4>
+                        <img src="../../assets/images/touche_coule_2.png" alt="">
+                        <code>
+<pre>
+...
+Joueur 1: D4
+Touché!
+Joueur 2: C2
+Raté!   
+Joueur 1: E5
+Raté!   
+...
+</pre>
+                        </code>
+                    </li>
+                    <li class="screenshot">
+                        <h4>Fin de partie</h4>
+                        <img src="../../assets/images/touche_coule_3.png" alt="">
+                        <code>
+<pre>
+...
+Joueur 1: E1
+Raté!
+Joueur 2: E5
+Touché!   
+
+JOUEUR 2 a gagné!
+</pre>
+</code>
+                    </li>
+                </ul>
+
+                <h3>Spécification</h3>
+                <p>Le programme doit respecter le plus fidèlement possible l'illustration plus haut.</p>
+                <ul style="font-size: 1.1em;">
+                    <li>La grille est (initialement) composéd de carré mesurant 16 pixels de coté et espacée de 4 pixels</li>
+                    <li>Une case non visitée est un carré vide de bordure de couleur noire</li>
+                    <li>Une <em>case ratée</em> a une bordure de 2 pixels de couleur verte et une croix de couleur verte</li>
+                    <li>Une <em>case trouvée</em> est un cercle de rayon 8 pixels, de bordure de 4 pixels et de couleur rouge</li>
+                    <li>La barre séparant les deux grilles a une épaisseur de 10 pixels et est de couleur bleue</li>
+                </ul>
+
+                <p>
+                    Remets le script Python <strong>touche_coule_[<em>matricule</em>].py</strong> contenant tout le programme sur StudiUM.
+                </p>
+            </section>
+        </article>
+    </main>
+
+
+    <footer class="page-footer">
+        <div class="content-wrapper">
+            <p class="footer-maintenance">
+                Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link"
+                    href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
+                Dernière mise à jour: 2023-03-24
+            </p>
+            <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
+        </div>
+    </footer>
+
+    <script src="../dist/app.js?v=001"></script>
+</body>
+
+</html>
