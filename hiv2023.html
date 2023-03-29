@@ -142,6 +142,11 @@
         code i {
             font-style: normal;
         }
+
+        code em {
+            color: #555;
+        }
+
         .key {
             color: blue;
         }
@@ -705,7 +710,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="week current">
+                <li class="week">
                     <h4 class="week-title">Semaine 11 (20 Mars)</h4>
 
                     <ul class="bare-list week-content th">
@@ -718,6 +723,9 @@
                         <li class="week-content-item">
                             <span class="week-content-title">Traitements de fichiers</span>
                         </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Fichiers CSV</span>
+                        </li>
                     </ul>
                     <ul class="bare-list week-content tp">
                         <li class="week-content-item">
@@ -729,12 +737,13 @@
                         <li class="week-content-item">
                             <span class="week-content-title">Démo</span>
                             <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Questions-réponses DM1</li>
                                 <li class="week-content-detail">Fichiers</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li class="week">
+                <li class="week current">
                     <h4 class="week-title">Semaine 12 (27 Mars)</h4>
 
                     <ul class="bare-list week-content th">
@@ -743,6 +752,9 @@
                         </li>
                         <li class="week-content-item">
                             <span class="week-content-title">Traitement d'erreur</span>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Débogage</span>
                         </li>
                     </ul>
 
@@ -779,7 +791,7 @@
                     </ul>
                     <ul class="bare-list week-content ex">
                         <li class="week-content-item">
-                            <span class="week-content-title">Examen intra (20 Avril) 📅</span>
+                            <span class="week-content-title">Examen final (20 Avril) 📅</span>
                         </li>
 
                     </ul>
@@ -1559,6 +1571,125 @@
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Système de fichier</h3>
+                    </div>
+                    
+                    <div class="week-section-block">
+                        <p>
+                            Sur les systèmes d'exploitation modernes (ex: Windows, Mac OS, Linux), les fichiers sont organisés <strong>hiérarchiquement</strong> 
+                            pour les regrouper logiquement. Chaque fichier est assigné une adresse unique (chemin)
+                        </p>
+                        <ul>
+                            <li>
+                                Un <strong>chemin absolu</strong> spécifie l'adresse complète d'un fichier ou répertoire (dossier) dans le système de fichiers<br>
+                                <strong>Exemple:</strong> <code>C:\Users\bob\documents\code\hello.py</code>
+                            </li>
+                            <li>
+                                Un <strong>chemin relatif</strong> spécifie l'adresse d'un fichier ou répertoire au sein d'un répertoire donné (généralement le répertoire courant).
+                                <ul>
+                                    <li>hello.py est valide si le répertoire courant contient un fichier hello.py</li>
+                                    <li>code\hello.py est valide si le répertoire courant contient un dossier code qui contient un fichier hello.py</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Dans un chemin d’accès, on peut se servir du « .. » (deux points) pour désigner le <strong>répertoire parent</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section-block">
+                        <h4>Commandes en console (shell)</h4>
+                        
+                        <div class="tbl-wrap" style="width: 100%;">
+                            <table class="tbl tbl-operator">
+                                <thead class="tbl-section tbl-section--head">
+                                    <tr class="tbl-row">
+                                        <th class="tbl-head">Unix</th>
+                                        <th class="tbl-head">Windows</th>
+                                        <th class="tbl-head">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="tbl-section tbl-section--body">
+                                    <tr class="tbl-row">
+                                        <td class="tbl-cell tbl-datatype-python"><code>pwd</code></td>
+                                        <td class="tbl-cell tbl-datatype-python"><code>cd</code></td>
+                                        <td class="tbl-cell">Afficher le répertoire de travail</td>
+                                    </tr>
+                                    <tr class="tbl-row">
+                                        <td class="tbl-cell tbl-datatype-python"><code>cd <em>path</em></code></td>
+                                        <td class="tbl-cell tbl-datatype-python"><code>cd <em>path</em></code></td>
+                                        <td class="tbl-cell">Changer le répertoire de travail</td>
+                                    </tr>
+                                    <tr class="tbl-row">
+                                        <td class="tbl-cell tbl-datatype-python"><code>ls <em>path</em></code></td>
+                                        <td class="tbl-cell tbl-datatype-python"><code>dir <em>path</em></code></td>
+                                        <td class="tbl-cell">Lister le contenu du répertoire de travail</td>
+                                    </tr>
+                                    <tr class="tbl-row">
+                                        <td class="tbl-cell tbl-datatype-python"><code>rm <em>path</em></code></td>
+                                        <td class="tbl-cell tbl-datatype-python"><code>del <em>path</em></code></td>
+                                        <td class="tbl-cell">Supprimer le fichier à l'adresse <em>path</em></td>
+                                    </tr>
+                                    <tr class="tbl-row">
+                                        <td class="tbl-cell tbl-datatype-python"><code>mkdir <em>path</em></code></td>
+                                        <td class="tbl-cell tbl-datatype-python"><code>mkdir <em>path</em></code></td>
+                                        <td class="tbl-cell">Créer le répertoire vide à l'adresse <em>path</em></td>
+                                    </tr>
+                                    <tr class="tbl-row">
+                                        <td class="tbl-cell tbl-datatype-python"><code>rmdir <em>path</em></code></td>
+                                        <td class="tbl-cell tbl-datatype-python"><code>rmdir <em>path</em></code></td>
+                                        <td class="tbl-cell">Supprimer le répertoire vide à l'adresse <em>path</em></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>
+                            Sur les systèmes d'exploitation modernes (ex: Windows, Mac OS, Linux), les fichiers sont organisés <strong>hiérarchiquement</strong> 
+                            pour les regrouper logiquement. Chaque fichier est assigné une adresse unique (chemin)
+                        </p>
+                        <ul>
+                            <li class="dash">
+                                Un <strong>chemin absolu</strong> spécifie l'adresse complète d'un fichier ou répertoire (dossier) dans le système de fichiers
+                                Exemple: C:\Users\bob\documents\code\hello.py
+                            </li>
+                            <li class="dash">
+                                Un <strong>chemin relatif</strong> spécifie l'adresse d'un fichier ou répertoire au sein d'un répertoire donné (généralement le répertoire courant).
+                                Exemple
+                                <ul>
+                                    <li>hello.py est valide si le répertoire courant contient un fichier hello.py</li>
+                                    <li>code\hello.py est valide si le répertoire courant contient un dossier code qui contient un fichier hello.py</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Dans un chemin d’accès, on peut se servir du nom « .. » (deux points) pour désigner le répertoire parent.
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Système de fichier
+                        </li>
+                        <li class="section-summary-list-item">
+                            Fichiers: Lecture et Écriture
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 12: Exceptions</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
                     <!-- <div class="week-section-header">
                         <h3 class="week-section-title">Système de fichier</h3>
                     </div> -->
@@ -1579,10 +1710,10 @@
                     <h3 class="section-summary-title">Contenu</h3>
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
-                            Système de fichier
+                            Exceptions: Définition, Try..Except
                         </li>
                         <li class="section-summary-list-item">
-                            Fichiers: Lecture et Écriture
+                            Débogage
                         </li>
                     </ul>
                 </div>
@@ -1594,7 +1725,7 @@
         <div class="content-wrapper">
             <p class="footer-maintenance">
                 Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
-                Dernière mise à jour: 2023-03-19
+                Dernière mise à jour: 2023-03-29
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
         </div>
