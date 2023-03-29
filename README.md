@@ -15,8 +15,8 @@ Le cours a pour objectif de vous enseigner les éléments de base de la programm
 - Méthodes
 - Algorithmes simples de recherche et tri
 - Récursivité
-- Programmation agile, débogage et tests
-- Programmation Web
+- Programmation agile, 
+- Débogage et tests
 
 ### Outils
 
