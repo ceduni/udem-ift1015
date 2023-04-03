@@ -18,8 +18,8 @@
             },
             "chocolat": {
                 "items": [
-                    { "id": 8, "nom": "Chocolat chaud (petit)", "prix": 2.30, "special": true },
-                    { "id": 9, "nom": "Chocolat chaud (grand)", "prix": 3.00,  "special": true }
+                    { "id": 8, "nom": "Chocolat chaud (petit)", "prix": 2.30, "disponible": true },
+                    { "id": 9, "nom": "Chocolat chaud (grand)", "prix": 3.00,  "disponible": true }
                 ]
             }
         },
