@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFT1015 | Devoir 2</title>
+    <link rel="shortcut icon" href="./../../favicon.ico" type="image/x-icon">
+    <meta name="desciption" content="Énoncé du devoir 2 (API en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:title" content="IFT1015 (Programmation I) - Hiver 2023">
+    <meta property="og:description" content="Énoncé du devoir 2 (API en Python) du cours IFT1015 (Programmation I) pour la session hiver 2023 (Université de Montréal)">
+    <meta property="og:url" content="https://ceduni.github.io/udem-ift1015/">
+    <meta property="og:site_name" content="IFT1015">
+    <meta property="og:image" content="https://ceduni.github.io/udem-ift1015/assets/images/logo_ift1015.png">
+    
+    <link rel="stylesheet" href="../../dist/style.min.css?v=002">
+    <style>
+        .section-title {
+            margin: 0; margin-top: 6px;
+            font-size: 2em;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .section-title + p {
+            margin-top: 0;
+        }
+
+        .block-title {
+            margin: 0; margin-bottom: 2px;
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #BB2649;
+            color: #2F305E;
+        }
+
+        .helper {
+            min-width: 200px;
+        }
+
+        h3 {
+            margin: 0;
+        }
+        
+        .game-intro {
+            display: flex;
+        }
+        
+        .game-intro-img {
+            display: block;
+            /* height: 100%; */
+            width: 50%;
+            height: auto;
+            /* flex: 1 1; */
+        }
+
+        .game-intro-content {
+            display: flex; flex-direction: column;
+            /* flex-grow: 2; */
+            padding: 12px;
+            color: #fff;
+            background-color: #232425;
+        }
+
+            .game-intro-content h3 {
+                margin: 0; margin-top: 12px;
+                color: #f5f5f5;    
+                font-size: 2em;
+                font-weight: 300;
+                text-transform: uppercase;
+            }
+
+            .game-intro-content h4 {
+                margin-top: 6px; margin-bottom: 2px;
+                color: #f5f5f5;    
+                font-size: 1.8em;
+                font-weight: 500;
+            }
+
+            .game-intro-content p {
+                margin-top: 0;
+                font-size: 1.6em;
+            }
+
+        .categories {
+            display: flex;
+        }
+
+        .category {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: 12px;
+            padding: 12px;
+            background-color: #f0f0f0;
+        }
+
+        .category-name {
+            display: block;
+            width: 100%;
+            display: inline-block;
+            padding: 4px 8px 6px;
+            margin-bottom: 8px;
+        }
+
+        .subcategories {
+            display: flex; flex-direction: row;
+        }
+
+        .subcategory {
+            display: flex;
+            padding: 12px;
+            background-color: #d5d5d5;
+            margin-bottom: 6px;
+        }
+
+        .subcategory-groups {
+            display: flex;
+        }
+
+        .subcategory-group {
+            background-color: #555;
+            padding: 6px;
+            color: #fff;
+            margin-right: 6px;
+        }
+
+        .api-requests {
+            display: flex; flex-direction: column;
+        }
+
+        .api-request {
+            margin-bottom: 12px;
+        }
+
+        .api-request-role {
+            margin: 0; margin-bottom: 4px;
+            font-size: 1.2em;
+            color: royalblue;
+            font-weight: 400;
+        }
+            .api-request-role strong {
+                font-family: Consolas, 'Courier New', Courier, monospace;
+            }
+
+        .api-request-endpoints {
+            display: flex; flex-direction: column;
+            margin-top: 6px;
+        }
+
+        .api-request-endpoint {
+            margin-bottom: 4px;
+        }
+
+        .api-request-endpoint-path {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .page-body p {
+            line-height: 1.5;
+        }
+
+        .page-body caption {
+            font-size: 1.8em;
+            font-weight: 500;
+        }
+
+        .page-body th {
+            padding: 3px 6px;
+        }
+
+        .page-body td {
+            padding: 3px 6px;
+        }
+
+        .content-wrapper {
+            padding: 10px 4%;            
+        }
+               
+        @media only screen and (max-width: 58em) {
+            .content-wrapper {
+                padding: 10px 2%;   
+            }
+        }
+
+        @media only screen and (max-width: 70em) {
+            .game-intro-img {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <section class="teaching">
+            <div class="teaching-header">
+                <div class="teaching-logo">
+                    <div class="teaching-logo-name">
+                        <span class="teaching-logo-code">IFT</span>
+                        <span class="teaching-logo-number">1015</span>
+                    </div>
+                </div>
+                <div class="teaching-info">
+                    <div style="display: flex;">
+                        <p class="teaching-title" title="IFT1015 &ndash; Programmation I">Programmation I</p>
+                        <p class="teaching-term" style="margin-left: 6px;">Hiver 2023</p>
+                    </div>
+                    <ul class="bare-list teaching-topics">
+                        <li class="teaching-topic">Variables et expressions</li>                        
+                        <li class="teaching-topic">Énoncés conditionnels</li>
+                        <li class="teaching-topic">Boucles</li>
+                        <li class="teaching-topic">Abstractions procédurales</li>
+                        <li class="teaching-topic">Structures et tableaux</li>
+                        <li class="teaching-topic">Fichiers</li>
+                        <li class="teaching-topic">Exceptions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="bare-list teaching-links">
+                <li class="teaching-link">
+                    <a class="bare-link teaching-link__link teaching-link__link--plan"
+                        href="https://studium.umontreal.ca/course/view.php?id=231494" target="_blank">
+                        StudiUM
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </header>
+    <main class="page-body">
+        <article>
+            <header class="content-wrapper">
+                <h1 class="page-title">Devoir 2: API Café Udem</h1>
+                <p class="font-size: 2em; line-height: 1.5">
+                    Dans ce travail, tu seras amené à programmer une API simple en Python permettant d'envoyer des requêtes aux cafés étudiants de l'UdeM. <br>
+                    Ceci te permettra de mettre en pratique toutes les notions vues dans le cours.
+                </p>
+            </header>
+            
+            <section class="game-intro">
+                <img class="game-intro-img" src="https://admission.umontreal.ca/fileadmin/_processed_/8/1/csm_Cafe_etudiant_960x720_7865dfbe95.jpg" alt="">
+                <div class="game-intro-content">
+                    <h2 style="margin-bottom: 12px;" class="game-title">Cafés étudiants de l'UdeM</h2>
+
+                    <p>
+                        Pour l'étudiant, l'université est un espace d'étude, mais aussi un lieu de socialisation, découverte et détente.
+                        Les cafés étudiants de l'UdeM sont la destination principale des étudiants pour se décontracter. 
+                        Ils peuvent manger un morceau ou prendre un bon café chaud dans une ambiance chaleureuse.
+                    </p>
+                    <p>
+                        Afin d'améliorer l'infrastructure (informatique) des cafés étudiants de l'UdeM, nous prévoyons créer une API permettant de formuler des requêtes 
+                        facilitant la communication du menu et la gestion des commandes. L'API sera accessible à tout membre de l'UdeM (étudiant, employé, professeur, chercheur...).
+                        Pour utiliser l'API, un utilisateur devra d'abord s'authentifier avec son matricule et son mot de passe. 
+                        Une fois authentifié, il pourra formuler diverses requêtes permises par son rôle (associé à son compte).
+                    </p>
+                    <ul class="bare-list">
+                        <li class="dash">
+                            Role <em>public</em>: Tout membre de l'UdeM est assigné ce rôle par défaut.
+                        </li>
+                        <li class="dash">
+                            Role <em>staff</em>: Les bénévoles et membres travaillant aux cafés. Ce rôle inclut toutes les actions du rôle <em>public</em>.
+                        </li>
+                        <!-- <li class="dash">
+                            Role <em>admin</em>: Les administrateurs du système d'information de l'UdeM. Ce rôle inclut toutes les actions du rôle <em>public</em>.
+                        </li> -->
+                    </ul>
+                </div>
+            </section>
+
+
+            <section class="content-wrapper">
+                <h2>Spécification</h2>
+                <p>
+                    Écris un programme qui permet de: <br>
+                    <strong>Se connecter:</strong>
+                    L'utilisateur entre ses données d'authentification (matricule et mot de passe). Le programme valide les données d'authentification et vérifie que le compte est actif. <br>
+                    Si le matricule n'est pas dans la liste des comptes ou que le mot de passe ne correspond pas au matricule, le programme affiche un message d'erreur. <br>
+                    Si le compte n'est pas actif, le système affiche le message <q>Ce compte n'est plus actif. Veuillez contacter les administrateurs pour modifier le statut du compte</q>. <br>
+                    L'utilisateur a droit à un nombre de tentatives illimité. 
+                    <br>
+                    <strong>Formuler une requête:</strong> 
+                    Une fois connecté, l'utilisateur peut écrire des requêtes (une à la fois) pour récupérer ou envoyer des informations à l'API. <br>
+                    Si une requête est mal formée ou ne correspond à aucune des requêtes listées plus bas, le programme affiche un message d'erreur.
+                    Si les données sont erronées, le programme affiche un message d'erreur.
+                    <br>
+                    <strong>Quitter:</strong>
+                    Pour se déconnecter, l'utilisateur entre le mot clé <code><strong>FIN</strong></code>. Le programme se termine.
+                </p>
+                
+                <h3>Comptes</h3>
+                <p>
+                    Tous les comptes se trouvent dans le fichier <a href="data/comptes.csv" target="_blank">comptes.csv</a> <br>
+                    Les données sont structurées de la façon suivante: <br>
+                    <code style="background-color: #e5e4e2; font-weight: bold; color: #555; padding: 3px 6px;">
+                        Matricule | Nom | Prénom | Mot de passe | Adresse courriel | Role | Actif (1 = Vrai, 0 = Faux)
+                    </code>
+                </p>
+
+                <h3>Commandes</h3>
+                <p>
+                    Toutes les commandes se trouvent dans le fichier <a href="data/commandes.csv" target="_blank">commandes.csv</a> <br>
+                    Les données sont structurées de la façon suivante: <br>
+                    <code style="background-color: #e5e4e2; font-weight: bold; color: #555; padding: 3px 6px;">
+                        Identifiant | Compte (matricule) | Items (liste) | Date | Total
+                    </code>
+                </p>
+                <h3>Menu</h3>
+                <p>
+                    Le menu se trouve dans le fichier <a href="data/menu.json" target="_blank">menu.json</a>
+                    Il est structuré en catégorie contenant soit des catégories, soit des items. <br>
+                    Un item présente les propriétés (attributs) suivantes:
+                    <code>id</code> (identifiant), <code>nom</code> (chaine de caractères), <code>prix</code> (nombre décimal), <code>disponible</code> (booléen) <br>
+                    La figure ci-dessous présente la hiérarchie des catégories du menu. 
+                    <pre><code style="display: inline-block; font-size: 1.4em; background-color: #e5e4e2; font-weight: bold; color: #555; padding: 4px 12px 6px;">+ boisson 
+    - boisson_chaude [cafe, the, chocolat]
+    - boisson_froide
++ sandwich
+    - regulier
+    - wrap
++ fruit
++ viennoiserie
+    - pain
+    - chausson
+    - croissant
++ muffin
+</code>
+</pre>
+                </p>
+
+                <h3>Requêtes</h3>
+                <p></p>
+                <ul class="bare-list api-requests">
+                    <li class="api-request">
+                        <h4 class="api-request-role">Role <strong>public</strong></h4> 
+                        <p class="bare">Les requêtes suivantes sont possibles pour les comptes avec le role <code>public</code></p>
+                        <ul class="bare-list api-request-endpoints"> 
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">GET /api/menu/items</code>: Affiche la liste des items du menu sous forme tabulaire en indiquant uniquement l'id et le nom de l'item
+                            </li>
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">GET /api/menu/{categorie}/items</code>: Affiche la liste des items d'une catégorie donnée sous forme tabulaire en indiquant uniquement l'id et le nom de l'item
+                                <code style="display: flex; line-height: 1.5;  max-width: 1000px; padding: 6px 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                                    GET /api/menu/cafe/items -- Affiche les items de la catégorie 'cafe'<br>
+                                    GET /api/menu/sandwich/items -- Affiche les items de la catégorie 'sandwich'
+                                </code>
+                            </li>
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">GET /api/menu/items/{identifiant}</code>: Affiche toutes les informations d'un item donné: id, nom, prix, disponible
+                                <code style="display: flex;  max-width: 1000px; padding: 6px 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                                    GET /api/menu/items/1 -- Affiche les informations de l'item 1 (identifiant)
+                                </code>
+                            </li>
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">POST /api/commandes [<em>items</em>]</code> Crée un enregistrement (nouvelle ligne) dans le fichier <code>commandes.csv</code> à partir des items spécifiés sous le format <code>[id]x[quantite]</code>.
+                                <code style="display: flex; max-width: 1000px; padding: 6px 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                                    POST /api/commandes 3x1 4x2 -- Crée une commande composée des items 3 et 4 avec une quantité de 1 et 2 respectivement<br>
+                                </code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="api-request">
+                        <h4 class="api-request-role">Role <strong>staff</strong></h4>
+                        <p class="bare">Les requêtes suivantes sont possibles pour les comptes avec le role <code>staff</code></p>
+                        <ul class="bare-list api-request-endpoints">
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">GET /api/commandes</code>: Affiche la liste de toutes les commandes sous forme tabulaire en indiquant uniquement l'id, la date et le total (montant avec le symbole $)
+                            </li>
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">GET /api/commandes/{identifiant}</code>: Affiche les informations suivantes pour une commande donnée: id, liste des items (nom des items et quantité), date, total (montant avec le symbole $).
+                                <code style="display: flex;  max-width: 1000px; padding: 6px 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                                    GET /api/commandes/1 -- Affiche les informations de la commande 1 (identifiant)
+                                </code>
+                            </li>
+                            <li class="api-request-endpoint">
+                                <code class="api-request-endpoint-path">PUT /api/menu/items/{identifiant} [disponible=<em>valeur</em>]</code>: Met à jour la valeur du champ 'disponible' d'un item donné.
+                                <code style="display: flex;  max-width: 1000px; padding: 6px 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                                    PUT /api/menu/items/3 disponible=0 -- Met à jour la valeur du champ 'disponible' de l'item 3
+                                </code>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 class="section-title">Test</h3>
+                <p>
+                    Dans une fonction <code>test()</code>, <strong>écrivez 5 cas de tests pour trois fonctions de votre choix</strong>.
+                </p>
+            </section>
+
+            <section class="content-wrapper">
+                <div>
+                    <h2>Évaluation</h2>
+                        
+                    <p class="bare">
+                        Ce travail compte pour <strong>15% de la note final</strong> du cours. Vous devez faire le travail en <strong>équipes de 2 personnes</strong>. 
+                        Indiquez vos noms clairement dans les commentaires au début de votre code. <br>
+                        Vous devez remettre votre fichier <em>cafe-api.py</em> <strong>au plus tard le dimanche 30 avril</strong>. Vous pouvez soumettre votre code autant de fois que vous voulez jusqu'à la date limite. 
+                        Si vous avez des questions, n'hésitez pas à les poser sur Discord ou directement aux enseignants.
+                    </p>
+                    <ul style="font-size: 1.1em;" class="bare-list">
+                        <li class="check">Exactitude (respect de la spécification) et bon fonctionnement</li>
+                        <li class="check">Élégance et lisibilité du code</li>
+                        <li class="check">Présence de commentaires explicatifs pour chaque fonction et dans le code</li>
+                        <li class="check">Décomposition fonctionnelle</li>
+                        <li class="check">Usage de récursivité</li>
+                        <li class="check">Validation des données et traitement des exceptions</li>
+                        <li class="check">Test unitaires</li>
+                    </ul>
+                    <p class="bare">
+                        Le code doit être complet, avec des commentaires qui indiquent le nom du fichier, l'auteur (ton nom), la date de création, une brève description de l'utilité du programme. <br>
+                        <strong>Le code doit être exécutable dans un environnement supportant Python 3.</strong> 
+                        Il doit aussi y avoir des commentaires qui expliquent à quoi correspondent chaque variable et constante, et le fonctionnement du programme (seulement si c'est utile!)
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="section-title">Bonus</h3>
+                        
+                    <p>
+                        Les fonctionnalités (indépendantes) suivantes peuvent être programmés en bonus. <br>
+                        <strong>Les points bonus excédentaires seront ajoutés à la note des exercices notés.</strong>  
+                    </p>
+                    <ol style="margin: 0; padding-left: 18px;">
+                        <li>Ajouter le role <code>admin</code>. Les requêtes suivantes peuvent être formulées pour le role <code>admin</code></strong> (<strong>5%</strong>).
+                            <ul class="bare-list api-request-endpoints">
+                                <li class="api-request-endpoint">
+                                    <code class="api-request-endpoint-path">GET /api/comptes</code>: Affiche la liste des comptes
+                                </li>
+                                <li class="api-request-endpoint">
+                                    <code class="api-request-endpoint-path">GET /api/comptes/{matricule}</code>: Affiche les informations d'un compte donné
+                                </li>
+                                <li class="api-request-endpoint">
+                                    <code class="api-request-endpoint-path">PUT /api/comptes/{matricule} [actif]</code>: Met à jour la valeur du champ 'actif' d'un compte donné 
+                                    <!-- <code style="display: flex; width: 800px; padding: 6px 12px; border-radius: 3px; background-color: #232425; color: #fefefe;">
+                                        PUT /api/comptes/20236100 actif=0 -- Met à jour la valeur du champ 'actif' du compte 20236100
+                                    </code> -->
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Supporter le paramétrage du programme pour la connexion, permettant de démarrer le programme avec un utilisateur connecté.</strong> (<strong>5%</strong>).</li>
+                    </ol>
+                </div>
+            </section>
+        </article>
+    </main>
+    
+    
+    <footer class="page-footer">
+        <div class="content-wrapper">
+            <p class="footer-maintenance">
+                Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
+                Dernière mise à jour: 2023-04-01
+            </p>
+            <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
+        </div>
+    </footer>
+
+    <script src="../../dist/app.js?v=002"></script>
+</body>
+</html>

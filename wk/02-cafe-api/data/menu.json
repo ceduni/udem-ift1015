@@ -1,0 +1,94 @@
+{
+    "boisson": {
+        "boisson_chaude": {
+            "cafe": {
+                "items": [
+                    { "id": 1, "nom": "Café filtre (petit)", "prix": 2.20, "disponible": true },
+                    { "id": 2, "nom": "Café filtre (grand)", "prix": 2.50, "disponible": true },
+                    { "id": 3, "nom": "Latte", "prix": 2.60, "disponible": true },
+                    { "id": 4, "nom": "Capuccino", "prix": 3.05, "disponible": false },
+                    { "id": 5, "nom": "Espresso", "prix": 3.00, "disponible": true }
+                ]
+            },
+            "the": {
+                "items": [
+                    { "id": 6, "nom": "Thé noir", "prix": 3.00, "disponible": true },
+                    { "id": 7, "nom": "Thé vert",  "prix": 3.00, "disponible": true }
+                ]
+            },
+            "chocolat": {
+                "items": [
+                    { "id": 8, "nom": "Chocolat chaud (petit)", "prix": 2.30, "special": true },
+                    { "id": 9, "nom": "Chocolat chaud (grand)", "prix": 3.00,  "special": true }
+                ]
+            }
+        },
+        "boisson_froide": {
+            "items": [
+                { "id": 10, "nom": "Lait au chocolat", "prix": 2.50, "disponible": true },
+                { "id": 11, "nom": "Limonade", "prix": 2.10, "disponible": false },
+                { "id": 12, "nom": "Jus de pomme",  "prix": 2.20, "disponible": true },
+                { "id": 13, "nom": "Jus d'orange", "prix": 2.00, "disponible": true }
+            ]
+        }
+    },
+    "sandwich": {
+        "regulier": {
+            "items": [
+                { "id": 14, "nom": "Sandwich au thon", "prix": 5.10, "disponible": true },
+                { "id": 15, "nom": "Sandwich au poulet", "prix": 5.30, "disponible": true },
+                { "id": 16, "nom": "Sandwich à la dinde", "prix": 5.30, "disponible": true },
+                { "id": 17, "nom": "Sandwich aux oeufs", "prix": 4.50, "disponible": true }
+            ]  
+        },
+        "wrap": {
+            "items": [
+                { "id": 18, "nom": "Wrap fraicheur", "prix": 5.20, "disponible": true },
+                { "id": 19, "nom": "Wrap au poulet", "prix": 5.20, "disponible": true }
+            ]
+        }
+    },
+    "fruit": {
+        "items": [
+            { "id": 20, "nom": "Banane", "prix": 1.00, "disponible": true },
+            { "id": 21, "nom": "Pomme", "prix": 1.40, "disponible": true },
+            { "id": 22, "nom": "Bol de raisins", "prix": 1.40, "disponible": false },
+            { "id": 23, "nom": "Bol de bleuets", "prix": 2.40, "disponible": true },
+            { "id": 24, "nom": "Bol de fraises", "prix": 2.70, "disponible": false },
+            { "id": 25, "nom": "Fruits frais tranchés", "prix": 3.00, "disponible": true }
+        ]
+    },
+    "viennoiserie": {
+        "pain": {
+            "items": [
+                { "id": 26, "nom": "Pain aux raisins", "prix": 1.60, "disponible": true },
+                { "id": 27, "nom": "Pain au chocolat", "prix": 2.00, "disponible": true },
+                { "id": 28, "nom": "Pain au lait", "prix": 1.50, "disponible": true }
+            ]
+        },
+        "chausson": {
+            "items": [
+                { "id": 29, "nom": "Chausson aux pommes", "prix": 2.80, "disponible": true },
+                { "id": 30, "nom": "Chausson aux fraises", "prix": 2.80, "disponible": true }
+            ]
+        },
+        "croissant": {
+            "items": [
+                { "id": 31, "nom": "Croissant nature", "prix": 2.50, "disponible": true },
+                { "id": 32, "nom": "Croissant au beurre", "prix": 2.80, "disponible": false },
+                { "id": 33, "nom": "Croissant au fromage", "prix": 3.00, "disponible": true },
+                { "id": 34, "nom": "Croissant aux amandes", "prix": 3.10, "disponible": true }
+            ]
+        }
+    },
+    "muffin": {
+        "items": [
+            { "id": 35, "nom": "Muffin « red velvet »", "prix": 3.00, "disponible": true },
+            { "id": 36, "nom": "Muffin aux bleuets", "prix": 2.60, "disponible": true  },
+            { "id": 37, "nom": "Muffin aux fruits des champs", "prix": 2.80, "disponible": true  },
+            { "id": 38, "nom": "Muffin aux pepites de chocolat", "prix": 3.00, "disponible": true  },
+            { "id": 39, "nom": "Muffin au double chocolat", "prix": 3.10, "disponible": true },
+            { "id": 40, "nom": "Muffin à l'avoine", "prix": 2.80, "disponible": true }
+        ]
+    }
+}
