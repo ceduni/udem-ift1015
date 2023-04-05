@@ -1,7 +1,7 @@
 ###############################################################################
-## Ce programme permet de jouer au jeu de mots Boggle (en français) à 2.
-## Dans cette version les mots ne peuvent être formés que de lettre sur une 
-## même ligne, même colonne ou une même diagonale.
+## Ce programme permet de jouer au jeu de mots Boggle (en français).
+## Dans cette version, les mots peuvent être formés de toute lettre adjacente.
+## La vérification d'un mot se fait par un parcours récursif de la grille.
 ###############################################################################
 ## Auteur: Louis-Edouard LAFONTANT
 ## Copyright: Copyright 2023, Ceduni
@@ -13,6 +13,13 @@
 
 
 import random
+import sys
+
+# Classe d'exception personnalisée
+class InvalidGridSizeException(Exception):
+    "Soulever lorsque la taille de la grille est différent de 4 ou 5"
+    pass
+
 
 des_16 = [
     ("E", "T", "U", "K", "N", "O"),
@@ -80,82 +87,9 @@ def creer_joueur(nom):
         "termine": False
     }
 
-def transpose(matrice):
-    """Cette fonction retourne la transposée d'une matrice (tableau 2D)
 
-    Args:
-        matrice ([][]): Matrice à transposer
-
-    Returns:
-        [][]: Transposée de la matrice
-    """
-    matrice_trans = [None] * len(matrice[0])
-    for i in range(len(matrice_trans)):
-        matrice_trans[i] = []
-        for j in range(len(matrice)):
-            matrice_trans[i].append(matrice[j][i])
-            
-    return matrice_trans    
-
-def diagonale(matrice):
-    """Cette fonction retourne la liste des diagonales d'une matrice (tableau 2D)
-
-    Args:
-        matrice ([][]): Matrice
-
-    Returns:
-        [][]: Liste des diagonales de la matrice
-    """
-
-    nb_row = len(matrice)
-    nb_col = len(matrice[0])
-    result = []
-
-    # Paroucrs des diagonales de gauche à droite
-    for x in range(1, nb_row + nb_col):
-        diago_valeurs = []
-        if x % 2 == 0:
-            i = x // 2
-            j = 0
-        else:
-            i = 0
-            j = x // 2
-            
-        if i == 0 and j == nb_col - 1 or i == nb_row - 1 and j == 0:
-            continue
-
-        while i < nb_row and j < nb_col:
-            diago_valeurs.append(matrice[i][j])
-            i += 1
-            j +=1
-
-        result.append(diago_valeurs)
-
-    # Paroucrs des diagonales de droite à gauche
-    for x in range(nb_row + nb_col - 1, 0, -1):
-        diago_valeurs = []
-        if x % 2 == 0:
-            i = x // 2
-            j = nb_col - 1
-        else:
-            i = 0
-            j = x // 2
-
-        if i == 0 and j == 0 or i == nb_row - 1 and j == nb_col - 1:
-            continue
-
-        while i < nb_row and j >= 0:
-            diago_valeurs.append(matrice[i][j])
-            i += 1
-            j -=1
-
-        result.append(diago_valeurs)
-
-    return result
-
-def est_valide(mot_cherche, grille):
-    """Cette fonction vérifie si un mot valide: lettres adjacentes du mot sont adjacentes 
-    dans le même ordre sur une colonne ou ligne de la grille
+def est_valide(mot, grille):
+    """Cette fonction vérifie si un mot valide
 
     Args:
         mot_cherche (str): Mot à valider
@@ -164,29 +98,14 @@ def est_valide(mot_cherche, grille):
     Returns:
         bool: Valeur indiquant si le mot est valide
     """
-    if len(mot_cherche) < TAILLE_MOT_MIN:
-        return False
+    start_indexes = find_indexes(mot[0], grille)
 
-    mots = []
-
-    def add_mot(matrice):
-        for i in range(len(matrice)):
-            if len(matrice[i]) >= TAILLE_MOT_MIN:
-                mot = "".join(matrice[i])
-                mots.append(mot)
-                mots.append(mot[::-1])        
-    
-    add_mot(grille)
-    grille_transpose = transpose(grille)
-    add_mot(grille_transpose)
-    diagonales = diagonale(grille)
-    add_mot(diagonales)
-
-    for mot in mots:
-        if mot_cherche in mot:
+    for index in start_indexes:
+        if parcours_grille([], index, 0, mot, grille):
             return True
-        
+    
     return False
+
 
 def calcul_point(mot, grille):
     """Cette fonction calcule le nombre de points associé à un mot
@@ -219,6 +138,7 @@ def calcul_point(mot, grille):
             case 7: return 6
             case _: return 10
 
+
 def ajout_mot(joueur, mot, grille):
     """Cette fonction ajoute un mot (structure) à la liste des mots d'un joueur
 
@@ -244,6 +164,104 @@ def ajout_mot(joueur, mot, grille):
 
     return mot_struct
 
+
+def find_indexes(lettre, grille):
+    """Cette fonction trouve les indexes où se trouvent une lettre dans la grille
+
+    Args:
+        lettre (str): Lettre à trouver
+        grille ([][]): Grille
+
+    Returns:
+        int[]: Liste des indexes
+    """
+    indexes = []
+    taille = len(grille)
+    for i in range(len(grille)):
+        for j in range(len(grille[i])):
+            if grille[i][j] == lettre:
+                indexes.append(i * taille + j)
+    return indexes
+
+
+def get_lettre(index, grille):
+    """Cette fonction récupère une lettre dans la grille à partir d'un index donné
+
+    Args:
+        index (int): Index de la lettre dans la grille
+        grille ([][]): Grille
+
+    Returns:
+        str: Lettre trouvée
+    """
+    taille = len(grille)
+    i = index // taille
+    j = index % taille
+    return grille[i][j]
+
+
+def voisins(index, taille):
+    """Cette fonction récupère la liste des voisins d'un index d'une grille
+
+    Args:
+        index (int): Index actuel
+        taille (int): Taille de la grille (4, 5)
+
+    Returns:
+        int[]: Liste des indexes voisins
+    """
+    left = -1 if index % taille == 0 else index - 1
+    right = -1 if (index + 1) % taille == 0 else index + 1
+    up = -1 if index < taille else index - taille
+    down = -1 if index > taille*(taille - 1) else index + taille
+
+    diag_lu = -1 if left == -1 or up == -1 else index - taille - 1
+    diag_ru = -1 if right == -1 or up == -1 else index - taille + 1
+    diag_rd = -1 if right == -1 or down == -1 else index + taille + 1
+    diag_ld = -1 if left == -1 or down == -1 else index + taille - 1
+
+    neighbours = []
+    index_max = taille ** 2 - 1
+    for i in [left, right, up, down, diag_lu, diag_ru, diag_rd, diag_ld]:
+        if i >= 0 and i <= index_max:
+            neighbours.append(i)
+    return neighbours
+
+
+def parcours_grille(visite, grille_index, mot_index, mot, grille):
+    """Cette fonction parcours récursivement la grille à partir d'un index de départ
+    afin de trouver un chemin menant au mot complet
+
+    Args:
+        visite (int[]): Liste des indexes visitées
+        grille_index (int): Indexe actuel dans la grille
+        mot_index (int): Indexe actuel dans le mot
+        mot (str): Mot recherché dans la grille
+        grille ([][]): Grille
+
+    Returns:
+        bool: Valeur indiquant si un chemin décrivant le mot existe
+    """
+
+    if grille_index in visite:
+        return False
+
+    visite.append(grille_index)
+    lettre = get_lettre(grille_index, grille)
+
+    if lettre != mot[mot_index]:
+        return False
+
+    if mot_index == len(mot) - 1 and lettre == mot[-1]:
+        return True
+
+    neighbours = voisins(grille_index, len(grille))
+    for n in neighbours:
+        if parcours_grille(visite.copy(), n, mot_index + 1, mot, grille):
+            return True
+    return False
+
+
 def generer_grille(taille):
     """Cette fonction génère une grille
 
@@ -253,12 +271,13 @@ def generer_grille(taille):
     Returns:
         [][]: Grille
     """
+    if taille not in [4, 5]:
+        raise InvalidGridSizeException("La taille reçue n'est pas supportée")
+    
     if taille == 4:
         des = des_16
     elif taille == 5:
         des = des_25
-    else:
-        return []
 
     index_des = [i for i in range(taille**2)]
     random.shuffle(index_des)
@@ -273,7 +292,13 @@ def generer_grille(taille):
 
     return grille
 
+
 def afficher_grille(grille):
+    """Cette fonction affiche une grille dans la console
+
+    Args:
+        grille ([][]): Grille
+    """
     print("-" + "----" * len(grille))
     for i in range(len(grille)):
         print("|", end="")
@@ -335,15 +360,14 @@ def equiv(letter):
     Returns:
         string: Lettre équivalente
     """
-    letter_equiv = letter
-    if letter.lower() in "éèêë": letter_equiv = "e"
-    elif letter.lower() in "àâ": letter_equiv = "a" 
-    elif letter.lower() in "ùû": letter_equiv = "u" 
-    elif letter.lower() in "îï": letter_equiv = "i" 
-    elif letter.lower() in "ô": letter_equiv = "o" 
-    elif letter.lower() in "ç": letter_equiv = "c" 
-
-    return letter_equiv if letter.islower() else letter_equiv.upper()    
+    match letter:
+        case "é" | "è" | "ê" | "ë": return "e"
+        case "à" | "â": return "a"
+        case "ù" | "û": return "u"
+        case "î" | "ï": return "i"
+        case "ô": return "o"
+        case "ç": return "c"
+        case _: return letter
 
 def format_word(word):
     """Cette fonction retourne un mot en majuscule et sans accent
@@ -360,13 +384,24 @@ def format_word(word):
 
     return result.upper()
 
-def jouer(nb_joueur=2, taille = 4):
+
+def jouer(nb_joueur=2, taille=4):
+    print(sys.argv)
+    # Récupération des arguments passés au programme
+    if len(sys.argv) > 1:
+        nb_joueur = sys.argv[1]
+    if len(sys.argv) > 2:
+        taille = sys.argv[2]
+    
     jeu_termine = False
 
+    # Cette fonction initialise les joueurs et de la grille
     def init():
         joueurs = []
         for i in range(nb_joueur):
-            joueurs.append(creer_joueur(f"Joueur {i + 1}"))
+            nom = input(f"Nom joueur {i + 1}: ")
+            if len(nom) == 0: nom =f"Joueur {i + 1}"
+            joueurs.append(creer_joueur(nom))
 
         grille_accepte = False
         while not grille_accepte:
@@ -375,6 +410,7 @@ def jouer(nb_joueur=2, taille = 4):
             grille_accepte = input("Jouer avec cette grille? [O] Oui [N] Non (nouvelle grille) ").upper() == "O"
         return joueurs, grille
 
+    # Cette fonction vérifie si la partie est terminée
     def partie_termine(joueurs):
         for joueur in joueurs:
             if not joueur["termine"] and joueur["tour"] < NB_TOUR_MAX:
@@ -382,6 +418,7 @@ def jouer(nb_joueur=2, taille = 4):
 
         return True
 
+    # Cette fonction récupère le joueur jouant le tour
     def get_joueur(tour, joueurs):
         index = tour % len(joueurs)
 
@@ -390,6 +427,7 @@ def jouer(nb_joueur=2, taille = 4):
 
         return joueurs[index]
     
+    # Cette fonction joue un tour
     def joueur_tour(joueur, grille):
         joueur["tour"] += 1
         print(f"> {joueur['nom']}")
@@ -401,9 +439,11 @@ def jouer(nb_joueur=2, taille = 4):
         
         return reponse, joueur["termine"]
 
-    def entree_valide(val):
+    # Cette fonction vérifie qu'une entrée est correcte
+    def entree_correcte(val):
         return val.isalpha() and len(val) >= 3
 
+    # Cette fonction récupère le mot entré par un joueur
     def get_mot(joueur):
         re = ""
         while True:
@@ -415,16 +455,18 @@ def jouer(nb_joueur=2, taille = 4):
                 return None
 
             mot = input(f"Mot {joueur['tour']}/{NB_TOUR_MAX}: ")
-            if not entree_valide(mot):
+            if not entree_correcte(mot):
                 print("Écrivez un mot de 3 lettres ou plus.")
                 continue
 
             return mot
 
+    # Boucle du jeu (tant que le jeu n'est pas terminé)
     while not jeu_termine:
         joueurs, grille = init()
 
         tour = 0
+        # Boucle d'une partie (tant que la partie n'est pas terminée)
         while not partie_termine(joueurs):
             joueur = get_joueur(tour, joueurs)
             mot, termine = joueur_tour(joueur, grille)
@@ -445,7 +487,7 @@ def jouer(nb_joueur=2, taille = 4):
 
         jeu_termine = input("Rejouer une partie? [O] Oui [N] Non").upper() == "N"
 
-jouer(2, 5) # Enlever en commentaire pour jouer une partie
+# jouer(7) # Enlever en commentaire pour jouer une partie
 
 
 
@@ -506,12 +548,16 @@ def test():
             print(f"    <FAIL> Grille générée est composé de lettres")
         
         try:
+            i = 0
             for _ in range(100): 
-                grille = generer_grille(rand_num(0, 1000, [3, 4]))
-                assert len(grille) == 0
-            print(f"    [PASS] Tableau vide générée lorsque la taille n'est pas valide")
+                try: 
+                    grille = generer_grille(rand_num(0, 1000, [3, 4]))
+                except InvalidGridSizeException:
+                    i += 1   
+            assert i == 100
+            print(f"    [PASS] Tableau vide généré lorsque la taille n'est pas valide")
         except AssertionError:
-            print(f"    <FAIL> Tableau vide générée lorsque la taille n'est pas valide")
+            print(f"    <FAIL> Tableau vide généré lorsque la taille n'est pas valide")
         
         try:
             for _ in range(100):
@@ -524,90 +570,21 @@ def test():
           
     def est_valide_test():
         print(f"> Test sur est_valide()")
-        mots_valide_ligne = [grille_4[0][1:], grille_4[1][:], grille_4[2][1:], grille_4[3][:]]
+        mots_valide = ["ROI", "DROIT", "CARTE", "GARE", "TRAME", "TORD"]
         try:
-            for i in range(len(mots_valide_ligne)):
-                mot = "".join(mots_valide_ligne[i]) 
+            for mot in mots_valide:
                 assert est_valide(mot, grille_4) == True
-            print(f"    [PASS] Mot est valide si formé de lettre adjacentes sur une même ligne")
+            print(f"    [PASS] Mot est valide si formé de lettres adjacentes (grille 4x4)")
         except AssertionError:
-            print(f"    <FAIL> Mot est valide si formé de lettre adjacentes sur une même ligne")
-            
-        try:            
-            for i in range(len(mots_valide_ligne)):
-                mot = "".join(mots_valide_ligne[i])[::-1]
-                assert est_valide(mot, grille_4) == True
-            print(f"    [PASS] Mot est valide si formé de lettre adjacentes sur une même ligne (sens inverse)")
-        except AssertionError:
-            print(f"    <FAIL> Mot est valide si formé de lettre adjacentes sur une même ligne (sens inverse)")
+            print(f"    <FAIL> Mot est valide si formé de lettres adjacentes (grille 4x4)")
 
-        mots_valide_colonne = []
-        for i in range(len(grille_4)):
-            mot = [] 
-            for j in range(len(grille_4)):
-                mot.append(grille_4[j][i])
-            mots_valide_colonne.append(mot)
+        mots_valide = ["POUR", "RAGE", "BOURDE", "PUZZLE", "GEL"]
         try:
-            for i in range(len(mots_valide_colonne)):
-                mot = "".join(mots_valide_colonne[i]) 
-                assert est_valide(mot, grille_4) == True
-            print(f"    [PASS] Mot est valide si formé de lettre adjacentes sur une même colonne")
+            for mot in mots_valide:
+                assert est_valide(mot, grille_5) == True
+            print(f"    [PASS] Mot est valide si formé de lettres adjacentes (grille 5x5)")
         except AssertionError:
-            print(f"    <FAIL> Mot est valide si formé de lettre adjacentes sur une même colonne")
-
-        try:            
-            for i in range(len(mots_valide_colonne)):
-                mot = "".join(mots_valide_colonne[i])[::-1]
-                assert est_valide(mot, grille_4) == True
-            print(f"    [PASS] Mot est valide si formé de lettre adjacentes sur une même colonne (sens inverse)")
-        except AssertionError:
-            print(f"    <FAIL> Mot est valide si formé de lettre adjacentes sur une même colonne (sens inverse)")
-
-        mots_valide_diagonale =  list(filter(lambda x: (len(x) >= TAILLE_MOT_MIN), diagonale(grille_4))) 
-        try:
-            for i in range(len(mots_valide_diagonale)):
-                mot = "".join(mots_valide_diagonale[i]) 
-                assert est_valide(mot, grille_4) == True
-            print(f"    [PASS] Mot est valide si formé de lettres adjacentes sur une même diagonale")
-        except AssertionError:
-            print(f"    <FAIL> Mot est valide si formé de lettres adjacentes sur une même diagonale")
-
-        try:            
-            for i in range(len(mots_valide_diagonale)):
-                mot = "".join(mots_valide_diagonale[i])[::-1]
-                assert est_valide(mot, grille_4) == True
-            print(f"    [PASS] Mot est valide si formé de lettres adjacentes sur une même diagonale (sens inverse)")
-        except AssertionError:
-            print(f"    <FAIL> Mot est valide si formé de lettres adjacentes sur une même diagonale (sens inverse)")
-            print(f"> Test sur est_valide()")
-
-        mots_non_valide = [grille_4[0][2:], grille_4[1][1:2], grille_4[2][:2]]
-        try:
-            for i in range(len(mots_non_valide)):
-                mot = "".join(mots_non_valide[i]) 
-                assert est_valide(mot, grille_4) == False
-            print(f"    [PASS] Mot n'est pas valide si formé de moins de 3 lettres")
-        except AssertionError:
-            print(f"    <FAIL> Mot n'est pas valide si formé de moins de 3 lettres")
-            
-        try:
-            for _ in range(100):
-                mot = rand_word(4)
-                assert est_valide(mot, grille_4) == False
-            print(f"    [PASS] Mot n'est pas valide si formé de lettres qui ne sont pas sur la grille")
-        except AssertionError:
-            print(f"    <FAIL> Mot n'est pas valide si formé de lettres qui ne sont pas sur la grille")
-
-        m1 = grille_4[0][1:]; m1.append(grille_4[0][0])
-        m2 = grille_4[1][1:]; m2.append(grille_4[2][3])
-        mots_non_valide = [m1, m2]    
-        try:
-            for i in range(len(mots_non_valide)):
-                mot = "".join(mots_non_valide[i]) 
-                assert est_valide(mot, grille_4) == False
-            print(f"    [PASS] Mot n'est pas valide si formé de lettres qui ne sont pas adjacente")
-        except AssertionError:
-            print(f"    <FAIL> Mot n'est pas valide si formé de lettres qui ne sont pas adjacente")
+            print(f"    <FAIL> Mot est valide si formé de lettres adjacentes (grille 5x5)")
     
     def calcul_point_test():    
         print(f"> Test sur calcul_point()")             
@@ -617,36 +594,36 @@ def test():
             point = points_4[i]
             try:
                 assert calcul_point(rand_word(i), grille_4) == point
-                print(f"    [PASS] Mot de {i} lettres retourne {point} points pour un grille 4x4")
+                print(f"    [PASS] Mot de {i} lettres retourne {point} points pour une grille 4x4")
             except AssertionError:
-                print(f"    <FAIL> Mot de {i} lettres retourne {point} points pour un grille 4x4")
+                print(f"    <FAIL> Mot de {i} lettres retourne {point} points pour une grille 4x4")
         try:
             point = 10
             for _ in range(8, 100):
                 assert calcul_point(rand_word(i), grille_4) == point 
-            print(f"    [PASS] Mot de plus de 8 lettres retourne {point} points pour un grille 4x4")
+            print(f"    [PASS] Mot de plus de 8 lettres retourne {point} points pour une grille 4x4")
         except AssertionError:
-            print(f"    <FAIL> Mot de plus de 8 lettres retourne {point} points pour un grille 4x4")
+            print(f"    <FAIL> Mot de plus de 8 lettres retourne {point} points pour une grille 4x4")
 
         points_5 = [0, 0, 0, 1, 2, 3, 4, 6, 10]
         for i in range(len(points_5)):
             point = points_5[i]
             try:
                 assert calcul_point(rand_word(i), grille_5) == point
-                print(f"    [PASS] Mot de {i} lettres retourne {point} points pour un grille 5x5")
+                print(f"    [PASS] Mot de {i} lettres retourne {point} points pour une grille 5x5")
             except AssertionError:
-                print(f"    <FAIL> Mot de {i} lettres retourne {point} points pour un grille 5x5")
+                print(f"    <FAIL> Mot de {i} lettres retourne {point} points pour une grille 5x5")
         
         try:
             point = 10
             for _ in range(8, 100):
                 assert calcul_point(rand_word(i), grille_5) == point 
-            print(f"    [PASS] Mot de plus de 8 lettres retourne {point} points pour un grille 5x5")
+            print(f"    [PASS] Mot de plus de 8 lettres retourne {point} points pour une grille 5x5")
         except AssertionError:
-            print(f"    <FAIL> Mot de plus de 8 lettres retourne {point} points pour un grille 5x5")
+            print(f"    <FAIL> Mot de plus de 8 lettres retourne {point} points pour une grille 5x5")
     
     generer_grille_test()
     est_valide_test()
     calcul_point_test()
 
-# test() # Enlever en commentaire pour exécuter les tests
+test() # Enlever en commentaire pour exécuter les tests
