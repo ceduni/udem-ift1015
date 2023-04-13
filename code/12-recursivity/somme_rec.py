@@ -9,7 +9,6 @@
 ## Email: louis.edouard.lafontant@umontreal.ca
 ###############################################################################
 
-
 def somme(nombres, result):
     if len(nombres) == 0:
         return result
@@ -18,3 +17,14 @@ def somme(nombres, result):
     return somme(nombres, result + num)
 
 print(somme([1, 2, 3, 4], 0))
+
+# Alternative sans accumulateur
+
+def somme2(nombres):
+    if len(nombres) == 0:
+        return 0
+
+    num = nombres.pop()
+    return num + somme2(nombres)
+
+print(somme2([1, 2, 3, 4]))

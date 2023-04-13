@@ -810,19 +810,44 @@
                         </li>
                     </ul>
                 </li>
-                <li class="week current">
+                <li class="week">
                     <h4 class="week-title">Semaine 13 (3 Avril)</h4>
 
                     <ul class="bare-list week-content th">
                         <li class="week-content-item">
                             <span class="week-content-title">Récursivité</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Définition</li>
+                                <li class="week-content-detail">Cas de base</li>
+                                <li class="week-content-detail">Cas récursif</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Exemples</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Boggle</li>
+                                <li class="week-content-detail">Arbre</li>
+                                <li class="week-content-detail">Somme</li>
+                                <li class="week-content-detail">Fichier</li>
+                            </ul>
                         </li>
                     </ul>
                     <ul class="bare-list week-content tp">
-
+                        <li class="week-content-item">
+                            <span class="week-content-title">Labo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Générateur de page web</li>
+                            </ul>
+                        </li>
+                        <li class="week-content-item">
+                            <span class="week-content-title">Démo</span>
+                            <ul class="bare-list week-content-details">
+                                <li class="week-content-detail">Révision final</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-                <li class="week">
+                <li class="week current">
                     <h4 class="week-title">Semaine 14 (10 Avril)</h4>
 
                     <ul class="bare-list week-content th">
@@ -834,9 +859,6 @@
                         </li>
                     </ul>
 
-                    <ul class="bare-list week-content tp">
-
-                    </ul>
                     <ul class="bare-list week-content ex">
                         <li class="week-content-item">
                             <span class="week-content-title">Examen final (20 Avril) 📅</span>
@@ -1717,19 +1739,66 @@
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
-                    <!-- <div class="week-section-header">
-                        <h3 class="week-section-title">Système de fichier</h3>
-                    </div> -->
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Erreur</h3>
+                    </div>
                     
                     <div class="week-section-block">
-                        <!-- <h4 class="block-title">Méthodes prédéfinies</h4>
+                        <h4 class="block-title">Méthodes prédéfinies</h4>
                         <p>
-                            Les textes (chaine de caractères) ont des caractéristiques similaires aux tableaux car les deux représentent des séquences. <br>
-                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte <br>
-                            <code>upper()</code>, <code>lower()</code>, <code>isalpha()</code>, <code>isdecimal()</code> <br>
-                            <code>strip()</code>, <code>split()</code>, <code>replace()</code> <br>
-                            <code>startswith()</code>, <code>endswith()</code>, <code>find()</code>
-                        </p> -->
+                            Nous ne pouvons pas éviter les "vrais" accidents ou les erreurs, mais nous pouvons créer un chemin
+                            alternatif permettant de rattraper l'erreur ou gérer les dégats causés par l'accident. Il n'est
+                            pas nécessaire de prévoir tous les scénarios possibles, mais il faut être prêt à intercepter tout imprévu.
+                        </p>
+                        
+                        <h4 class="block-title">Faute, Erreur, Défaut</h4>
+                        <p>
+                            La plupart des gens réfèrent à tout comportement indésirable comme <em>bug</em>. 
+                            Cependant, ceci ne caractérise pas suffisemment le type de problème. Nous pouvons distinguer une erreur, d'une faute ou défaut, d'une défaillance.
+                        </p>
+                        <ul>
+                            <li><strong>Erreur (error):</strong> Provient d'une mauvaise implémentation (coté programmeur)</li>
+                            <li><strong>Faute ou défaut (fault, defect):</strong> État interne invalide d'un programme après avoir rencontré une erreur</li>
+                            <li><strong>Défaillance (failure):</strong> Manifestation externe d'une faute. Elle est observable par l'utilisateur</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Gestion des exceptions</h4>
+                        <p>
+                            La plupart des langages de programmation de haut niveau offrent un mécanisme facilitant le traitement des exceptions
+                            (ex: Division par zéro, Index en dehors des limites d'un tableau, Mauvais type de données, Référence à une variable nulle).
+                        </p>
+                        <p>
+                            Lors de l'exécution d'une série d'opérations, il n'est pas toujours pratique ou possible de signaler un problème au reste du programme.
+                            Afin d'interrompre le flux d'exécution, la plupart des langages permettent de <strong>soulever une exception</strong>, fournissant des détails facilitant la résolution.
+                            En Python, l'énoncé <code>raise</code>  est utilisé pour soulever une exception (ex: <code>raise Exception("Erreur de calcul")</code> ).
+                        </p>
+                        <p>
+                            Si une opération ou un appel de fonction risque de causer une erreur ou soulever une exception, il faut encapsuler l'instruction dans
+                            un contexte permettant de traiter l'erreur ou l'exception.
+                            En Python, l’instruction <code>try..except</code> définit un contexte permettant de répondre aux exceptions soulevées
+
+                        </p>
+                    </div>
+
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Débogueur</h3>
+                    </div>
+                    
+                    <div class="week-section-block">
+                        <h4 class="block-title">Débogage</h4>
+                        <p>
+                            Le débogage regroupe les activités servant à trouver et réduire les défauts d'un programme.
+                        </p >
+                        
+                        <h4 class="block-title">Méthodes de débogage</h4>
+                        <ul>
+                            <li><strong>Assertions:</strong> Vérifier une condition lors de l'exécution et mettre fin au programme en cas d'échec</li>
+                            <li><strong>Exceptions:</strong> Détecter une erreur logique ou un cas extrême; Lancer une exception quand une erreur se produit; Traiter une exception pour corriger l'erreur</li>
+                            <li><strong>Logging:</strong> Afficher ou enregistrer l'information (dans la console, dans un fichier...) sur l'état du programme durant l'exécution</li>
+                            <li><strong>Débogueur:</strong> Outil permettant une exécution controlée (pas à pas) du programme via des points d'arrêt (<em>breakpoint</em>) afin d'examiner l'état courant et suivre l'évolution des variables.</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1740,7 +1809,7 @@
                             Exceptions: Définition, Try..Except
                         </li>
                         <li class="section-summary-list-item">
-                            Débogage
+                            Débogage: Assertions, Exceptions, Logging, 
                         </li>
                     </ul>
                 </div>
@@ -1748,7 +1817,7 @@
             
             <section class="body-content-section collapsible" data-collapsible="expanded">
                 <div class="body-content-section-header" data-collapsible-header="">
-                    <h2 class="body-content-title">Semaine 12: Récursivité</h2>
+                    <h2 class="body-content-title">Semaine 13: Récursivité</h2>
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
@@ -1773,6 +1842,41 @@
                     <ul class="bare-list section-summary-list">
                         <li class="section-summary-list-item">
                             Récursivité
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="body-content-section collapsible" data-collapsible="expanded">
+                <div class="body-content-section-header" data-collapsible-header="">
+                    <h2 class="body-content-title">Semaine 14: Conclusion</h2>
+                </div>
+
+                <div class="week-section-body collapsible-content" data-collapsible-content="">
+                    <!-- <div class="week-section-header">
+                        <h3 class="week-section-title">Système de fichier</h3>
+                    </div> -->
+                    
+                    <div class="week-section-block">
+                        <!-- <h4 class="block-title">Méthodes prédéfinies</h4>
+                        <p>
+                            Les textes (chaine de caractères) ont des caractéristiques similaires aux tableaux car les deux représentent des séquences. <br>
+                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte <br>
+                            <code>upper()</code>, <code>lower()</code>, <code>isalpha()</code>, <code>isdecimal()</code> <br>
+                            <code>strip()</code>, <code>split()</code>, <code>replace()</code> <br>
+                            <code>startswith()</code>, <code>endswith()</code>, <code>find()</code>
+                        </p> -->
+                    </div>
+                </div>
+
+                <div class="section-summary collapsible-preview">
+                    <h3 class="section-summary-title">Contenu</h3>
+                    <ul class="bare-list section-summary-list">
+                        <li class="section-summary-list-item">
+                            Conclusion du cours
+                        </li>
+                        <li class="section-summary-list-item">
+                            Révision
                         </li>
                     </ul>
                 </div>
