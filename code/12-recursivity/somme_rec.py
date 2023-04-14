@@ -1,5 +1,5 @@
 ###############################################################################
-## Ce programme calcul la somme d'une liste de nombres récursivement.
+## Ce programme calcule la somme d'une liste de nombres récursivement.
 ###############################################################################
 ## Auteur: Louis-Edouard LAFONTANT
 ## Copyright: Copyright 2023, Ceduni
@@ -18,8 +18,8 @@ def somme(nombres, result):
 
 print(somme([1, 2, 3, 4], 0))
 
-# Alternative sans accumulateur
 
+# Alternative sans accumulateur
 def somme2(nombres):
     if len(nombres) == 0:
         return 0
