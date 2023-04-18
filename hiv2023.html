@@ -44,6 +44,31 @@
             color: #2F305E;
         }
 
+        .code-header {
+            display: flex; flex-direction: column;            
+            padding: 4px 8px;
+            border: 2px solid #6667AB;
+            border-radius: 4px;   
+        }
+
+        .code-header + .code-header {
+            margin-top: 12px;
+        }
+        
+        .code-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            /* text-transform: uppercase; */
+            color: #BB2649;
+        }
+
+        .code-desc {
+            font-size: 1.4em; 
+            /* font-style: italic; */
+            color: #0F4C81;
+            margin-bottom: 0;
+        }
+
         .week-section-block {
             margin-bottom: 12px;
         }
@@ -148,11 +173,11 @@
         }
 
         .key {
-            color: blue;
-        }
-        
-        .var {
             color: red;
+        }
+
+        .var {
+            color: royalblue;
         }
         
         .val.str {
@@ -1821,19 +1846,95 @@
                 </div>
 
                 <div class="week-section-body collapsible-content" data-collapsible-content="">
-                    <!-- <div class="week-section-header">
-                        <h3 class="week-section-title">Système de fichier</h3>
-                    </div> -->
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Fonction récursive</h3>
+                    </div>
                     
                     <div class="week-section-block">
-                        <!-- <h4 class="block-title">Méthodes prédéfinies</h4>
+                        <h4 class="block-title">Définition</h4>
                         <p>
-                            Les textes (chaine de caractères) ont des caractéristiques similaires aux tableaux car les deux représentent des séquences. <br>
-                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte <br>
-                            <code>upper()</code>, <code>lower()</code>, <code>isalpha()</code>, <code>isdecimal()</code> <br>
-                            <code>strip()</code>, <code>split()</code>, <code>replace()</code> <br>
-                            <code>startswith()</code>, <code>endswith()</code>, <code>find()</code>
-                        </p> -->
+                            Une fonction récursive est une fonction qui s'appelle elle-même.
+                            Similaire à une boucle &ndash; <em>Toute boucle peut être convertie en fonction récursive</em>
+                        </p>
+                        <ul class="bare-list">
+                            <li class="dash">Il faut une <strong>condition ou cas d'arrêt</strong>, afin d'éviter un appel récursif infini</li> 
+                            <li class="dash">Chaque itération doit nous <strong>rapprocher du cas d'arrêt</strong></li> 
+                            <li class="dash">Le cas d'arrêt doit être <strong>atteignable</strong></li> 
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section-block" id="week13">
+                        <h4 class="block-title">Structure</h4>
+                        <p>
+                            Tout fonction récursive peut se décomposer en cas de base et cas récursif.
+                        </p>
+                        <ul class="bare-list">
+                            <li class="dash">Le <strong>cas de base</strong> peut se traiter sans appel récursif (c’est normalement le cas le plus simple à traiter). Il met fin à la récursion.</li> 
+                            <li class="dash">Le <strong>cas récursif</strong> requiert un traitement similaire (au cas précédent) mais sur un ensemble d'arguments plus petit.</li> 
+                        </ul>
+                    </div>
+
+                    <div class="week-section-header">
+                        <h3 class="week-section-title">Exemples</h3>
+                    </div>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Factoriel</h4>
+                        
+                        <div class="code-header">
+                            <h5 class="code-title">Version récursive</h5>
+                            <code style="font-size: 1.3rem">
+                                
+<pre>
+<i class="py">def</i> <i class="key">factoriel</i>(<i class="var">n</i>): 
+    <i class="py">if</i> <i class="var">n</i> == 0:     <em class="comment"># Cas de base</em> 
+        <i class="py">return</i> 1
+    <i class="py">else</i>:          <em class="comment"># Cas récursif</em> 
+        <i class="py">return</i> <i class="var">n</i> * <i class="key"><b>factoriel</b></i>(<i class="var">n</i> - 1)
+</pre>
+                            </code>
+
+                            <h5 class="code-title">Version itérative (équivalente)</h5>
+                            <code style="font-size: 1.3rem">
+<pre>
+<i class="py">def</i> <i class="key">factoriel</i>(<i class="var">n</i>): 
+    <i class="var">result</i> = 1
+    <i class="py">for</i> <i class="var">i</i> <i class="py">in</i> <i class="py">range</i>(1, n + 1) 
+        <i class="var">result</i> *= <i class="var">i</i>
+
+    <i class="py">return</i> <i class="var">result</i>
+</pre>
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="week-section-block">
+                        <h4 class="block-title">Somme d'une liste de nombres</h4>
+
+                        <div class="code-header">
+                            <h5 class="code-title">Avec accumulateur</h5>
+                            <p class="code-desc">Cette version utilise un accumulateur (<code>result</code>) pour stocker la somme à chaque itération.</p>
+                            <code style="font-size: 1.3rem">
+<pre>
+<i class="py">def</i> <i class="key">somme</i>(<i class="var">nombres</i>, <i class="var">result</i> = 0): 
+    <i class="py">if</i> len(<i class="var">nombres</i>) == 0:     <em class="comment"># Cas de base</em> 
+        <i class="py">return</i> result
+    <i class="py">num</i> = <i class="var">nombres</i>.pop()        <em class="comment"># Cas récursif (pop réduit la taille de nombres)</em> 
+    <i class="py">return</i> <i class="key"><b>somme</b></i>(<i class="var">nombres</i>, <i class="var">result + num</i>)
+</pre>
+                            </code>
+                            <h5 class="code-title">Sans accumulateur</h5>
+                            <p class="code-desc">Cette version n'utilise pas d'accumulateur. La somme est accumulé sur l'appel de chaque itération.</p>
+                            <code style="font-size: 1.3rem">
+    <pre>
+<i class="py">def</i> <i class="key">somme</i>(<i class="var">nombres</i>): 
+    <i class="py">if</i> len(<i class="var">nombres</i>) == 0:     <em class="comment"># Cas de base</em> 
+        <i class="py">return</i> 0
+    <i class="py">num</i> = <i class="var">nombres</i>.pop()        <em class="comment"># Cas récursif (pop réduit la taille de nombres)</em> 
+    <i class="py">return</i> <i class="py">num</i> + <i class="key"><b>somme</b></i>(<i class="var">nombres</i>)
+    </pre>
+                            </code>
+                        </div>
                     </div>
                 </div>
 
@@ -1888,7 +1989,7 @@
         <div class="content-wrapper">
             <p class="footer-maintenance">
                 Maintenu par: Louis-Edouard LAFONTANT (<a class="bare-link footer__link" href="https://lelafontant.github.io/" target="_blank">LELAFONTANT</a>) <br>
-                Dernière mise à jour: 2023-04-02
+                Dernière mise à jour: 2023-04-18
             </p>
             <p class="copyright">&copy; 2021 &ndash; 2023 Ceduni</p>
         </div>
@@ -1943,7 +2044,7 @@
 
 
     <!-- <script src="main.js"></script> -->
-    <script src="dist/app.js?v=003"></script>
+    <script src="dist/app.js?v=004"></script>
 </body>
 
 </html>
