@@ -1613,7 +1613,7 @@
                         <h4 class="block-title">Méthodes prédéfinies</h4>
                         <p>
                             Les textes (chaine de caractères) ont des caractéristiques similaires aux tableaux car les deux représentent des séquences. <br>
-                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte <br>
+                            La plupart des langages tel que Python offrent de nombreuses méthodes prédéfinies pour manipuler du texte: <br>
                             <code>upper()</code>, <code>lower()</code>, <code>isalpha()</code>, <code>isdecimal()</code> <br>
                             <code>strip()</code>, <code>split()</code>, <code>replace()</code> <br>
                             <code>startswith()</code>, <code>endswith()</code>, <code>find()</code>
@@ -1622,16 +1622,26 @@
 
                     <div class="week-section-block">
                         <h4 class="block-title">Expressions régulières</h4>
-                        <p>
-                            Il arrive que nous devions rechercher non pas une simple chaîne mais un patron. 
-                            Par exemple: <em>Trouver un numéro de téléphone</em> <br>
 
-                            <code>>>> import re</code> <br>
-                            <code>>>> phone_num_regex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')</code> <br>
-                            <code>>>> mo = phone_num_regex.search('Mon numero est le 514-555-4242.')</code> <br>
-                            <code>>>> print('Tel: ' + mo.group())</code> <br>
-                            <code># Tel: 514-555-4242</code> <br>
+                        <p class="bare">
+                            Il arrive que nous devions rechercher non pas une chaîne (texte) spécifique mais plutot un patron (Ex: numéro de téléphone, adresse courriel). <br>
+                            Une expression régulière (<em>Regular expression</em>, Regex) est une formule générale de séquence de caractères permettant de trouver des correspondances dans du texte.
+                            Si on considère les exemples de code postal suivants: 
                         </p>
+                        <ul class="bare-list">
+                            <li class="dash">H4P 2C7</li>
+                            <li class="dash">N7S 2R9</li>
+                            <li class="dash">A0R 1K2</li>
+                        </ul>
+                        <p class="bare" style="margin: 6px;">
+                            De manière générale on dira qu'un code postal est formé de la façon suivante: <br>
+                            <code>{Lettre}{Chiffre}{Lettre} {Chiffre}{Lettre}{Chiffre}</code>  <br>
+                            <strong>Traduction en regex:</strong> <code>[A-Z][0-9][A-Z] [0-9][A-Z][0-9]</code> où
+                        </p> 
+                        <ul class="bare-list">
+                            <li class="dash"><code>[A-Z]</code> capture toutes les lettres entre A et Z</li>
+                            <li class="dash"><code>[0-9]</code> capture tous les chiffres entre 0 et 9.</li>
+                        </ul>
                     </div>
                     
                     <div class="week-section-block">
